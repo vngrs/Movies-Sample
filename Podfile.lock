@@ -1,0 +1,21 @@
+PODS:
+  - CoreVNGRSKit (1.0.1)
+
+DEPENDENCIES:
+  - "CoreVNGRSKit (from `ssh://git@github.com/vngrs/ios-core-vngrs-kit.git`)"
+
+EXTERNAL SOURCES:
+  CoreVNGRSKit:
+    :git: "ssh://git@github.com/vngrs/ios-core-vngrs-kit.git"
+
+CHECKOUT OPTIONS:
+  CoreVNGRSKit:
+    :commit: af0b4e138cad7674a35fc7a8833cdc02e5113b07
+    :git: "ssh://git@github.com/vngrs/ios-core-vngrs-kit.git"
+
+SPEC CHECKSUMS:
+  CoreVNGRSKit: 26144dffde31f4165df0c79ad18e0c9ce4596742
+
+PODFILE CHECKSUM: ea2796895726780792a3496298fb2eeff0304d26
+
+COCOAPODS: 1.8.4
