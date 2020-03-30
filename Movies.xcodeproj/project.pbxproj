@@ -578,6 +578,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 40274A246829DFC5BDF97A2A /* Pods-Movies.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Movies/Info.plist;
@@ -597,6 +598,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 23F1FCEFD106BA822E3ED70B /* Pods-Movies.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Movies/Info.plist;
@@ -660,7 +662,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 407E764F890123D285BAAE6D /* Pods-Movies-MoviesUITests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MoviesUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -680,7 +682,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D01A276615F114E9078F1C32 /* Pods-Movies-MoviesUITests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MoviesUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
