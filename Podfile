@@ -7,7 +7,7 @@ target 'Movies' do
 
   # Pods for Movies
 
-  pod 'CoreVNGRSKit', :git => 'ssh://git@github.com/vngrs/ios-core-vngrs-kit.git', :tag => '1.0.5'
+  pod 'CoreVNGRSKit', :git => 'ssh://git@github.com/vngrs/ios-core-vngrs-kit.git', :branch => 'master'
 
   target 'MoviesTests' do
     inherit! :search_paths

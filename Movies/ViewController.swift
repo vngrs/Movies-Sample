@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreVNGRSKit
+import Alamofire
 
 class ViewController: UIViewController {
 
