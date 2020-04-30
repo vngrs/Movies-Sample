@@ -8,12 +8,14 @@
 
 import UIKit
 import CoreVNGRSKit
-import Alamofire
 
-class ViewController: UIViewController {
+class MoviesListViewControllerViewController: UIViewController {
+
+    let viewModel = MoviesListViewModel()
 
     override func viewDidLoad() {
+
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        viewModel.loadMoviesList()
     }
 }
