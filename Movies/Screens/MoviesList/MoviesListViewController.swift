@@ -9,13 +9,32 @@
 import UIKit
 import CoreVNGRSKit
 
-class MoviesListViewControllerViewController: UIViewController {
+class MoviesListViewControllerViewController: BaseViewController {
+
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
     let viewModel = MoviesListViewModel()
 
     override func viewDidLoad() {
 
         super.viewDidLoad()
-        viewModel.loadMoviesList()
+        addChangeHandlers()
+    }
+
+    private func addChangeHandlers() {
+
+        viewModel.addChangeHandler { [weak self] (change) in
+
+            guard let self = self else { return }
+            switch change {
+            case .loading:
+                break
+            case .loaded:
+                break
+            case .failed(let error):
+                self.showError(message: error)
+            }
+        }
     }
 }
