@@ -9,17 +9,42 @@
 import UIKit
 import CoreVNGRSKit
 
-class MoviesListViewControllerViewController: BaseViewController {
+struct MoviesListPresentation: Presentation {
+
+    var cellsPresentations: [MovieCellPresentation] = []
+
+    mutating func update(with state: MoviesListState) {
+
+        cellsPresentations = state.movies.map({
+            return MovieCellPresentation(title: $0.title ?? "", bannerUrl: nil)
+        })
+    }
+}
+
+class MoviesListViewController: BaseViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
     let viewModel = MoviesListViewModel()
+    var presentation = MoviesListPresentation() {
+        didSet {
+            updateUI()
+        }
+    }
 
     override func viewDidLoad() {
 
         super.viewDidLoad()
+        configureViews()
         addChangeHandlers()
+        viewModel.loadMoviesList()
+    }
+
+    private func configureViews() {
+
+        tableView.cvkRegisterCell(type: MovieTableViewCell.self)
+        tableView.dataSource = self
     }
 
     private func addChangeHandlers() {
@@ -29,12 +54,34 @@ class MoviesListViewControllerViewController: BaseViewController {
             guard let self = self else { return }
             switch change {
             case .loading:
-                break
+                self.activityIndicator.startAnimating()
             case .loaded:
-                break
+                self.activityIndicator.stopAnimating()
+                self.presentation.update(with: self.viewModel.state)
             case .failed(let error):
+                self.activityIndicator.stopAnimating()
                 self.showError(message: error)
             }
         }
+    }
+
+    private func updateUI() {
+
+        tableView.reloadData()
+    }
+}
+
+extension MoviesListViewController: UITableViewDataSource {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
+        return presentation.cellsPresentations.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+        let cell: MovieTableViewCell = tableView.cvkDequeueCell(for: indexPath)
+        cell.presentation = presentation.cellsPresentations[indexPath.row]
+        return cell
     }
 }

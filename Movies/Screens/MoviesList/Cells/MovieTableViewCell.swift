@@ -9,6 +9,25 @@
 import Foundation
 import CoreVNGRSKit
 
+struct MovieCellPresentation: Presentation {
+
+    let title: String
+    let bannerUrl: URL?
+}
+
 class MovieTableViewCell: TableViewCell {
 
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var bannerImageView: UIImageView!
+
+    var presentation: MovieCellPresentation? {
+        didSet {
+            updateUI()
+        }
+    }
+
+    func updateUI() {
+
+        titleLabel.text = presentation?.title
+    }
 }

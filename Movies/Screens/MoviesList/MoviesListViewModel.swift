@@ -17,6 +17,8 @@ struct MoviesListState {
         case loaded
         case failed(error: String)
     }
+
+    var movies: [MovieModel] = []
 }
 
 class MoviesListViewModel: StatefulViewModel<MoviesListState.Change> {
@@ -32,12 +34,13 @@ class MoviesListViewModel: StatefulViewModel<MoviesListState.Change> {
 
             switch response.result {
             case .success(let response):
-                print(response.results?.count)
+                self.state.movies = response.results ?? []
                 response.results?.forEach { movie in
                     print(movie.title ?? "Not Found")
                 }
+                self.emit(change: .loaded)
             case .failure(let error):
-                print("Failed")
+                self.emit(change: .failed(error: error.localizedDescription))
             }
         }
     }

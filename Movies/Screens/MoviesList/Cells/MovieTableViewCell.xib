@@ -9,11 +9,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="495" id="QSN-JW-ENS">
-            <rect key="frame" x="0.0" y="0.0" width="329" height="495"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="388" id="QSN-JW-ENS" customClass="MovieTableViewCell" customModule="Movies" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="329" height="388"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QSN-JW-ENS" id="lft-Ud-Yfo">
-                <rect key="frame" x="0.0" y="0.0" width="329" height="495"/>
+                <rect key="frame" x="0.0" y="0.0" width="329" height="388"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1cx-ZO-d56">
@@ -34,11 +34,16 @@
                     <constraint firstAttribute="trailing" secondItem="1cx-ZO-d56" secondAttribute="trailing" constant="20" symbolic="YES" id="R7d-nS-Ztw"/>
                     <constraint firstItem="BuF-Yx-ZhY" firstAttribute="trailing" secondItem="lft-Ud-Yfo" secondAttribute="trailingMargin" id="fI0-4h-F6U"/>
                     <constraint firstItem="1cx-ZO-d56" firstAttribute="leading" secondItem="lft-Ud-Yfo" secondAttribute="leading" constant="20" symbolic="YES" id="iOE-rz-OS8"/>
+                    <constraint firstAttribute="bottom" secondItem="BuF-Yx-ZhY" secondAttribute="bottom" constant="28" id="iOi-yV-4gm"/>
                     <constraint firstItem="BuF-Yx-ZhY" firstAttribute="leading" secondItem="lft-Ud-Yfo" secondAttribute="leadingMargin" id="iyw-nr-ema"/>
                     <constraint firstItem="1cx-ZO-d56" firstAttribute="top" secondItem="lft-Ud-Yfo" secondAttribute="top" constant="20" symbolic="YES" id="qX8-Y5-ajD"/>
                 </constraints>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="76.08695652173914" y="71.986607142857139"/>
+            <connections>
+                <outlet property="bannerImageView" destination="1cx-ZO-d56" id="Dbb-cO-eZm"/>
+                <outlet property="titleLabel" destination="BuF-Yx-ZhY" id="LT8-Xr-GB1"/>
+            </connections>
+            <point key="canvasLocation" x="76.08695652173914" y="36.160714285714285"/>
         </tableViewCell>
     </objects>
 </document>
