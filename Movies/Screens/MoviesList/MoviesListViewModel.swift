@@ -20,27 +20,36 @@ struct MoviesListState {
 
     var movies: [MovieModel] = []
     var page = 1
+    var totalPages: Int = 2
+    var isLoading = false
 }
 
 class MoviesListViewModel: StatefulViewModel<MoviesListState.Change> {
 
     var state = MoviesListState()
 
-    func loadMoviesList() {
+    func loadMoreMovies() {
+
+        guard !state.isLoading,
+            state.page < state.totalPages
+            else { return }
 
         emit(change: .loading)
+        state.isLoading = true
+        print("Loading page: \(state.page)")
         NetworkingManager.shared.start(dataModelRequest: PopularMoviesRequest(page: state.page)) { [weak self] (response: Response<MoviesResponse>) in
 
             guard let self = self else { return }
 
             switch response.result {
             case .success(let response):
-                self.state.movies = response.results ?? []
-                response.results?.forEach { movie in
-                    print(movie.title ?? "Not Found")
-                }
+                self.state.movies += response.results ?? []
                 self.emit(change: .loaded)
+                self.state.page += 1
+                self.state.totalPages = response.total_pages ?? 0
+                self.state.isLoading = false
             case .failure(let error):
+                self.state.isLoading = false
                 self.emit(change: .failed(error: error.localizedDescription))
             }
         }

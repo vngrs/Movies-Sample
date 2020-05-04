@@ -42,13 +42,14 @@ class MoviesListViewController: BaseViewController {
         super.viewDidLoad()
         configureViews()
         addChangeHandlers()
-        viewModel.loadMoviesList()
+        viewModel.loadMoreMovies()
     }
 
     private func configureViews() {
 
         tableView.cvkRegisterCell(type: MovieTableViewCell.self)
         tableView.dataSource = self
+        tableView.delegate = self
     }
 
     private func addChangeHandlers() {
@@ -75,7 +76,7 @@ class MoviesListViewController: BaseViewController {
     }
 }
 
-extension MoviesListViewController: UITableViewDataSource {
+extension MoviesListViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
@@ -87,5 +88,15 @@ extension MoviesListViewController: UITableViewDataSource {
         let cell: MovieTableViewCell = tableView.cvkDequeueCell(for: indexPath)
         cell.presentation = presentation.cellsPresentations[indexPath.row]
         return cell
+    }
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+
+        if offsetY > contentHeight - scrollView.frame.height * 4 {
+            viewModel.loadMoreMovies()
+        }
     }
 }
