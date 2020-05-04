@@ -47,6 +47,7 @@ class MoviesListViewController: BaseViewController {
 
     private func configureViews() {
 
+        navigationController?.navigationBar.prefersLargeTitles = true
         tableView.cvkRegisterCell(type: MovieTableViewCell.self)
         tableView.dataSource = self
         tableView.delegate = self
