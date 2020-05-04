@@ -23,7 +23,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BuF-Yx-ZhY">
-                        <rect key="frame" x="20" y="473.5" width="289" height="70.5"/>
+                        <rect key="frame" x="20" y="483.5" width="289" height="60.5"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                         <color key="textColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                         <nil key="highlightedColor"/>
@@ -37,22 +37,46 @@
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gYS-Il-P93">
+                        <rect key="frame" x="219" y="423.5" width="60" height="60"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="80%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XcS-z2-Uc4">
+                                <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <color key="textColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="60" id="2Cn-p6-Fbl"/>
+                            <constraint firstAttribute="width" constant="60" id="8Rt-T2-qHn"/>
+                            <constraint firstAttribute="trailing" secondItem="XcS-z2-Uc4" secondAttribute="trailing" id="OUf-uh-kMg"/>
+                            <constraint firstItem="XcS-z2-Uc4" firstAttribute="top" secondItem="gYS-Il-P93" secondAttribute="top" id="g7s-lw-yW2"/>
+                            <constraint firstItem="XcS-z2-Uc4" firstAttribute="leading" secondItem="gYS-Il-P93" secondAttribute="leading" id="pHr-6D-NG7"/>
+                            <constraint firstAttribute="bottom" secondItem="XcS-z2-Uc4" secondAttribute="bottom" id="zrF-K9-8hc"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="BuF-Yx-ZhY" firstAttribute="top" secondItem="1cx-ZO-d56" secondAttribute="bottom" constant="20" id="0A1-8V-lGh"/>
+                    <constraint firstItem="BuF-Yx-ZhY" firstAttribute="top" secondItem="1cx-ZO-d56" secondAttribute="bottom" constant="30" id="0A1-8V-lGh"/>
                     <constraint firstItem="kjI-Vn-ZFU" firstAttribute="leading" secondItem="lft-Ud-Yfo" secondAttribute="leadingMargin" id="0ky-vg-9Io"/>
                     <constraint firstAttribute="bottom" secondItem="kjI-Vn-ZFU" secondAttribute="bottom" constant="20" id="HgS-9E-P68"/>
                     <constraint firstItem="kjI-Vn-ZFU" firstAttribute="top" secondItem="BuF-Yx-ZhY" secondAttribute="bottom" id="ICg-Gs-6U6"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="gYS-Il-P93" secondAttribute="trailing" constant="30" id="L4L-MH-rG6"/>
                     <constraint firstAttribute="trailing" secondItem="1cx-ZO-d56" secondAttribute="trailing" constant="20" symbolic="YES" id="R7d-nS-Ztw"/>
                     <constraint firstItem="kjI-Vn-ZFU" firstAttribute="trailing" secondItem="lft-Ud-Yfo" secondAttribute="trailingMargin" id="WXJ-Mv-KEN"/>
                     <constraint firstItem="BuF-Yx-ZhY" firstAttribute="trailing" secondItem="lft-Ud-Yfo" secondAttribute="trailingMargin" id="fI0-4h-F6U"/>
                     <constraint firstItem="1cx-ZO-d56" firstAttribute="leading" secondItem="lft-Ud-Yfo" secondAttribute="leading" constant="20" symbolic="YES" id="iOE-rz-OS8"/>
                     <constraint firstItem="BuF-Yx-ZhY" firstAttribute="leading" secondItem="lft-Ud-Yfo" secondAttribute="leadingMargin" id="iyw-nr-ema"/>
+                    <constraint firstItem="gYS-Il-P93" firstAttribute="bottom" secondItem="1cx-ZO-d56" secondAttribute="bottom" constant="30" id="n0z-NQ-R6M"/>
                     <constraint firstItem="1cx-ZO-d56" firstAttribute="top" secondItem="lft-Ud-Yfo" secondAttribute="top" constant="20" symbolic="YES" id="qX8-Y5-ajD"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="bannerImageView" destination="1cx-ZO-d56" id="Dbb-cO-eZm"/>
+                <outlet property="rateLabel" destination="XcS-z2-Uc4" id="aWf-k5-ONZ"/>
+                <outlet property="rateView" destination="gYS-Il-P93" id="AFK-vk-M9l"/>
                 <outlet property="releaseDate" destination="kjI-Vn-ZFU" id="JLI-6M-Ggy"/>
                 <outlet property="titleLabel" destination="BuF-Yx-ZhY" id="LT8-Xr-GB1"/>
             </connections>

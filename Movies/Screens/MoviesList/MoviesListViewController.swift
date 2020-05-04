@@ -19,7 +19,9 @@ struct MoviesListPresentation: Presentation {
             return MovieCellPresentation(
                 title: $0.title ?? "",
                 releaseDate: $0.release_date,
-                bannerUrl: URLBuilder.imageUrl(path: $0.poster_path ?? "")
+                bannerUrl: URLBuilder.imageUrl(path: $0.poster_path ?? ""),
+                rating: "\($0.vote_average ?? 0)",
+                ratingColor: $0.voteColor
             )
         })
     }
