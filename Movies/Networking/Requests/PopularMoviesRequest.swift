@@ -11,9 +11,13 @@ import CoreVNGRSKit
 
 struct PopularMoviesRequest: BaseRequest {
 
-    var path: String = "movie/popular"
-
+    let path: String = "movie/popular"
     var page: Int = 1
+
+    init(page: Int) {
+
+        self.page = page
+    }
 
     var urlParameters: JSONDictionary? {
         return defaultUrlParams.merging(

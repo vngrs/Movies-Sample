@@ -8,6 +8,7 @@ target 'Movies' do
   # Pods for Movies
 
   pod 'CoreVNGRSKit', :git => 'ssh://git@github.com/vngrs/ios-core-vngrs-kit.git', :branch => 'master'
+  pod 'AlamofireImage', '~> 3.0'
 
   target 'MoviesTests' do
     inherit! :search_paths

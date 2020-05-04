@@ -16,7 +16,11 @@ struct MoviesListPresentation: Presentation {
     mutating func update(with state: MoviesListState) {
 
         cellsPresentations = state.movies.map({
-            return MovieCellPresentation(title: $0.title ?? "", bannerUrl: nil)
+            return MovieCellPresentation(
+                title: $0.title ?? "",
+                releaseDate: $0.release_date,
+                bannerUrl: URLBuilder.imageUrl(path: $0.poster_path ?? "")
+            )
         })
     }
 }

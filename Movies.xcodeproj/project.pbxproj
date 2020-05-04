@@ -27,6 +27,7 @@
 		E28B2596245B09D20067C622 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28B2595245B09D20067C622 /* NetworkingManager.swift */; };
 		E28B2598245B0A100067C622 /* BaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28B2597245B0A100067C622 /* BaseRequest.swift */; };
 		E28B259D245B25890067C622 /* LaunchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28B259C245B25890067C622 /* LaunchManager.swift */; };
+		E2ECE6C1245F91C100AF4E3F /* URLBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2ECE6C0245F91C100AF4E3F /* URLBuilder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 		E28B2595245B09D20067C622 /* NetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
 		E28B2597245B0A100067C622 /* BaseRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRequest.swift; sourceTree = "<group>"; };
 		E28B259C245B25890067C622 /* LaunchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchManager.swift; sourceTree = "<group>"; };
+		E2ECE6C0245F91C100AF4E3F /* URLBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLBuilder.swift; sourceTree = "<group>"; };
 		EC07E23883DCB0A588BC4084 /* Pods_Movies.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Movies.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -263,6 +265,7 @@
 			children = (
 				E28B259C245B25890067C622 /* LaunchManager.swift */,
 				E249620C245B2E090058DFDD /* BaseViewController.swift */,
+				E2ECE6C0245F91C100AF4E3F /* URLBuilder.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -512,6 +515,7 @@
 				E2496208245B294D0058DFDD /* MoviesResponse.swift in Sources */,
 				E28B2598245B0A100067C622 /* BaseRequest.swift in Sources */,
 				E28B259D245B25890067C622 /* LaunchManager.swift in Sources */,
+				E2ECE6C1245F91C100AF4E3F /* URLBuilder.swift in Sources */,
 				E249620D245B2E090058DFDD /* BaseViewController.swift in Sources */,
 				E28B2596245B09D20067C622 /* NetworkingManager.swift in Sources */,
 				E2496201245B27910058DFDD /* MoviesListViewModel.swift in Sources */,

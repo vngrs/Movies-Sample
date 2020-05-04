@@ -1,14 +1,18 @@
 PODS:
   - Alamofire (4.9.1)
+  - AlamofireImage (3.6.0):
+    - Alamofire (~> 4.9)
   - CoreVNGRSKit (1.0.5):
     - Alamofire (~> 4.8)
 
 DEPENDENCIES:
+  - AlamofireImage (~> 3.0)
   - "CoreVNGRSKit (from `ssh://git@github.com/vngrs/ios-core-vngrs-kit.git`, branch `master`)"
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - AlamofireImage
 
 EXTERNAL SOURCES:
   CoreVNGRSKit:
@@ -22,8 +26,9 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  AlamofireImage: be9963c6582d68b39e89191f64c82a7d7bf40fdd
   CoreVNGRSKit: c07f3dad796ed6e5dd74834d81f1ba53a6dc63c2
 
-PODFILE CHECKSUM: 32cc67d40878e9456a70189e6f23c0c8b516b865
+PODFILE CHECKSUM: 90a6e61c6b1d2e7c5a8c0c038dd8d58f4c2dade7
 
 COCOAPODS: 1.8.4

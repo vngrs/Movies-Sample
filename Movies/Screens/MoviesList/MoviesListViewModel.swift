@@ -19,6 +19,7 @@ struct MoviesListState {
     }
 
     var movies: [MovieModel] = []
+    var page = 1
 }
 
 class MoviesListViewModel: StatefulViewModel<MoviesListState.Change> {
@@ -28,7 +29,7 @@ class MoviesListViewModel: StatefulViewModel<MoviesListState.Change> {
     func loadMoviesList() {
 
         emit(change: .loading)
-        NetworkingManager.shared.start(dataModelRequest: PopularMoviesRequest()) { [weak self] (response: Response<MoviesResponse>) in
+        NetworkingManager.shared.start(dataModelRequest: PopularMoviesRequest(page: state.page)) { [weak self] (response: Response<MoviesResponse>) in
 
             guard let self = self else { return }
 

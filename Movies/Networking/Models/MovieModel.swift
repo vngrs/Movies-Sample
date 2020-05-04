@@ -11,4 +11,6 @@ import Foundation
 struct MovieModel: Codable {
 
     let title: String?
+    let poster_path: String?
+    let release_date: String?
 }
