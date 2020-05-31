@@ -1,5 +1,5 @@
 //
-//  MovieModel.swift
+//  Movie.swift
 //  Movies
 //
 //  Created by Ahmed Abdurrahman on 4/30/20.
@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-struct MovieModel: Codable {
+struct Movie: Codable {
 
     let title: String?
     let poster_path: String?

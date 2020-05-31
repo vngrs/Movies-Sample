@@ -13,7 +13,7 @@ protocol MovieDetailsRouter: Router {
 
     static func routeToMovieDetail(
         from context: BaseViewController,
-        movie: MovieModel
+        movie: Movie
     )
 }
 
@@ -21,7 +21,7 @@ extension MovieDetailsRouter {
 
     static func routeToMovieDetail(
         from context: BaseViewController,
-        movie: MovieModel
+        movie: Movie
     ) {
 
         let controller = MovieDetailsViewController.instantiate()

@@ -13,5 +13,5 @@ struct MoviesResponse: CodableResponse {
 
     let page: Int?
     let total_pages: Int?
-    let results: [MovieModel]?
+    let results: [Movie]?
 }

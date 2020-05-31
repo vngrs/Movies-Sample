@@ -18,7 +18,7 @@ struct MoviesListState {
         case failed(error: String)
     }
 
-    var movies: [MovieModel] = []
+    var movies: [Movie] = []
     var page = 1
     var totalPages: Int = 2
     var isLoading = false

@@ -15,14 +15,14 @@ struct MovieDetailsState {
 
     }
 
-    let movie: MovieModel
+    let movie: Movie
 }
 
 class MovieDetailsViewModel: StatefulViewModel<MovieDetailsState.Change> {
 
     var state: MovieDetailsState
 
-    init(movie: MovieModel) {
+    init(movie: Movie) {
         state = MovieDetailsState(movie: movie)
     }
 }
