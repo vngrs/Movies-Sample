@@ -7,13 +7,7 @@
 //
 
 import Foundation
-
-import UIKit
-
-class BaseViewController: UIViewController {
-
-
-}
+import CoreVNGRSKit
 
 // MARK: - Show Error Extension
 

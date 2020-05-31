@@ -21,7 +21,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   CoreVNGRSKit:
-    :commit: 73ab50ac6491b61d38e28e3d7dbb24a135e14f84
+    :commit: 588e504c4e0bb2ab0d48388a877c405549d88914
     :git: "ssh://git@github.com/vngrs/ios-core-vngrs-kit.git"
 
 SPEC CHECKSUMS:
@@ -31,4 +31,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 90a6e61c6b1d2e7c5a8c0c038dd8d58f4c2dade7
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.9.3

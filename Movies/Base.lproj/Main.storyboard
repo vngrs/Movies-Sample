@@ -116,6 +116,36 @@
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="137.94642857142856"/>
         </scene>
+        <!--Movie Details View Controller-->
+        <scene sceneID="s56-9L-16l">
+            <objects>
+                <viewController storyboardIdentifier="MovieDetailsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2R0-5G-SR0" customClass="MovieDetailsViewController" customModule="Movies" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2bY-CP-UQe">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sEe-lM-94I">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="sEe-lM-94I" firstAttribute="bottom" secondItem="EJE-D1-DTM" secondAttribute="bottom" id="4r2-aX-p4Q"/>
+                            <constraint firstItem="sEe-lM-94I" firstAttribute="leading" secondItem="EJE-D1-DTM" secondAttribute="leading" id="YGf-Up-be4"/>
+                            <constraint firstItem="sEe-lM-94I" firstAttribute="trailing" secondItem="EJE-D1-DTM" secondAttribute="trailing" id="eAy-BW-LVd"/>
+                            <constraint firstItem="sEe-lM-94I" firstAttribute="top" secondItem="EJE-D1-DTM" secondAttribute="top" id="yb7-cC-8qX"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="EJE-D1-DTM"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="sEe-lM-94I" id="3Oo-ht-Bye"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xpa-Qo-9mq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1966.6666666666667" y="137.94642857142856"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="GoV-9b-kjA">
             <objects>

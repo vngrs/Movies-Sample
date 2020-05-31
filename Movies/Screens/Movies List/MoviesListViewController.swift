@@ -9,24 +9,6 @@
 import UIKit
 import CoreVNGRSKit
 
-struct MoviesListPresentation: Presentation {
-
-    var cellsPresentations: [MovieCellPresentation] = []
-
-    mutating func update(with state: MoviesListState) {
-
-        cellsPresentations = state.movies.map({
-            return MovieCellPresentation(
-                title: $0.title ?? "",
-                releaseDate: $0.release_date,
-                bannerUrl: URLBuilder.imageUrl(path: $0.poster_path ?? ""),
-                rating: "\($0.vote_average ?? 0)",
-                ratingColor: $0.voteColor
-            )
-        })
-    }
-}
-
 class MoviesListViewController: BaseViewController {
 
     @IBOutlet weak var tableView: UITableView!
@@ -140,6 +122,15 @@ extension MoviesListViewController: UITableViewDataSource, UITableViewDelegate {
 
         if offsetY > contentHeight - scrollView.frame.height * 4 {
             viewModel.loadMoreMovies()
+        }
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        DispatchQueue.main.async {
+            if let movie = self.viewModel.state.movies[safe: indexPath.row] {
+                AppRouter.routeToMovieDetail(from: self, movie: movie)
+            }
         }
     }
 }
