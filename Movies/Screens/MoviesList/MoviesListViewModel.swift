@@ -9,14 +9,6 @@
 import Foundation
 import CoreVNGRSKit
 
-enum MoviesTab {
-
-    case playing
-    case popular
-    case next
-    case top
-}
-
 struct MoviesListState {
 
     enum Change: StateChange {
@@ -30,14 +22,14 @@ struct MoviesListState {
     var page = 1
     var totalPages: Int = 2
     var isLoading = false
-    var tab: MoviesTab = .popular
+    var tab: MoviesCategory = .popular
 }
 
 class MoviesListViewModel: StatefulViewModel<MoviesListState.Change> {
 
     var state = MoviesListState()
 
-    func switchToTab(_ tab: MoviesTab) {
+    func switchToTab(_ tab: MoviesCategory) {
 
         guard tab != state.tab else { return }
 
@@ -56,12 +48,12 @@ class MoviesListViewModel: StatefulViewModel<MoviesListState.Change> {
 
         emit(change: .loading)
         state.isLoading = true
-        let request = makeRequest()
-        NetworkingManager.shared.start(dataModelRequest: request) { [weak self] (response: Response<MoviesResponse>) in
+
+        APIClient.fetchMovies(page: state.page, category: state.tab) { [weak self] (result) in
 
             guard let self = self else { return }
 
-            switch response.result {
+            switch result {
             case .success(let response):
                 self.state.movies += response.results ?? []
                 self.emit(change: .loaded)
@@ -72,20 +64,6 @@ class MoviesListViewModel: StatefulViewModel<MoviesListState.Change> {
                 self.state.isLoading = false
                 self.emit(change: .failed(error: error.localizedDescription))
             }
-        }
-    }
-
-    func makeRequest() -> BaseRequest {
-
-        switch state.tab {
-        case .popular:
-            return PopularMoviesRequest(page: state.page)
-        case .playing:
-            return NowPlayingMoviesRequest(page: state.page)
-        case .next:
-            return UpcomingMoviesRequest(page: state.page)
-        case .top:
-            return TopRatedMoviesRequest(page: state.page)
         }
     }
 }
