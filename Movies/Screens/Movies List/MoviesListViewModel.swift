@@ -28,6 +28,12 @@ struct MoviesListState {
 class MoviesListViewModel: StatefulViewModel<MoviesListState.Change> {
 
     var state = MoviesListState()
+    let dataSource: DataSource
+
+    init(dataSource: DataSource = APIClient()) {
+
+        self.dataSource = dataSource
+    }
 
     func switchToTab(_ tab: MoviesCategory) {
 
@@ -49,7 +55,7 @@ class MoviesListViewModel: StatefulViewModel<MoviesListState.Change> {
         emit(change: .loading)
         state.isLoading = true
 
-        APIClient.fetchMovies(page: state.page, category: state.tab) { [weak self] (result) in
+        dataSource.fetchMovies(page: state.page, category: state.tab) { [weak self] (result) in
 
             guard let self = self else { return }
 

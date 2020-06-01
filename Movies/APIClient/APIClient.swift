@@ -17,9 +17,9 @@ enum MoviesCategory {
     case top
 }
 
-class APIClient {
+class APIClient: DataSource {
 
-    static func fetchMovies(page: Int = 1, category: MoviesCategory, completion: @escaping (Result<MoviesResponse>) -> Void ) {
+    func fetchMovies(page: Int = 1, category: MoviesCategory, completion: @escaping (Result<MoviesResponse>) -> Void ) {
 
         let request = makeRequest(page: page, category: category)
         NetworkingManager.shared.start(dataModelRequest: request) { (response: Response<MoviesResponse>) in
@@ -28,7 +28,7 @@ class APIClient {
         }
     }
 
-    private static func makeRequest(page: Int, category: MoviesCategory) -> BaseRequest {
+    private func makeRequest(page: Int, category: MoviesCategory) -> BaseRequest {
 
         switch category {
         case .popular:
