@@ -9,9 +9,9 @@
 import Foundation
 import CoreVNGRSKit
 
-class MockDataSource: DataSource {
+class MockMovieModel: MovieModel {
 
-    func fetchMovies(page: Int, category: MoviesCategory, completion: @escaping (Result<MoviesResponse>) -> Void) {
+    func getMovies(page: Int, category: MoviesCategory, completion: @escaping (Result<MoviesResponse>) -> Void) {
 
         // TODO
     }

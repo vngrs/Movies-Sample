@@ -21,11 +21,11 @@ struct MovieCellPresentation: Presentation {
 
 class MovieTableViewCell: TableViewCell {
 
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var bannerImageView: UIImageView!
-    @IBOutlet weak var releaseDate: UILabel!
-    @IBOutlet weak var rateView: UIView!
-    @IBOutlet weak var rateLabel: UILabel!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var bannerImageView: UIImageView!
+    @IBOutlet private weak var releaseDate: UILabel!
+    @IBOutlet private weak var rateView: UIView!
+    @IBOutlet private weak var rateLabel: UILabel!
 
     var presentation: MovieCellPresentation? {
         didSet {

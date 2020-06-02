@@ -17,9 +17,9 @@ enum MoviesCategory {
     case top
 }
 
-class APIClient: DataSource {
+class RESTMovieModel: MovieModel {
 
-    func fetchMovies(page: Int = 1, category: MoviesCategory, completion: @escaping (Result<MoviesResponse>) -> Void ) {
+    func getMovies(page: Int = 1, category: MoviesCategory, completion: @escaping (Result<MoviesResponse>) -> Void ) {
 
         let request = makeRequest(page: page, category: category)
         NetworkingManager.shared.start(dataModelRequest: request) { (response: Response<MoviesResponse>) in
