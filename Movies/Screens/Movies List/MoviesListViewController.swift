@@ -14,10 +14,10 @@ class MoviesListViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
-    @IBOutlet weak var playingButton: UIButton!
     @IBOutlet weak var popularButton: UIButton!
-    @IBOutlet weak var topButton: UIButton!
+    @IBOutlet weak var playingButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var topButton: UIButton!
     @IBOutlet var filterButtons: [UIButton]!
 
     let viewModel = MoviesListViewModel()
@@ -37,7 +37,9 @@ class MoviesListViewController: BaseViewController {
 
     private func configureViews() {
 
+        title = NSLocalizedString(StringsEnum.movies, comment: "")
         navigationController?.navigationBar.prefersLargeTitles = true
+
         tableView.cvkRegisterCell(type: MovieTableViewCell.self)
         tableView.dataSource = self
         tableView.delegate = self
@@ -47,6 +49,11 @@ class MoviesListViewController: BaseViewController {
         filterButtons.forEach {
             $0.roundCorners(cornerRadius: 17.0)
         }
+
+        popularButton.setTitle(NSLocalizedString(StringsEnum.popular, comment: ""), for: .normal)
+        playingButton.setTitle(NSLocalizedString(StringsEnum.playing, comment: ""), for: .normal)
+        nextButton.setTitle(NSLocalizedString(StringsEnum.upcoming, comment: ""), for: .normal)
+        topButton.setTitle(NSLocalizedString(StringsEnum.top, comment: ""), for: .normal)
     }
 
     private func addChangeHandlers() {

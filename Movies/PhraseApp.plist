@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>timeout</key>
+	<integer>10</integer>
+	<key>prodToken</key>
+	<string>LLitZngRR6TuATwA1Z3b5hakxkO6BPaXQ2lkGUm4ZOA</string>
+	<key>devToken</key>
+	<string>QxvEfTLwhwCEiy6NpsKkYzjknVFvYDwA-Hf0hQcpqgA</string>
+	<key>distributionID</key>
+	<string>eaccb07e22a4ac24ee74181dd1ff0ba4</string>
+</dict>
+</plist>

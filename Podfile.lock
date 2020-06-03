@@ -4,15 +4,18 @@ PODS:
     - Alamofire (~> 4.9)
   - CoreVNGRSKit (1.0.5):
     - Alamofire (~> 4.8)
+  - PhraseSDK (2.2.0)
 
 DEPENDENCIES:
   - AlamofireImage (~> 3.0)
   - "CoreVNGRSKit (from `ssh://git@github.com/vngrs/ios-core-vngrs-kit.git`, branch `master`)"
+  - PhraseSDK
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - AlamofireImage
+    - PhraseSDK
 
 EXTERNAL SOURCES:
   CoreVNGRSKit:
@@ -28,7 +31,8 @@ SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   AlamofireImage: be9963c6582d68b39e89191f64c82a7d7bf40fdd
   CoreVNGRSKit: c07f3dad796ed6e5dd74834d81f1ba53a6dc63c2
+  PhraseSDK: 5a0367636ea0570a7124b31e22a4a7f4cd5a6680
 
-PODFILE CHECKSUM: 90a6e61c6b1d2e7c5a8c0c038dd8d58f4c2dade7
+PODFILE CHECKSUM: 3cb774fcb926550e0e328cbb87a1ac86785b4b25
 
 COCOAPODS: 1.8.4

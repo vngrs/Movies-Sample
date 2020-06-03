@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		53C8CBA6D5B9A8F30FD4CF3B /* Pods_Movies_MoviesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A685D5C61B585FDB666389D /* Pods_Movies_MoviesUITests.framework */; };
 		643535FA2E4C867006207441 /* Pods_Movies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC07E23883DCB0A588BC4084 /* Pods_Movies.framework */; };
+		AFFAD4262487B79000BDDB69 /* PhraseApp.plist in Resources */ = {isa = PBXBuildFile; fileRef = AFFAD4252487B79000BDDB69 /* PhraseApp.plist */; };
+		AFFAD4282487B9BE00BDDB69 /* PList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFAD4272487B9BE00BDDB69 /* PList.swift */; };
+		AFFAD42A2487BA2A00BDDB69 /* OTATranslations.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFAD4292487BA2A00BDDB69 /* OTATranslations.swift */; };
+		AFFAD42D2487BCA500BDDB69 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AFFAD42F2487BCA500BDDB69 /* Localizable.strings */; };
+		AFFAD4322487BDA500BDDB69 /* StringsEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFAD4312487BDA500BDDB69 /* StringsEnum.swift */; };
 		DBB73DBDCDE96FEFB9EB9974 /* Pods_MoviesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62C80DF37855A04B9E27D262 /* Pods_MoviesTests.framework */; };
 		E232DE28242BC79B00CCDDC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E232DE27242BC79B00CCDDC3 /* AppDelegate.swift */; };
 		E232DE2C242BC79B00CCDDC3 /* MoviesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E232DE2B242BC79B00CCDDC3 /* MoviesListViewController.swift */; };
@@ -67,6 +72,12 @@
 		49927B1D179DC8C45E2D7F73 /* Pods-MoviesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoviesTests.release.xcconfig"; path = "Target Support Files/Pods-MoviesTests/Pods-MoviesTests.release.xcconfig"; sourceTree = "<group>"; };
 		62C80DF37855A04B9E27D262 /* Pods_MoviesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoviesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A685D5C61B585FDB666389D /* Pods_Movies_MoviesUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Movies_MoviesUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AFFAD4252487B79000BDDB69 /* PhraseApp.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = PhraseApp.plist; sourceTree = "<group>"; };
+		AFFAD4272487B9BE00BDDB69 /* PList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PList.swift; sourceTree = "<group>"; };
+		AFFAD4292487BA2A00BDDB69 /* OTATranslations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTATranslations.swift; sourceTree = "<group>"; };
+		AFFAD42E2487BCA500BDDB69 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		AFFAD4302487BCBA00BDDB69 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
+		AFFAD4312487BDA500BDDB69 /* StringsEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringsEnum.swift; sourceTree = "<group>"; };
 		D01A276615F114E9078F1C32 /* Pods-Movies-MoviesUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movies-MoviesUITests.release.xcconfig"; path = "Target Support Files/Pods-Movies-MoviesUITests/Pods-Movies-MoviesUITests.release.xcconfig"; sourceTree = "<group>"; };
 		DB68FF3510651136861668ED /* Pods-MoviesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoviesTests.debug.xcconfig"; path = "Target Support Files/Pods-MoviesTests/Pods-MoviesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E232DE24242BC79B00CCDDC3 /* Movies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movies.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -193,6 +204,11 @@
 				E29818E2248426580087187D /* APIClient */,
 				E28B2599245B0AC10067C622 /* Screens */,
 				E249620B245B2B740058DFDD /* Resources */,
+				AFFAD4292487BA2A00BDDB69 /* OTATranslations.swift */,
+				AFFAD4252487B79000BDDB69 /* PhraseApp.plist */,
+				AFFAD4312487BDA500BDDB69 /* StringsEnum.swift */,
+				AFFAD4272487B9BE00BDDB69 /* PList.swift */,
+				AFFAD42F2487BCA500BDDB69 /* Localizable.strings */,
 			);
 			path = Movies;
 			sourceTree = "<group>";
@@ -275,8 +291,8 @@
 		E28B2599245B0AC10067C622 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				E29818E5248430290087187D /* Movie Details */,
 				E28B259A245B0ACB0067C622 /* Movies List */,
+				E29818E5248430290087187D /* Movie Details */,
 				E29818EF2484397D0087187D /* AppRouter.swift */,
 			);
 			path = Screens;
@@ -424,6 +440,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ar,
 			);
 			mainGroup = E232DE1B242BC79B00CCDDC3;
 			productRefGroup = E232DE25242BC79B00CCDDC3 /* Products */;
@@ -443,7 +460,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E232DE34242BC79C00CCDDC3 /* LaunchScreen.storyboard in Resources */,
+				AFFAD4262487B79000BDDB69 /* PhraseApp.plist in Resources */,
 				E29818F224843B620087187D /* TitleTableCell.xib in Resources */,
+				AFFAD42D2487BCA500BDDB69 /* Localizable.strings in Resources */,
 				E232DE31242BC79C00CCDDC3 /* Assets.xcassets in Resources */,
 				E2496212245B34680058DFDD /* MovieTableViewCell.xib in Resources */,
 				E232DE2F242BC79B00CCDDC3 /* Main.storyboard in Resources */,
@@ -579,6 +598,7 @@
 				E2496208245B294D0058DFDD /* MoviesResponse.swift in Sources */,
 				E29818E4248429EF0087187D /* APIClient.swift in Sources */,
 				E2ECE6C5245FB2C000AF4E3F /* NowPlayingRequest.swift in Sources */,
+				AFFAD4282487B9BE00BDDB69 /* PList.swift in Sources */,
 				E29818EE2484336C0087187D /* MovieDetailsRouter.swift in Sources */,
 				E28B2598245B0A100067C622 /* BaseRequest.swift in Sources */,
 				E2ECE6C7245FB2E700AF4E3F /* UpcomingRequest.swift in Sources */,
@@ -588,6 +608,7 @@
 				E29818F424843BD30087187D /* TitleTableCell.swift in Sources */,
 				E29818FA2485178D0087187D /* MockDataSource.swift in Sources */,
 				E29818F82485170F0087187D /* DataSource.swift in Sources */,
+				AFFAD4322487BDA500BDDB69 /* StringsEnum.swift in Sources */,
 				E2ECE6C1245F91C100AF4E3F /* URLBuilder.swift in Sources */,
 				E249620D245B2E090058DFDD /* BaseViewController.swift in Sources */,
 				E28B2596245B09D20067C622 /* NetworkingManager.swift in Sources */,
@@ -597,6 +618,7 @@
 				E232DE2C242BC79B00CCDDC3 /* MoviesListViewController.swift in Sources */,
 				E2496210245B33AF0058DFDD /* MovieTableViewCell.swift in Sources */,
 				E232DE28242BC79B00CCDDC3 /* AppDelegate.swift in Sources */,
+				AFFAD42A2487BA2A00BDDB69 /* OTATranslations.swift in Sources */,
 				E29818E72484304C0087187D /* MovieDetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -633,6 +655,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		AFFAD42F2487BCA500BDDB69 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AFFAD42E2487BCA500BDDB69 /* en */,
+				AFFAD4302487BCBA00BDDB69 /* ar */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		E232DE2D242BC79B00CCDDC3 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -656,6 +687,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -716,6 +748,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

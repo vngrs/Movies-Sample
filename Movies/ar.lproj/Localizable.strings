@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  Movies
+
+  Created by Abdelrahman Mohamed on 3.06.2020.
+  Copyright © 2020 VNGRS. All rights reserved.
+*/
+
+"movies" = "الافلام";
+"popular" = "الاكثر شهرة";
+"playing" = "يعرض حاليا";
+"upcoming" = "القادم";
+"top" = "الاعلي مشاهدة";
