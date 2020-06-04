@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -26,11 +27,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             AppDelegate.reloadRootViewController()
         }
 
-
         // ⚠️☝🏽 Careful with reloading the root view controller (Option 2),
         // because if you reload it when the user has changed some app
         // state, he/she could lose this state if it's not persisted
         // somewhere.
+
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
+
+            if granted {
+
+                print("Notification Granted")
+            }
+        }
+
 
         LaunchManager.shared.launch(application, launchOptions: launchOptions)
         return true

@@ -41,18 +41,22 @@ class Language {
 
     class func createLocalNotification(language: String) {
 
-        let notification = UILocalNotification()
-        notification.fireDate = Date(timeIntervalSinceNow: 1)
-        notification.alertBody = Language.localNotificationBody(language: language)
-        notification.soundName = UILocalNotificationDefaultSoundName
-        UIApplication.shared.scheduleLocalNotification(notification)
+        let notification = UNUserNotificationCenter.current()
+        let content = UNMutableNotificationContent()
+//        content.title = "Reminder"
+        content.body = localNotificationBody(language: language)
+        content.sound = .default
 
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
 
-        guard let settings = UIApplication.shared.currentUserNotificationSettings else { return }
+        let request = UNNotificationRequest(identifier: "reminder", content: content, trigger: trigger)
 
-        if settings.types == .none {
+        notification.add(request) { (error) in
 
-            return
+            if error != nil {
+
+                print("Error \(error?.localizedDescription ?? "error local notification")")
+            }
         }
     }
 }
