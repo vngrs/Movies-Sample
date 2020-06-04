@@ -6,8 +6,14 @@
   Copyright © 2020 VNGRS. All rights reserved.
 */
 
+"settings" = "Settings";
 "movies" = "Movies";
 "popular" = "Popular";
 "playing" = "Playing";
 "upcoming" = "Upcoming";
 "top" = "Top";
+"cancel" = "Cancel";
+"switchLanguage" = "Switch Language";
+"englishLanguage" = "English Language";
+"arabicLanguage" = "Arabic Language";
+"reopenStatus" = "Reopen App to change Language";

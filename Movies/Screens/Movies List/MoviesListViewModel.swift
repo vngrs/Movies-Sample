@@ -72,4 +72,11 @@ class MoviesListViewModel: StatefulViewModel<MoviesListState.Change> {
             }
         }
     }
+
+    func didTapChangeLanguage() {
+
+
+    }
+
+    
 }

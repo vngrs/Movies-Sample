@@ -14,6 +14,7 @@
 		AFFAD42A2487BA2A00BDDB69 /* OTATranslations.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFAD4292487BA2A00BDDB69 /* OTATranslations.swift */; };
 		AFFAD42D2487BCA500BDDB69 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AFFAD42F2487BCA500BDDB69 /* Localizable.strings */; };
 		AFFAD4322487BDA500BDDB69 /* StringsEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFAD4312487BDA500BDDB69 /* StringsEnum.swift */; };
+		AFFAD4352488DF7600BDDB69 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFAD4342488DF7600BDDB69 /* Language.swift */; };
 		DBB73DBDCDE96FEFB9EB9974 /* Pods_MoviesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62C80DF37855A04B9E27D262 /* Pods_MoviesTests.framework */; };
 		E232DE28242BC79B00CCDDC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E232DE27242BC79B00CCDDC3 /* AppDelegate.swift */; };
 		E232DE2C242BC79B00CCDDC3 /* MoviesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E232DE2B242BC79B00CCDDC3 /* MoviesListViewController.swift */; };
@@ -78,6 +79,7 @@
 		AFFAD42E2487BCA500BDDB69 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		AFFAD4302487BCBA00BDDB69 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
 		AFFAD4312487BDA500BDDB69 /* StringsEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringsEnum.swift; sourceTree = "<group>"; };
+		AFFAD4342488DF7600BDDB69 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		D01A276615F114E9078F1C32 /* Pods-Movies-MoviesUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movies-MoviesUITests.release.xcconfig"; path = "Target Support Files/Pods-Movies-MoviesUITests/Pods-Movies-MoviesUITests.release.xcconfig"; sourceTree = "<group>"; };
 		DB68FF3510651136861668ED /* Pods-MoviesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoviesTests.debug.xcconfig"; path = "Target Support Files/Pods-MoviesTests/Pods-MoviesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E232DE24242BC79B00CCDDC3 /* Movies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movies.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -171,6 +173,18 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		AFFAD4332488DF4C00BDDB69 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				AFFAD4292487BA2A00BDDB69 /* OTATranslations.swift */,
+				AFFAD4342488DF7600BDDB69 /* Language.swift */,
+				AFFAD4252487B79000BDDB69 /* PhraseApp.plist */,
+				AFFAD4312487BDA500BDDB69 /* StringsEnum.swift */,
+				AFFAD4272487B9BE00BDDB69 /* PList.swift */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
 		E232DE1B242BC79B00CCDDC3 = {
 			isa = PBXGroup;
 			children = (
@@ -204,10 +218,7 @@
 				E29818E2248426580087187D /* APIClient */,
 				E28B2599245B0AC10067C622 /* Screens */,
 				E249620B245B2B740058DFDD /* Resources */,
-				AFFAD4292487BA2A00BDDB69 /* OTATranslations.swift */,
-				AFFAD4252487B79000BDDB69 /* PhraseApp.plist */,
-				AFFAD4312487BDA500BDDB69 /* StringsEnum.swift */,
-				AFFAD4272487B9BE00BDDB69 /* PList.swift */,
+				AFFAD4332488DF4C00BDDB69 /* Localization */,
 				AFFAD42F2487BCA500BDDB69 /* Localizable.strings */,
 			);
 			path = Movies;
@@ -610,6 +621,7 @@
 				E29818F82485170F0087187D /* DataSource.swift in Sources */,
 				AFFAD4322487BDA500BDDB69 /* StringsEnum.swift in Sources */,
 				E2ECE6C1245F91C100AF4E3F /* URLBuilder.swift in Sources */,
+				AFFAD4352488DF7600BDDB69 /* Language.swift in Sources */,
 				E249620D245B2E090058DFDD /* BaseViewController.swift in Sources */,
 				E28B2596245B09D20067C622 /* NetworkingManager.swift in Sources */,
 				E29818E9248430930087187D /* MoviesListPresentation.swift in Sources */,

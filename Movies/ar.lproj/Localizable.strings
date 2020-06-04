@@ -6,8 +6,14 @@
   Copyright © 2020 VNGRS. All rights reserved.
 */
 
+"settings" = "الاعدادات";
 "movies" = "الافلام";
 "popular" = "الاكثر شهرة";
 "playing" = "يعرض حاليا";
 "upcoming" = "القادم";
 "top" = "الاعلي مشاهدة";
+"cancel" = "الغاء";
+"switchLanguage" = "تغير اللغة";
+"englishLanguage" = "اللغة الانجليزية";
+"arabicLanguage" = "اللغة العربية";
+"reopenStatus" = "اعد فتح التطبيق لتغير اللغة";
