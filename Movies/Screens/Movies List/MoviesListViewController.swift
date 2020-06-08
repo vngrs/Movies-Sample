@@ -37,6 +37,7 @@ class MoviesListViewController: BaseViewController {
 
     private func configureViews() {
 
+        title = StringsEnum.movies.localized()
         navigationController?.navigationBar.prefersLargeTitles = true
         tableView.cvkRegisterCell(type: MovieTableViewCell.self)
         tableView.dataSource = self
@@ -47,6 +48,11 @@ class MoviesListViewController: BaseViewController {
         filterButtons.forEach {
             $0.roundCorners(cornerRadius: 17.0)
         }
+
+        popularButton.setTitle(StringsEnum.popular.localized(), for: .normal)
+        playingButton.setTitle(StringsEnum.playing.localized(), for: .normal)
+        nextButton.setTitle(StringsEnum.upcoming.localized(), for: .normal)
+        topButton.setTitle(StringsEnum.top.localized(), for: .normal)
     }
 
     private func addChangeHandlers() {

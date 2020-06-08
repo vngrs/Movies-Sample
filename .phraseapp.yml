@@ -1,0 +1,13 @@
+phraseapp:
+  access_token: 9cf1db2e2cb21d45f4a14760b5d4844f1be38371fb635280ecd0487ce1869797
+  project_id: ad3ec878eae9a844c2525598bcb36829
+  push:
+    sources:
+    - file: ./Movies/<locale_code>.lproj/Localizable.strings
+      params:
+        file_format: strings
+  pull:
+    targets:
+    - file: ./Movies/<locale_code>.lproj/Localizable.strings
+      params:
+        file_format: strings
