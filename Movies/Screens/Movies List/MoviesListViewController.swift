@@ -28,8 +28,8 @@ class MoviesListViewController: BaseViewController {
     }
 
     override func viewDidLoad() {
-
         super.viewDidLoad()
+        
         configureViews()
         addChangeHandlers()
         viewModel.loadMoreMovies()

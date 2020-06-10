@@ -19,8 +19,8 @@ class MovieDetailsViewController: StaticTableViewController, StoryboardBased {
     var viewModel: MovieDetailsViewModel!
 
     override func viewDidLoad() {
-
         super.viewDidLoad()
+
         configureViews()
         addChangeHandlers()
     }
