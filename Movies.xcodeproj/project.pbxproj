@@ -42,10 +42,6 @@
 		E2ECE6C3245FB29500AF4E3F /* TopRatedRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2ECE6C2245FB29400AF4E3F /* TopRatedRequest.swift */; };
 		E2ECE6C5245FB2C000AF4E3F /* NowPlayingRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2ECE6C4245FB2C000AF4E3F /* NowPlayingRequest.swift */; };
 		E2ECE6C7245FB2E700AF4E3F /* UpcomingRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2ECE6C6245FB2E700AF4E3F /* UpcomingRequest.swift */; };
-		FFD6D558247EB4DD00AAC488 /* BasePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD6D557247EB4DD00AAC488 /* BasePage.swift */; };
-		FFD6D55A247EB62000AAC488 /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD6D559247EB62000AAC488 /* HomePage.swift */; };
-		FFD6D55D247F9B6100AAC488 /* BaseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD6D55C247F9B6100AAC488 /* BaseTest.swift */; };
-		FFD6D55F247F9EC900AAC488 /* HomePageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD6D55E247F9EC900AAC488 /* HomePageTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,10 +109,6 @@
 		E2ECE6C4245FB2C000AF4E3F /* NowPlayingRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingRequest.swift; sourceTree = "<group>"; };
 		E2ECE6C6245FB2E700AF4E3F /* UpcomingRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingRequest.swift; sourceTree = "<group>"; };
 		EC07E23883DCB0A588BC4084 /* Pods_Movies.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Movies.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FFD6D557247EB4DD00AAC488 /* BasePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePage.swift; sourceTree = "<group>"; };
-		FFD6D559247EB62000AAC488 /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
-		FFD6D55C247F9B6100AAC488 /* BaseTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTest.swift; sourceTree = "<group>"; };
-		FFD6D55E247F9EC900AAC488 /* HomePageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,8 +211,6 @@
 		E232DE48242BC79D00CCDDC3 /* MoviesUITests */ = {
 			isa = PBXGroup;
 			children = (
-				FFD6D556247EB4B500AAC488 /* Pages */,
-				FFD6D55B247F9B4100AAC488 /* Tests */,
 				E232DE49242BC79D00CCDDC3 /* MoviesUITests.swift */,
 				E232DE4B242BC79D00CCDDC3 /* Info.plist */,
 			);
@@ -316,7 +306,6 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		E29818E2248426580087187D /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -353,24 +342,6 @@
 				E29818F92485178D0087187D /* MockMovieModel.swift */,
 			);
 			path = Movie;
-=======
-		FFD6D556247EB4B500AAC488 /* Pages */ = {
-			isa = PBXGroup;
-			children = (
-				FFD6D557247EB4DD00AAC488 /* BasePage.swift */,
-				FFD6D559247EB62000AAC488 /* HomePage.swift */,
-			);
-			path = Pages;
-			sourceTree = "<group>";
-		};
-		FFD6D55B247F9B4100AAC488 /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-				FFD6D55C247F9B6100AAC488 /* BaseTest.swift */,
-				FFD6D55E247F9EC900AAC488 /* HomePageTests.swift */,
-			);
-			path = Tests;
->>>>>>> implmentation of POM
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -441,9 +412,6 @@
 		E232DE1C242BC79B00CCDDC3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				KnownAssetTags = (
-					movieTitleLabel,
-				);
 				LastSwiftUpdateCheck = 1120;
 				LastUpgradeCheck = 1120;
 				ORGANIZATIONNAME = VNGRS;
@@ -677,11 +645,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FFD6D55F247F9EC900AAC488 /* HomePageTests.swift in Sources */,
-				FFD6D55D247F9B6100AAC488 /* BaseTest.swift in Sources */,
 				E232DE4A242BC79D00CCDDC3 /* MoviesUITests.swift in Sources */,
-				FFD6D55A247EB62000AAC488 /* HomePage.swift in Sources */,
-				FFD6D558247EB4DD00AAC488 /* BasePage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
