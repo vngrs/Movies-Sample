@@ -71,7 +71,7 @@
 		AFD8DDFC24901BBD00B95A9A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D01A276615F114E9078F1C32 /* Pods-Movies-MoviesUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movies-MoviesUITests.release.xcconfig"; path = "Target Support Files/Pods-Movies-MoviesUITests/Pods-Movies-MoviesUITests.release.xcconfig"; sourceTree = "<group>"; };
 		DB68FF3510651136861668ED /* Pods-MoviesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoviesTests.debug.xcconfig"; path = "Target Support Files/Pods-MoviesTests/Pods-MoviesTests.debug.xcconfig"; sourceTree = "<group>"; };
-		E232DE24242BC79B00CCDDC3 /* Movies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movies.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E232DE24242BC79B00CCDDC3 /* MoviesDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoviesDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E232DE27242BC79B00CCDDC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E232DE2B242BC79B00CCDDC3 /* MoviesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListViewController.swift; sourceTree = "<group>"; };
 		E232DE2E242BC79B00CCDDC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -177,7 +177,7 @@
 		E232DE25242BC79B00CCDDC3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E232DE24242BC79B00CCDDC3 /* Movies.app */,
+				E232DE24242BC79B00CCDDC3 /* MoviesDemo.app */,
 				E232DE3A242BC79C00CCDDC3 /* MoviesTests.xctest */,
 				E232DE45242BC79D00CCDDC3 /* MoviesUITests.xctest */,
 			);
@@ -364,7 +364,7 @@
 			);
 			name = Movies;
 			productName = Movies;
-			productReference = E232DE24242BC79B00CCDDC3 /* Movies.app */;
+			productReference = E232DE24242BC79B00CCDDC3 /* MoviesDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
 		E232DE39242BC79C00CCDDC3 /* MoviesTests */ = {
@@ -813,8 +813,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.vngrs.Movies;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.vngrs.Movies.demo;
+				PRODUCT_NAME = MoviesDemo;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -834,8 +834,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.vngrs.Movies;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.vngrs.Movies.demo;
+				PRODUCT_NAME = MoviesDemo;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
