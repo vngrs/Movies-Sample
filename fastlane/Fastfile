@@ -13,36 +13,81 @@
 # Uncomment the line if you want fastlane to automatically update itself
 # update_fastlane
 
-default_platform(:ios)
+#default_platform(:ios)
+
+fastlane_require = "dotenv"
+
+before_all do
+  Dotenv.load ".env.secret"
+end
+
+desc "Create App"
+lane :create_app do
+  create_app_online # produce
+end
 
 platform :ios do
 
-  desc "Create App"
-  lane :create_app do
-    create_app_online # produce
+  before_all do
+    Dotenv.load ".env.ios"
   end
 
   desc "Sync signing"
   lane :signing do
     sync_code_signing # match
 
-    # mapping = Actions.lane_context[
-    #   SharedValues::MATCH_PROVISIONING_PROFILE_MAPPING
-    # ]
-    #
-    # update_code_signing_settings(
-    #   profile_name: mapping[ENV['MATCH_APP_IDENTIFIER']]
-    # )
+    mapping = Actions.lane_context[
+      SharedValues::MATCH_PROVISIONING_PROFILE_MAPPING
+    ]
+
+    update_code_signing_settings(
+      profile_name: mapping[ENV['MATCH_APP_IDENTIFIER']]
+    )
     # add actions here: https://docs.fastlane.tools/actions
   end
 
-  desc "Build"
+  desc "Build binary"
   lane :build do
+    signing
+    build_ios_app # gym
     # add actions here: https://docs.fastlane.tools/actions
   end
 
   desc "Release"
   lane :release do
+
+    ensure_git_status_clean
+    ensure_git_branch
+
+    add_git_tag
+    push_git_tag
+
+    build
+    upload_to_app_store # deliver
+
+    # reset_git_repo
+
+    # set_github_release
     # add actions here: https://docs.fastlane.tools/actions
+  end
+
+  lane :increment_build do
+
+    version = get_version_number(target: "Movies")
+    increment_build_number
+    build_number_after_increment = get_build_number
+    # commit_version_bump(message:"New build #{build_number_after_increment} - version v#{version}", force: true, xcodeproj: "Malls.xcodeproj")
+    # push_to_git_remote
+  end
+
+  lane :increment_version do
+
+    # Incrementing version number is taking place after the successful build, to avoid the need to clean up
+    # after a failing build for any reason.
+
+    increment_build_number
+    build_number_after_increment = get_build_number
+    # commit_version_bump(message:"Prepare build for next release build: #{build_number_after_increment}", force: true, xcodeproj: "Malls.xcodeproj")
+    # push_to_git_remote
   end
 end
