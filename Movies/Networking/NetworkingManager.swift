@@ -70,7 +70,7 @@ class NetworkingManager: CoreVNGRSKit.NetworkManager {
     func validateResponse<T: ResponseSerializer>(_ response: Response<T.Object>, serializer: T  ) -> NetworkError? {
 
         guard !(200 ... 299 ~= response.response?.statusCode ?? 0),
-            let data = response.data else {
+            let _ = response.data else {
             return nil
         }
 
