@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>141663741646-v3k0s38dta7v49ladvnss58s84n1allq.apps.googleusercontent.com</string>
+	<string>141663741646-7pv8c60tllb4b65g1e0jl8naou273d9g.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.141663741646-v3k0s38dta7v49ladvnss58s84n1allq</string>
+	<string>com.googleusercontent.apps.141663741646-7pv8c60tllb4b65g1e0jl8naou273d9g</string>
 	<key>API_KEY</key>
 	<string>AIzaSyAIzb7oc0YmqqyMLCv1-UsId93B-onPjRI</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.vngrs.Movies</string>
+	<string>com.vngrs.Movies.demo</string>
 	<key>PROJECT_ID</key>
 	<string>movies-61771</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,7 +29,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:141663741646:ios:3dde63b5d67842b38ad29f</string>
+	<string>1:141663741646:ios:f14686d984c8a3128ad29f</string>
 	<key>DATABASE_URL</key>
 	<string>https://movies-61771.firebaseio.com</string>
 </dict>
