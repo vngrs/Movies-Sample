@@ -56,8 +56,8 @@ platform :ios do
   desc "Release"
   lane :release do
 
-    ensure_git_status_clean
-    ensure_git_branch
+    # ensure_git_status_clean
+    # ensure_git_branch
 
     add_git_tag
     push_git_tag
