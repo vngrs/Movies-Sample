@@ -59,12 +59,13 @@ platform :ios do
     # ensure_git_status_clean
     # ensure_git_branch
     increment_build_number
-    add_git_tag
-    push_git_tags
+
+    # add_git_tag
+    # push_git_tags
 
     build
     upload_to_app_store # deliver
-
+    upload_dsyms
     # reset_git_repo
 
     # set_github_release
@@ -89,5 +90,34 @@ platform :ios do
     build_number_after_increment = get_build_number
     # commit_version_bump(message:"Prepare build for next release build: #{build_number_after_increment}", force: true, xcodeproj: "Malls.xcodeproj")
     # push_to_git_remote
+  end
+
+  desc "Firebase App Distribution"
+  lane :distribute_firebase do
+    increment_build_number
+    build
+    firebase_app_distribution(
+        app: "1:141663741646:ios:f14686d984c8a3128ad29f",
+        # testers: "obada.semary@gmail.com, mesut.gunes@vngrs.com",
+        groups: "Developers, Testers",
+        release_notes: "Lots of amazing new features to test out!",
+        firebase_cli_path: "/usr/local/bin/firebase"
+        # ipa_path: "/Users/obada/Desktop/VNGRS/Movies-Sample/build/MoviesDemo.ipa"
+    )
+    upload_dsyms
+  end
+
+  desc "Upload any dsyms in the current directory to crashlytics"
+  lane :upload_dsyms do |options|
+
+    version_number = get_version_number(target: "Movies")
+    build_number = get_build_number
+    download_dsyms(
+      app_identifier: "com.vngrs.Movies.demo",
+      version: version_number,
+      build_number: build_number
+    )
+    upload_symbols_to_crashlytics(gsp_path: "./Movies/Resources/GoogleService-Info.plist")
+    clean_build_artifacts
   end
 end
