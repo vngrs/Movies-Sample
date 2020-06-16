@@ -10,21 +10,25 @@ import Foundation
 
 protocol PaymentMethodRouter: Router {
 
-    static func routeToPaymentMethod(from context: BaseViewController)
+    static func routeToPaymentMethod(from context: NavigationController, delegate: PaymentMethodViewControllerDelegate)
 }
 
 extension PaymentMethodRouter {
 
-    static func routeToPaymentMethod(from context: BaseViewController) {
+    static func routeToPaymentMethod(from context: NavigationController, delegate: PaymentMethodViewControllerDelegate) {
 
         let controller = PaymentMethodViewController.instantiate()
-        push(controller, from: context, animated: true)
+        controller.delegate = delegate
+        context.pushViewController(controller, animated: true)
     }
 }
+
+extension AppRouter: PaymentMethodRouter {}
 
 protocol PaymentMethodViewControllerDelegate: class {
 
     func paymentMethodControllerDidFinish(_ controller: PaymentMethodViewController)
+    func paymentMethodControllerDidCancel(_ controller: PaymentMethodViewController)
 }
 
 class PaymentMethodViewController: BaseViewController, StoryboardBased {

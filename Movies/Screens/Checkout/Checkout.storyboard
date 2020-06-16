@@ -46,7 +46,7 @@
         <!--Address View Controller-->
         <scene sceneID="BHu-xo-hkX">
             <objects>
-                <viewController storyboardIdentifier="AddressViewController" id="hEP-m1-Av9" customClass="AddressViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddressViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hEP-m1-Av9" customClass="AddressViewController" customModule="Movies" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="haM-xb-6Pg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -90,7 +90,7 @@
         <!--Payment Method View Controller-->
         <scene sceneID="dnf-xO-gfo">
             <objects>
-                <viewController storyboardIdentifier="PaymentMethodViewController" id="HuO-C2-GTf" customClass="PaymentMethodViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PaymentMethodViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="HuO-C2-GTf" customClass="PaymentMethodViewController" customModule="Movies" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="s1m-cI-Bxg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -134,7 +134,7 @@
         <!--Review Order View Controller-->
         <scene sceneID="QUG-SP-xPN">
             <objects>
-                <viewController storyboardIdentifier="ReviewOrderViewController" id="tHO-5d-5dt" customClass="ReviewOrderViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ReviewOrderViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tHO-5d-5dt" customClass="ReviewOrderViewController" customModule="Movies" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="txT-dL-Nn6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -152,19 +152,39 @@
                                     <action selector="didExecuteAction" destination="tHO-5d-5dt" eventType="touchUpInside" id="Bd0-Yd-9dS"/>
                                 </connections>
                             </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="30f-8b-Nb0">
+                                <rect key="frame" x="20" y="350" width="374" height="43"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Order summary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zoo-H4-fd4">
+                                        <rect key="frame" x="0.0" y="0.0" width="119.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total      $99.9" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pa2-10-daU">
+                                        <rect key="frame" x="0.0" y="22.5" width="113.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.93547368049621582" green="0.70397449682314372" blue="0.66153831264725549" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="tXz-dl-PqX" firstAttribute="trailing" secondItem="VPt-QF-kI4" secondAttribute="trailing" constant="20" id="EPb-4q-f6L"/>
                             <constraint firstItem="VPt-QF-kI4" firstAttribute="leading" secondItem="tXz-dl-PqX" secondAttribute="leading" constant="20" id="Ir9-Qr-Xkk"/>
+                            <constraint firstItem="tXz-dl-PqX" firstAttribute="trailing" secondItem="30f-8b-Nb0" secondAttribute="trailing" constant="20" id="QhC-RA-uNo"/>
+                            <constraint firstItem="VPt-QF-kI4" firstAttribute="top" secondItem="30f-8b-Nb0" secondAttribute="bottom" constant="30" id="Qz2-c1-xM7"/>
                             <constraint firstItem="VPt-QF-kI4" firstAttribute="centerY" secondItem="txT-dL-Nn6" secondAttribute="centerY" id="cML-ZU-ctN"/>
+                            <constraint firstItem="30f-8b-Nb0" firstAttribute="leading" secondItem="tXz-dl-PqX" secondAttribute="leading" constant="20" id="zqh-9A-7ie"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tXz-dl-PqX"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cnx-gc-CeQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2259" y="138"/>
+            <point key="canvasLocation" x="2257.971014492754" y="137.94642857142856"/>
         </scene>
     </scenes>
 </document>

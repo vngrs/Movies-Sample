@@ -10,21 +10,25 @@ import Foundation
 
 protocol ReviewOrderRouter: Router {
 
-    static func routeToReviewOrder(from context: BaseViewController)
+    static func routeToReviewOrder(from context: NavigationController, delegate: ReviewOrderViewControllerDelegate)
 }
 
 extension ReviewOrderRouter {
 
-    static func routeToReviewOrder(from context: BaseViewController) {
+    static func routeToReviewOrder(from context: NavigationController, delegate: ReviewOrderViewControllerDelegate) {
 
         let controller = ReviewOrderViewController.instantiate()
-        push(controller, from: context, animated: true)
+        controller.delegate = delegate
+        context.pushViewController(controller, animated: true)
     }
 }
+
+extension AppRouter: ReviewOrderRouter {}
 
 protocol ReviewOrderViewControllerDelegate: class {
 
     func reviewOrderControllerDidFinish(_ controller: ReviewOrderViewController)
+    func reviewOrderControllerDidCancel(_ controller: ReviewOrderViewController)
 }
 
 class ReviewOrderViewController: BaseViewController, StoryboardBased {

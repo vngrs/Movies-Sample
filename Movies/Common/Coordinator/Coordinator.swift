@@ -20,6 +20,16 @@ public protocol Coordinator: class {
     init(_ navigationController: NavigationController)
 }
 
+public extension Coordinator {
+
+    func finish() {
+
+        outputDelegate?.coordinatorDidFinish(coordinator: self)
+        appDelegate?.remove(self)
+        navigationController.dismiss(animated: true)
+    }
+}
+
 // MARK: - CoordinatorOutput
 public protocol CoordinatorOutput: class {
 

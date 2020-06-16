@@ -35,6 +35,6 @@ class CartViewController: BaseViewController, StoryboardBased {
 
     @IBAction func didExecuteAction() {
 
-        delegate?.cartControllerDidFinish(self)
+        AppRouter.routeToCheckout(from: self, delegate: nil, outputDelegate: nil)
     }
 }
