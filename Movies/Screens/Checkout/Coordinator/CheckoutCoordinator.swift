@@ -52,13 +52,14 @@ class CheckoutCoordinator: Coordinator {
 
         guard let orderStep = orderSteps.first(where: { $0.order == currentStep }) else { return }
 
+        let stepTitle = "\(orderStep.order+1) / \(orderSteps.count)"
         switch orderStep {
         case .address:
-            AppRouter.routeToAddress(from: navigationController, delegate: self)
+            AppRouter.routeToAddress(from: navigationController, delegate: self, title: stepTitle)
         case .payment:
-            AppRouter.routeToPaymentMethod(from: navigationController, delegate: self)
+            AppRouter.routeToPaymentMethod(from: navigationController, delegate: self, title: stepTitle)
         case .order:
-            AppRouter.routeToReviewOrder(from: navigationController, delegate: self)
+            AppRouter.routeToReviewOrder(from: navigationController, delegate: self, title: stepTitle)
         }
     }
 }

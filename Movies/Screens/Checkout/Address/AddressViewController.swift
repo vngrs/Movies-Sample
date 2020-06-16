@@ -10,15 +10,16 @@ import Foundation
 
 protocol AddressRouter: Router {
 
-    static func routeToAddress(from context: NavigationController, delegate: AddressViewControllerDelegate)
+    static func routeToAddress(from context: NavigationController, delegate: AddressViewControllerDelegate, title: String?)
 }
 
 extension AddressRouter {
 
-    static func routeToAddress(from context: NavigationController, delegate: AddressViewControllerDelegate) {
+    static func routeToAddress(from context: NavigationController, delegate: AddressViewControllerDelegate, title: String? = nil) {
 
         let controller = AddressViewController.instantiate()
         controller.delegate = delegate
+        controller.title = title
         context.pushViewController(controller, animated: true)
     }
 }

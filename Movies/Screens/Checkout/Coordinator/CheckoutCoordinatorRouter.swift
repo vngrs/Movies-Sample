@@ -25,9 +25,9 @@ extension CheckoutCoordinatorRouter {
 
         let navigationVC = NavigationController()
         navigationVC.modalPresentationStyle = .overFullScreen
-        navigationVC.navigationBar.tintColor = .magenta
+        navigationVC.navigationBar.tintColor = .black
         navigationVC.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black,
-                                                          .font: UIFont.systemFont(ofSize: 20, weight: .heavy)]
+                                                          .font: UIFont.systemFont(ofSize: 20, weight: .regular)]
         let coordinator = CheckoutCoordinator(navigationVC)
         coordinator.outputDelegate = outputDelegate
         coordinator.delegate = delegate

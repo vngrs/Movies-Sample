@@ -10,15 +10,16 @@ import Foundation
 
 protocol PaymentMethodRouter: Router {
 
-    static func routeToPaymentMethod(from context: NavigationController, delegate: PaymentMethodViewControllerDelegate)
+    static func routeToPaymentMethod(from context: NavigationController, delegate: PaymentMethodViewControllerDelegate, title: String?)
 }
 
 extension PaymentMethodRouter {
 
-    static func routeToPaymentMethod(from context: NavigationController, delegate: PaymentMethodViewControllerDelegate) {
+    static func routeToPaymentMethod(from context: NavigationController, delegate: PaymentMethodViewControllerDelegate, title: String? = nil) {
 
         let controller = PaymentMethodViewController.instantiate()
         controller.delegate = delegate
+        controller.title = title
         context.pushViewController(controller, animated: true)
     }
 }
@@ -36,6 +37,17 @@ class PaymentMethodViewController: BaseViewController, StoryboardBased {
     static var storyboardName: String = "Checkout"
 
     weak var delegate: PaymentMethodViewControllerDelegate?
+
+    override func viewDidLoad() {
+
+        super.viewDidLoad()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelCheckoutTapped))
+    }
+
+    @objc func cancelCheckoutTapped() {
+
+        delegate?.paymentMethodControllerDidCancel(self)
+    }
 
     @IBAction func didExecuteAction() {
 
