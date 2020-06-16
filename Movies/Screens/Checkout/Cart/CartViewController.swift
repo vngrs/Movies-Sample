@@ -8,7 +8,33 @@
 
 import Foundation
 
+protocol CartRouter: Router {
+
+    static func routeToCart(from context: BaseViewController)
+}
+
+extension CartRouter {
+
+    static func routeToCart(from context: BaseViewController) {
+
+        let controller = CartViewController.instantiate()
+        push(controller, from: context, animated: true)
+    }
+}
+
+protocol CartViewControllerDelegate: class {
+
+    func cartControllerDidFinish(_ controller: CartViewController)
+}
+
 class CartViewController: BaseViewController, StoryboardBased {
 
     static var storyboardName: String = "Checkout"
+
+    weak var delegate: CartViewControllerDelegate?
+
+    @IBAction func didExecuteAction() {
+
+        delegate?.cartControllerDidFinish(self)
+    }
 }
