@@ -11,7 +11,7 @@ import CoreVNGRSKit
 
 class MovieDetailsViewController: StaticTableViewController, StoryboardBased {
 
-    static var storyboardName: String = "Main"
+    static var storyboardName: String = "Movies"
 
     @IBOutlet weak var tableView: UITableView!
     let titleCell = TitleTableCell.instanceFromNib()
