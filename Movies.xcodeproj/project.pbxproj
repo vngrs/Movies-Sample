@@ -31,6 +31,8 @@
 		E26C4FE52498F3DA00C3906D /* TabBarRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26C4FE42498F3DA00C3906D /* TabBarRouter.swift */; };
 		E26C4FE82498F4A500C3906D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E26C4FE72498F4A500C3906D /* Main.storyboard */; };
 		E26C4FEB2498F4E800C3906D /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26C4FEA2498F4E800C3906D /* WelcomeViewController.swift */; };
+		E26C4FEF2498FF7100C3906D /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26C4FEE2498FF7100C3906D /* Coordinator.swift */; };
+		E26C4FF12498FFBB00C3906D /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26C4FF02498FFBB00C3906D /* NavigationController.swift */; };
 		E28B2596245B09D20067C622 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28B2595245B09D20067C622 /* NetworkingManager.swift */; };
 		E28B2598245B0A100067C622 /* BaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28B2597245B0A100067C622 /* BaseRequest.swift */; };
 		E28B259D245B25890067C622 /* LaunchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28B259C245B25890067C622 /* LaunchManager.swift */; };
@@ -110,6 +112,8 @@
 		E26C4FE42498F3DA00C3906D /* TabBarRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarRouter.swift; sourceTree = "<group>"; };
 		E26C4FE72498F4A500C3906D /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		E26C4FEA2498F4E800C3906D /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		E26C4FEE2498FF7100C3906D /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		E26C4FF02498FFBB00C3906D /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		E28B2595245B09D20067C622 /* NetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
 		E28B2597245B0A100067C622 /* BaseRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRequest.swift; sourceTree = "<group>"; };
 		E28B259C245B25890067C622 /* LaunchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchManager.swift; sourceTree = "<group>"; };
@@ -335,6 +339,15 @@
 			path = Welcome;
 			sourceTree = "<group>";
 		};
+		E26C4FED2498FF5000C3906D /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				E26C4FEE2498FF7100C3906D /* Coordinator.swift */,
+				E26C4FF02498FFBB00C3906D /* NavigationController.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
 		E28B2594245B09C30067C622 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -373,6 +386,7 @@
 		E28B259B245B25690067C622 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				E26C4FED2498FF5000C3906D /* Coordinator */,
 				E28B259C245B25890067C622 /* LaunchManager.swift */,
 				E249620C245B2E090058DFDD /* BaseViewController.swift */,
 				E2ECE6C0245F91C100AF4E3F /* URLBuilder.swift */,
@@ -708,6 +722,7 @@
 				E2496208245B294D0058DFDD /* MoviesResponse.swift in Sources */,
 				E29818E4248429EF0087187D /* RESTMovieModel.swift in Sources */,
 				E2ECE6C5245FB2C000AF4E3F /* NowPlayingRequest.swift in Sources */,
+				E26C4FF12498FFBB00C3906D /* NavigationController.swift in Sources */,
 				E29818EE2484336C0087187D /* MovieDetailsRouter.swift in Sources */,
 				E28B2598245B0A100067C622 /* BaseRequest.swift in Sources */,
 				E26C4FE02498EFC600C3906D /* CartViewController.swift in Sources */,
@@ -719,6 +734,7 @@
 				E29818F424843BD30087187D /* TitleTableCell.swift in Sources */,
 				E29818FA2485178D0087187D /* MockMovieModel.swift in Sources */,
 				E29818F82485170F0087187D /* MovieModel.swift in Sources */,
+				E26C4FEF2498FF7100C3906D /* Coordinator.swift in Sources */,
 				E2ECE6C1245F91C100AF4E3F /* URLBuilder.swift in Sources */,
 				E249620D245B2E090058DFDD /* BaseViewController.swift in Sources */,
 				E28B2596245B09D20067C622 /* NetworkingManager.swift in Sources */,
