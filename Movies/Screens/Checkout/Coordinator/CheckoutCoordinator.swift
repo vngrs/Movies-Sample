@@ -18,29 +18,29 @@ class CheckoutCoordinator: Coordinator {
     enum OrderCheckoutStep {
 
         case address, payment, order
-        var order: Int {
-            switch self {
-            case .address: return 0
-            case .payment:  return 1
-            case .order:    return 2
-            }
-        }
     }
 
     weak var outputDelegate: CoordinatorOutput?
     weak var delegate: CheckoutCoordinatorDelegate?
     var navigationController: NavigationController
 
-    private var orderSteps: [OrderCheckoutStep] {
-
-        return [.address, .payment, .order]
-    }
+    private var orderSteps: [OrderCheckoutStep] = []
     private var currentStep: Int = 0
 
     required init(_ navigationController: NavigationController) {
 
         self.navigationController = navigationController
         navigationController.customDelegate = self
+
+        if !SharedState.instance.userHasSavedAddress {
+
+            orderSteps.append(.address)
+        }
+        if !SharedState.instance.userHasPaymentMethod {
+
+            orderSteps.append(.payment)
+        }
+        orderSteps.append(.order)
     }
 
     func start() {
@@ -50,10 +50,10 @@ class CheckoutCoordinator: Coordinator {
 
     func showCurrentStep() {
 
-        guard let orderStep = orderSteps.first(where: { $0.order == currentStep }) else { return }
+        guard let stepInfo = orderSteps.enumerated().first(where: { $0.offset == currentStep }) else { return }
 
-        let stepTitle = "\(orderStep.order+1) / \(orderSteps.count)"
-        switch orderStep {
+        let stepTitle = "\(stepInfo.offset+1) / \(orderSteps.count)"
+        switch stepInfo.element {
         case .address:
             AppRouter.routeToAddress(from: navigationController, delegate: self, title: stepTitle)
         case .payment:
@@ -73,6 +73,7 @@ extension CheckoutCoordinator: AddressViewControllerDelegate {
 
     func addressControllerDidFinish(_ controller: AddressViewController) {
 
+        SharedState.instance.setUserHasAddress()
         currentStep += 1
         showCurrentStep()
     }
@@ -87,6 +88,7 @@ extension CheckoutCoordinator: PaymentMethodViewControllerDelegate {
 
     func paymentMethodControllerDidFinish(_ controller: PaymentMethodViewController) {
 
+        SharedState.instance.setUserHasPaymentMethod()
         currentStep += 1
         showCurrentStep()
     }
