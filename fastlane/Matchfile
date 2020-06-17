@@ -1,0 +1,39 @@
+git_url("https://github.com/vngrs/movies-demo-ios-signing")
+git_branch("master")
+storage_mode("git")
+readonly(true)
+username("obada@vngrs.com")
+force_for_new_devices(true)
+
+# type("development") # The default type, can be: appstore, adhoc, enterprise or development
+
+# app_identifier(["tools.fastlane.app", "tools.fastlane.app2"])
+
+# development provisioning profile
+for_lane :provisioning_profiles_development do
+   type("development")
+
+   app_identifier("com.vngrs.Movies.demo")
+
+   # update to false if it needs to create the profile
+   readonly(false)
+end
+
+# adhoc provisioning profile
+for_lane :provisioning_profiles_adhoc do
+   type("adhoc")
+
+   app_identifier("com.vngrs.Movies.demo")
+   # update to false if it needs to create the profile
+   readonly(false)
+end
+
+# appstore provisioning profile
+for_lane :provisioning_profiles_appstore do
+   type("appstore")
+
+   app_identifier("com.vngrs.Movies.demo")
+   # update to false if it needs to create the profile
+   force_for_new_devices(false)
+   readonly(false)
+end
