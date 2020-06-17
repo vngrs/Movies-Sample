@@ -48,8 +48,11 @@ platform :ios do
 
   desc "Build binary"
   lane :build do
-    signing
-    build_ios_app # gym
+    # signing
+    # build_ios_app # gym
+    # cocoapods()
+    # match()
+    gym()
     # add actions here: https://docs.fastlane.tools/actions
   end
 
@@ -62,7 +65,7 @@ platform :ios do
 
     # add_git_tag
     # push_git_tags
-
+    provisioning_profiles_appstore
     build
     upload_to_app_store # deliver
     upload_dsyms
@@ -72,29 +75,20 @@ platform :ios do
     # add actions here: https://docs.fastlane.tools/actions
   end
 
-  lane :increment_build do
-
-    version = get_version_number(target: "Movies")
-    increment_build_number
-    build_number_after_increment = get_build_number
-    # commit_version_bump(message:"New build #{build_number_after_increment} - version v#{version}", force: true, xcodeproj: "Malls.xcodeproj")
-    # push_to_git_remote
-  end
-
-  lane :increment_version do
-
-    # Incrementing version number is taking place after the successful build, to avoid the need to clean up
-    # after a failing build for any reason.
-
-    increment_build_number
-    build_number_after_increment = get_build_number
-    # commit_version_bump(message:"Prepare build for next release build: #{build_number_after_increment}", force: true, xcodeproj: "Malls.xcodeproj")
-    # push_to_git_remote
+  desc "Submit to testflight"
+  lane :submit_to_testflight do
+    
+    cocoapods()
+    match()
+    gym()
+    pilot()
   end
 
   desc "Firebase App Distribution"
   lane :distribute_firebase do
+
     increment_build_number
+    provisioning_profiles_adhoc
     build
     firebase_app_distribution(
         app: "1:141663741646:ios:f14686d984c8a3128ad29f",
@@ -119,5 +113,18 @@ platform :ios do
     )
     upload_symbols_to_crashlytics(gsp_path: "./Movies/Resources/GoogleService-Info.plist")
     clean_build_artifacts
+  end
+
+  desc "Sync Development Certification and Provisioning Profile"
+  lane :provisioning_profiles_development do
+       match()
+  end
+  desc "Sync Adhoc Certification and Provisioning Profile"
+  lane :provisioning_profiles_adhoc do
+       match()
+  end
+  desc "Sync App Store Certification and Provisioning Profile"
+  lane :provisioning_profiles_appstore do
+       match()
   end
 end
