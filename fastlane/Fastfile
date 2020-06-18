@@ -11,12 +11,12 @@
 #
 
 ### System Locale
-
-| Variable | Value       |   |
-| -------- | ----------- | - |
-| LANG     | en_US.UTF-8 | ✅|
-| LC_ALL   |             |   |
-| LANGUAGE |             |   |
+# 
+# | Variable | Value       |   |
+# | -------- | ----------- | - |
+# | LANG     | en_US.UTF-8 | ✅|
+# | LC_ALL   |             |   |
+# | LANGUAGE |             |   |
 
 # Uncomment the line if you want fastlane to automatically update itself
 # update_fastlane
