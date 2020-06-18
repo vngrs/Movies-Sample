@@ -181,10 +181,10 @@ platform :ios do
 
     puts path
     firebase_app_distribution(
-        app: ENV["FIREBASEAPPDISTRO_APP_ID"],
-        groups: ENV["FIREBASEAPPDISTRO_GROUPS"],
+        app: "1:141663741646:ios:f14686d984c8a3128ad29f",
+        groups: "Developers, Testers",
         release_notes: "Lots of amazing new features to test out!",
-        firebase_cli_path: ENV["FIREBASEAPPDISTRO_FIREBASE_CLI_PATH"],
+        firebase_cli_path: "/usr/local/bin/firebase",
         ipa_path: path
     )
     end
