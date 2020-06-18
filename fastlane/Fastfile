@@ -10,14 +10,6 @@
 #     https://docs.fastlane.tools/plugins/available-plugins
 #
 
-### System Locale
-# 
-# | Variable | Value       |   |
-# | -------- | ----------- | - |
-# | LANG     | en_US.UTF-8 | ✅|
-# | LC_ALL   |             |   |
-# | LANGUAGE |             |   |
-
 # Uncomment the line if you want fastlane to automatically update itself
 # update_fastlane
 
@@ -29,6 +21,7 @@ FIREBASEAPPDISTRO_FIREBASE_CLI_PATH = "/usr/local/bin/firebase"
 fastlane_require = "dotenv"
 
 before_all do
+  # update_fastlane
   Dotenv.load ".env.secret"
 end
 
@@ -246,5 +239,20 @@ platform :ios do
     build_number_after_increment = get_build_number
     commit_version_bump(message:"Prepare build for next release build: #{build_number_after_increment}", force: true, xcodeproj: "Movies.xcodeproj")
     push_to_git_remote
+  end
+
+  # ============================ REGISTER DEVICES ============================#
+
+  lane :register_new_devices do
+
+    register_devices(devices_file: "./devices.txt")
+    # register_devices(
+    #   devices: {
+    #     "Obada's iPhone 6" => "311e160f0e45a353eee276a000a90c72b342c2f1",
+    #     "Test iPhone 7 Plus" => "47967909d0b90df7d3444d2bbb8b44233475eba5",
+    #     "Ahmed Abdurrahman" => "00008020-001A0C381ED8003A",
+    #   }
+    # )
+    certs_all
   end
 end

@@ -1,0 +1,4 @@
+Device ID	Device Name
+311e160f0e45a353eee276a000a90c72b342c2f1	Obada's iPhone
+47967909d0b90df7d3444d2bbb8b44233475eba5	Test iPhone 7 Plus
+00008020-001A0C381ED8003A	Ahmed Abdurrahman
