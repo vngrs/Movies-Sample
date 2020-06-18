@@ -10,6 +10,14 @@
 #     https://docs.fastlane.tools/plugins/available-plugins
 #
 
+### System Locale
+
+| Variable | Value       |   |
+| -------- | ----------- | - |
+| LANG     | en_US.UTF-8 | ✅|
+| LC_ALL   |             |   |
+| LANGUAGE |             |   |
+
 # Uncomment the line if you want fastlane to automatically update itself
 # update_fastlane
 
@@ -185,7 +193,8 @@ platform :ios do
         groups: "Developers, Testers",
         release_notes: "Lots of amazing new features to test out!",
         firebase_cli_path: "/usr/local/bin/firebase",
-        ipa_path: path
+        ipa_path: path,
+        debug: true
     )
     end
   end
