@@ -13,7 +13,10 @@
 # Uncomment the line if you want fastlane to automatically update itself
 # update_fastlane
 
-#default_platform(:ios)
+PRODUCE_APP_IDENTIFIER = "com.vngrs.Movies.demo"
+FIREBASEAPPDISTRO_APP_ID = "1:141663741646:ios:f14686d984c8a3128ad29f"
+FIREBASEAPPDISTRO_GROUPS = "Developers, Testers"
+FIREBASEAPPDISTRO_FIREBASE_CLI_PATH = "/usr/local/bin/firebase"
 
 fastlane_require = "dotenv"
 
@@ -21,85 +24,92 @@ before_all do
   Dotenv.load ".env.secret"
 end
 
-desc "Create App"
-lane :create_app do
-  create_app_online # produce
-end
+default_platform(:ios)
 
 platform :ios do
 
   before_all do
-    Dotenv.load ".env.ios"
+
+    # ENV["SLACK_URL"] = "https://hooks.slack.com/services/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" # ci
+    #ENV["SLACK_URL"] = "https://hooks.slack.com/services/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" # mafp_mobile_qa
+    #ENV["SLACK_URL"] = "https://hooks.slack.com/services/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" # maf-properties
+
+    # Testing Web Hook .. Don't use
+    #ENV["SLACK_URL"] = "https://hooks.slack.com/services/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"
+
   end
 
-  desc "Sync signing"
-  lane :signing do
-    sync_code_signing # match
+  #---------------------- SIGNING LANES ------------------------------#
 
-    mapping = Actions.lane_context[
-      SharedValues::MATCH_PROVISIONING_PROFILE_MAPPING
-    ]
+  lane :certs_all do
 
-    update_code_signing_settings(
-      profile_name: mapping[ENV['MATCH_APP_IDENTIFIER']]
+    certs_dev
+    certs_beta
+    certs_appstore
+  end
+
+  desc "Fetches the provisioning profiles so you can build locally and deploy to your device"
+  lane :certs_dev do
+
+    match(
+      app_identifier: ENV["PRODUCE_APP_IDENTIFIER"],
+      type: "development",
+      force_for_new_devices: true,
+      readonly: false
     )
-    # add actions here: https://docs.fastlane.tools/actions
   end
 
-  desc "Build binary"
-  lane :build do
-    # signing
-    # build_ios_app # gym
-    # cocoapods()
-    # match()
-    gym()
-    # add actions here: https://docs.fastlane.tools/actions
+  desc "Fetches the provisioning profiles so you can build for beta or appstore distribution"
+  lane :certs_beta do
+
+    match(
+      app_identifier: ENV["PRODUCE_APP_IDENTIFIER"],
+      type: "adhoc",
+      force_for_new_devices: true,
+      readonly: true
+    )
   end
 
-  desc "Release"
-  lane :release do
+  desc "AppStore signing"
+  lane :certs_appstore do
 
-    # ensure_git_status_clean
-    # ensure_git_branch
-    increment_build_number
+    match(
+      app_identifier: ENV["PRODUCE_APP_IDENTIFIER"],
+      type: "appstore",
+      readonly: true
+    )
+  end
 
-    # add_git_tag
-    # push_git_tags
-    provisioning_profiles_appstore
-    build
-    upload_to_app_store # deliver
+  #---------------------- PUBLIC LANES ------------------------------#
+  #---------------------- AppStore LANES ------------------------------#
+
+  desc "AppStore Distribution"
+  lane :go_appstore do |params|
+
+    build_config = "Release"
+    schemes = {
+      "Movies" => "com.vngrs.Movies.demo"
+    }
+    build(schemes: schemes, config: build_config, export: "app-store", bitcode: true)
+    upload_testflight(schemes: schemes)
+    increment_version
     upload_dsyms
-    # reset_git_repo
-
-    # set_github_release
-    # add actions here: https://docs.fastlane.tools/actions
   end
 
-  desc "Submit to testflight"
-  lane :submit_to_testflight do
-    
-    cocoapods()
-    match()
-    gym()
-    pilot()
-  end
+  #---------------------- Firebase LANES ------------------------------#
 
   desc "Firebase App Distribution"
-  lane :distribute_firebase do
+  lane :go_distribute_firebase do
 
-    increment_build_number
-    provisioning_profiles_adhoc
-    build
-    firebase_app_distribution(
-        app: "1:141663741646:ios:f14686d984c8a3128ad29f",
-        # testers: "obada.semary@gmail.com, mesut.gunes@vngrs.com",
-        groups: "Developers, Testers",
-        release_notes: "Lots of amazing new features to test out!",
-        firebase_cli_path: "/usr/local/bin/firebase"
-        # ipa_path: "/Users/obada/Desktop/VNGRS/Movies-Sample/build/MoviesDemo.ipa"
-    )
+    build_config = "AdHoc"
+    schemes = {
+      "Movies" => "com.vngrs.Movies.demo"
+    }
+    go_firebase(config: build_config, schemes: schemes)
     upload_dsyms
   end
+
+  #---------------------- DSYMS LANES ------------------------------#
 
   desc "Upload any dsyms in the current directory to crashlytics"
   lane :upload_dsyms do |options|
@@ -112,19 +122,120 @@ platform :ios do
       build_number: build_number
     )
     upload_symbols_to_crashlytics(gsp_path: "./Movies/Resources/GoogleService-Info.plist")
-    clean_build_artifacts
+    # clean_build_artifacts
   end
 
-  desc "Sync Development Certification and Provisioning Profile"
-  lane :provisioning_profiles_development do
-       match()
+  #---------------------- PRIVATE LANES ------------------------------#
+
+  desc "build"
+  private_lane :build do |params|
+
+    export_method = params[:export]
+    include_bitcode = params[:bitcode]
+
+    puts export_method
+    puts include_bitcode
+
+    params[:schemes].each do | scheme, app_id |
+
+    version = get_build_number
+    ipa_name = "#{scheme}_#{version}"
+    ipa_path = "../#{ipa_name}.ipa"
+    build_config = params[:config]
+
+      if !File.file?(ipa_path)
+
+        # Build only if ipa not found
+        gym(
+          clean: true,
+          configuration: build_config,
+          scheme: scheme,
+          workspace: "Movies.xcworkspace",
+          export_method: export_method,
+          output_name: ipa_name,
+          include_bitcode: include_bitcode
+        )
+      else
+        puts "#{ipa_name}.ipa already exists. Skipping GYM"
+      end
+    end
   end
-  desc "Sync Adhoc Certification and Provisioning Profile"
-  lane :provisioning_profiles_adhoc do
-       match()
+
+  private_lane :go_firebase do |params|
+
+    schemes = params[:schemes]
+    build_config = params[:config]
+
+    build(schemes: schemes, config: build_config, export: "ad-hoc", bitcode: false)
+    upload_firebase(schemes: schemes)
+    # post_beta_to_slack(config: build_config)
+    increment_version
   end
-  desc "Sync App Store Certification and Provisioning Profile"
-  lane :provisioning_profiles_appstore do
-       match()
+
+  private_lane :upload_firebase do |params|
+
+    params[:schemes].each do | scheme, app_id |
+
+    version = get_build_number
+    path = "#{scheme}_#{version}.ipa"
+
+    puts path
+    firebase_app_distribution(
+        app: ENV["FIREBASEAPPDISTRO_APP_ID"],
+        groups: ENV["FIREBASEAPPDISTRO_GROUPS"],
+        release_notes: "Lots of amazing new features to test out!",
+        firebase_cli_path: ENV["FIREBASEAPPDISTRO_FIREBASE_CLI_PATH"],
+        ipa_path: path
+    )
+    end
+  end
+
+  private_lane :upload_testflight do |params|
+
+    version = get_build_number
+    params[:schemes].each do | scheme, app_id |
+
+      path = "#{scheme}_#{version}.ipa"
+
+      upload_to_testflight(
+        beta_app_feedback_email: "obada@vngrs.com",
+        notify_external_testers: true,
+        ipa: path,
+        skip_submission: true,
+        skip_waiting_for_build_processing: true,
+        username: "obada@vngrs.com"
+      )
+    end
+  end
+
+  # ============================ VERSION CONTROL ============================#
+
+  lane :set_version do |params|
+
+    version = params[:v]
+
+    increment_build_number
+    increment_version_number(version_number: version)
+    commit_version_bump(message:"Prepare version v#{version} for next release", force: true, xcodeproj: "Movies.xcodeproj")
+  end
+
+  lane :increment_build do
+
+    version = get_version_number(target: "Movies")
+    increment_build_number
+    build_number_after_increment = get_build_number
+    commit_version_bump(message:"New build #{build_number_after_increment} - version v#{version}", force: true, xcodeproj: "Movies.xcodeproj")
+    push_to_git_remote
+  end
+
+  lane :increment_version do
+
+    # Incrementing version number is taking place after the successful build, to avoid the need to clean up
+    # after a failing build for any reason.
+
+    increment_build_number
+    build_number_after_increment = get_build_number
+    commit_version_bump(message:"Prepare build for next release build: #{build_number_after_increment}", force: true, xcodeproj: "Movies.xcodeproj")
+    push_to_git_remote
   end
 end
