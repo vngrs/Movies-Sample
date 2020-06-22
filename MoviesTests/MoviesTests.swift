@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import Movies
+@testable import MovieModel
 
 class MoviesTests: XCTestCase {
 
