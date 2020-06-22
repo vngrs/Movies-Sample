@@ -52,12 +52,13 @@ Carthage
 Pods
 
 # Fastlane
+fastlane/Preview.html
 fastlane/report.xml
 fastlane/README.md
+firebase-debug.log
 
 Fabric.framework
 
 #Idea
 .idea
 .idea/
-

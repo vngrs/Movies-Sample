@@ -13,10 +13,10 @@
 # Uncomment the line if you want fastlane to automatically update itself
 # update_fastlane
 
+# export LC_ALL=en_US.UTF-8
+# export LANG=en_US.UTF-8
+
 PRODUCE_APP_IDENTIFIER = "com.vngrs.Movies.demo"
-FIREBASEAPPDISTRO_APP_ID = "1:141663741646:ios:f14686d984c8a3128ad29f"
-FIREBASEAPPDISTRO_GROUPS = "Developers, Testers"
-FIREBASEAPPDISTRO_FIREBASE_CLI_PATH = "/usr/local/bin/firebase"
 
 fastlane_require = "dotenv"
 
