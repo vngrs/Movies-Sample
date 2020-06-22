@@ -8,10 +8,18 @@
 
 import UIKit
 import Firebase
+@_exported import CoreVNGRSKit
+
+var appDelegate: AppDelegate? {
+
+    return UIApplication.shared.delegate as? AppDelegate
+}
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    weak var tabbarController: TabBarController?
+    var activeCoordinators: [Coordinator] = []
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -20,5 +28,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         LaunchManager.shared.launch(application, launchOptions: launchOptions)
 
         return true
+    }
+
+    func remove(_ coordinator: Coordinator) {
+
+        for (index, object) in activeCoordinators.enumerated() where object === coordinator {
+            activeCoordinators.remove(at: index)
+        }
     }
 }

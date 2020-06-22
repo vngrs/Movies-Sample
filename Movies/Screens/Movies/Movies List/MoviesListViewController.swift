@@ -9,7 +9,9 @@
 import UIKit
 import CoreVNGRSKit
 
-class MoviesListViewController: BaseViewController {
+class MoviesListViewController: BaseViewController, StoryboardBased {
+
+    static var storyboardName: String = "Movies"
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!

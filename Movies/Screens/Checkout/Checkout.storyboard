@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Cart View Controller-->
+        <scene sceneID="PBJ-yB-rfi">
+            <objects>
+                <viewController storyboardIdentifier="CartViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="NRl-Ak-3lt" customClass="CartViewController" customModule="Movies" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rI9-Iu-oqh">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hKl-sJ-IGB">
+                                <rect key="frame" x="20" y="423" width="374" height="50"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="tbn-WU-PMF"/>
+                                </constraints>
+                                <state key="normal" title="Start Checkout Flow">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="didExecuteAction" destination="NRl-Ak-3lt" eventType="touchUpInside" id="11t-jL-Z8o"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.83216959239999999" green="0.98548370600000001" blue="0.47333085539999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="hKl-sJ-IGB" firstAttribute="leading" secondItem="Npb-pc-tNP" secondAttribute="leading" constant="20" id="192-oO-a6b"/>
+                            <constraint firstItem="Npb-pc-tNP" firstAttribute="trailing" secondItem="hKl-sJ-IGB" secondAttribute="trailing" constant="20" id="6Po-qC-WXO"/>
+                            <constraint firstItem="hKl-sJ-IGB" firstAttribute="centerY" secondItem="rI9-Iu-oqh" secondAttribute="centerY" id="fOU-T3-JlP"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Npb-pc-tNP"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aRq-eG-nRi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="139" y="138"/>
+        </scene>
+        <!--Address View Controller-->
+        <scene sceneID="BHu-xo-hkX">
+            <objects>
+                <viewController storyboardIdentifier="AddressViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hEP-m1-Av9" customClass="AddressViewController" customModule="Movies" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="haM-xb-6Pg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yXc-dF-xnJ">
+                                <rect key="frame" x="20" y="782" width="374" height="50"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Mcy-RL-s3U"/>
+                                </constraints>
+                                <state key="normal" title="Save Address">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="didExecuteAction" destination="hEP-m1-Av9" eventType="touchUpInside" id="zAJ-lf-lKY"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please fill shipping address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3BJ-zB-qrB">
+                                <rect key="frame" x="22" y="437.5" width="370" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Pqq-eL-Rjh" firstAttribute="bottom" secondItem="yXc-dF-xnJ" secondAttribute="bottom" constant="30" id="7HZ-qp-RyP"/>
+                            <constraint firstItem="3BJ-zB-qrB" firstAttribute="centerY" secondItem="haM-xb-6Pg" secondAttribute="centerY" id="DRM-V7-K2K"/>
+                            <constraint firstItem="yXc-dF-xnJ" firstAttribute="leading" secondItem="Pqq-eL-Rjh" secondAttribute="leading" constant="20" id="HAG-xy-gMl"/>
+                            <constraint firstItem="Pqq-eL-Rjh" firstAttribute="trailing" secondItem="yXc-dF-xnJ" secondAttribute="trailing" constant="20" id="Q4a-vg-O54"/>
+                            <constraint firstItem="3BJ-zB-qrB" firstAttribute="leading" secondItem="Pqq-eL-Rjh" secondAttribute="leading" constant="22" id="SKU-Fp-U6N"/>
+                            <constraint firstItem="Pqq-eL-Rjh" firstAttribute="trailing" secondItem="3BJ-zB-qrB" secondAttribute="trailing" constant="22" id="jrP-iY-rtR"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Pqq-eL-Rjh"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9gd-jH-lhz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="841" y="138"/>
+        </scene>
+        <!--Payment Method View Controller-->
+        <scene sceneID="dnf-xO-gfo">
+            <objects>
+                <viewController storyboardIdentifier="PaymentMethodViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="HuO-C2-GTf" customClass="PaymentMethodViewController" customModule="Movies" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="s1m-cI-Bxg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PDI-le-eid">
+                                <rect key="frame" x="20" y="782" width="374" height="50"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="oPG-IJ-Vim"/>
+                                </constraints>
+                                <state key="normal" title="Save Credit Card Info">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="didExecuteAction" destination="HuO-C2-GTf" eventType="touchUpInside" id="NED-1E-pat"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please fill credit card details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1jk-70-bSH">
+                                <rect key="frame" x="22" y="437.5" width="370" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.45085787770000002" green="0.98829740290000001" blue="0.83763033149999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="1wH-RX-9Td" firstAttribute="trailing" secondItem="1jk-70-bSH" secondAttribute="trailing" constant="22" id="5wR-9x-ovm"/>
+                            <constraint firstItem="1jk-70-bSH" firstAttribute="centerY" secondItem="s1m-cI-Bxg" secondAttribute="centerY" id="BTp-jC-v8u"/>
+                            <constraint firstItem="1wH-RX-9Td" firstAttribute="trailing" secondItem="PDI-le-eid" secondAttribute="trailing" constant="20" id="Io2-by-j7i"/>
+                            <constraint firstItem="1wH-RX-9Td" firstAttribute="bottom" secondItem="PDI-le-eid" secondAttribute="bottom" constant="30" id="VrZ-iH-TVN"/>
+                            <constraint firstItem="PDI-le-eid" firstAttribute="leading" secondItem="1wH-RX-9Td" secondAttribute="leading" constant="20" id="gBm-hb-Y6o"/>
+                            <constraint firstItem="1jk-70-bSH" firstAttribute="leading" secondItem="1wH-RX-9Td" secondAttribute="leading" constant="22" id="jJ5-uG-3P1"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="1wH-RX-9Td"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mVz-nB-4wT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1545" y="138"/>
+        </scene>
+        <!--Review Order View Controller-->
+        <scene sceneID="QUG-SP-xPN">
+            <objects>
+                <viewController storyboardIdentifier="ReviewOrderViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tHO-5d-5dt" customClass="ReviewOrderViewController" customModule="Movies" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="txT-dL-Nn6">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VPt-QF-kI4">
+                                <rect key="frame" x="20" y="423" width="374" height="50"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="MLQ-Pm-3S7"/>
+                                </constraints>
+                                <state key="normal" title="Place Order">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="didExecuteAction" destination="tHO-5d-5dt" eventType="touchUpInside" id="Bd0-Yd-9dS"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="30f-8b-Nb0">
+                                <rect key="frame" x="20" y="350" width="374" height="43"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Order summary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zoo-H4-fd4">
+                                        <rect key="frame" x="0.0" y="0.0" width="119.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total      $99.9" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pa2-10-daU">
+                                        <rect key="frame" x="0.0" y="22.5" width="113.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.93547368049621582" green="0.70397449682314372" blue="0.66153831264725549" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="tXz-dl-PqX" firstAttribute="trailing" secondItem="VPt-QF-kI4" secondAttribute="trailing" constant="20" id="EPb-4q-f6L"/>
+                            <constraint firstItem="VPt-QF-kI4" firstAttribute="leading" secondItem="tXz-dl-PqX" secondAttribute="leading" constant="20" id="Ir9-Qr-Xkk"/>
+                            <constraint firstItem="tXz-dl-PqX" firstAttribute="trailing" secondItem="30f-8b-Nb0" secondAttribute="trailing" constant="20" id="QhC-RA-uNo"/>
+                            <constraint firstItem="VPt-QF-kI4" firstAttribute="top" secondItem="30f-8b-Nb0" secondAttribute="bottom" constant="30" id="Qz2-c1-xM7"/>
+                            <constraint firstItem="VPt-QF-kI4" firstAttribute="centerY" secondItem="txT-dL-Nn6" secondAttribute="centerY" id="cML-ZU-ctN"/>
+                            <constraint firstItem="30f-8b-Nb0" firstAttribute="leading" secondItem="tXz-dl-PqX" secondAttribute="leading" constant="20" id="zqh-9A-7ie"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="tXz-dl-PqX"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cnx-gc-CeQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2257.971014492754" y="137.94642857142856"/>
+        </scene>
+    </scenes>
+</document>
