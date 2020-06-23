@@ -56,7 +56,7 @@ platform :ios do
       app_identifier: ENV["PRODUCE_APP_IDENTIFIER"],
       type: "development",
       force_for_new_devices: true,
-      readonly: false
+      readonly: true
     )
   end
 
@@ -85,7 +85,7 @@ platform :ios do
   #---------------------- AppStore LANES ------------------------------#
 
   desc "AppStore Distribution"
-  lane :go_appstore do |params|
+  lane :go_testflight do |params|
 
     build_config = "Release"
     schemes = {
@@ -100,14 +100,17 @@ platform :ios do
   #---------------------- Firebase LANES ------------------------------#
 
   desc "Firebase App Distribution"
-  lane :go_distribute_firebase do
+  lane :go_firebase do
 
     build_config = "AdHoc"
     schemes = {
       "Movies" => "com.vngrs.Movies.demo"
     }
-    go_firebase(config: build_config, schemes: schemes)
-    upload_dsyms
+
+    build(schemes: schemes, config: build_config, export: "ad-hoc", bitcode: false)
+    upload_firebase(schemes: schemes)
+    # post_beta_to_slack(config: build_config)
+    increment_version
   end
 
   #---------------------- DSYMS LANES ------------------------------#
@@ -160,17 +163,6 @@ platform :ios do
         puts "#{ipa_name}.ipa already exists. Skipping GYM"
       end
     end
-  end
-
-  private_lane :go_firebase do |params|
-
-    schemes = params[:schemes]
-    build_config = params[:config]
-
-    build(schemes: schemes, config: build_config, export: "ad-hoc", bitcode: false)
-    upload_firebase(schemes: schemes)
-    # post_beta_to_slack(config: build_config)
-    increment_version
   end
 
   private_lane :upload_firebase do |params|
