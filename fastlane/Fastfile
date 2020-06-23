@@ -121,7 +121,7 @@ platform :ios do
       "Movies" => "com.vngrs.Movies.demo"
     }
 
-    build(schemes: schemes, config: build_config, export: "ad-hoc", bitcode: false)
+    ci_build(schemes: schemes, config: build_config, export: "ad-hoc", bitcode: false)
     # increment_version
   end
 
@@ -142,6 +142,33 @@ platform :ios do
   end
 
   #---------------------- PRIVATE LANES ------------------------------#
+
+  desc "CI build"
+  private_lane :ci_build do |params|
+
+    export_method = params[:export]
+    include_bitcode = params[:bitcode]
+
+    puts export_method
+    puts include_bitcode
+
+    params[:schemes].each do | scheme, app_id |
+
+    version = get_build_number
+    ipa_name = "build"
+    ipa_path = "../build.ipa"
+    build_config = params[:config]
+    gym(
+          clean: true,
+          configuration: build_config,
+          scheme: scheme,
+          workspace: "Movies.xcworkspace",
+          export_method: export_method,
+          output_name: ipa_name,
+          include_bitcode: include_bitcode
+        )
+    end
+  end
 
   desc "build"
   private_lane :build do |params|
