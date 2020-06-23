@@ -113,6 +113,18 @@ platform :ios do
     increment_version
   end
 
+  desc "Firebase App Distribution"
+  lane :ci_adhoc_build do
+
+    build_config = "AdHoc"
+    schemes = {
+      "Movies" => "com.vngrs.Movies.demo"
+    }
+
+    build(schemes: schemes, config: build_config, export: "ad-hoc", bitcode: false)
+    # increment_version
+  end
+
   #---------------------- DSYMS LANES ------------------------------#
 
   desc "Upload any dsyms in the current directory to crashlytics"
