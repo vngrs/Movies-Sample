@@ -44,6 +44,8 @@ class MovieTableViewCell: TableViewCell {
 
     func updateUI() {
 
+        titleLabel.accessibilityIdentifier = "movieListTitleLabel"
+        
         titleLabel.text = presentation?.title
         releaseDate.text = presentation?.releaseDate
         rateLabel.text = presentation?.rating

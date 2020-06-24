@@ -31,7 +31,8 @@ class MoviesListViewController: BaseViewController, StoryboardBased {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        tableView.accessibilityIdentifier = "moviesTableView"
         configureViews()
         addChangeHandlers()
         viewModel.loadMoreMovies()
