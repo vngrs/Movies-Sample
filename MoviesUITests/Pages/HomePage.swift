@@ -26,9 +26,9 @@ class HomePage: BasePage {
             !firstMovieDate.label.isEmpty &&
             !firstMoviePoint.label.isEmpty {
 
-//            print("firstMovieName", firstMovieName)
-//            print("firstMovieDate", firstMovieDate)
-//            print("firstMovieRate", firstMoviePoint)
+            print("firstMovieName", firstMovieName)
+            print("firstMovieDate", firstMovieDate)
+            print("firstMovieRate", firstMoviePoint)
             return true
         } else {
             return false
