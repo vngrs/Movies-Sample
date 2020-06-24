@@ -43,13 +43,17 @@ class MovieTableViewCell: TableViewCell {
     }
 
     func updateUI() {
-
-        titleLabel.accessibilityIdentifier = "movieListTitleLabel"
         
         titleLabel.text = presentation?.title
+        titleLabel.accessibilityIdentifier = "movieListTitleLabel"
+
         releaseDate.text = presentation?.releaseDate
+        releaseDate.accessibilityIdentifier = "movieListReleaseDateLabel"
+
         rateLabel.text = presentation?.rating
+        rateLabel.accessibilityIdentifier = "movieListRateLabel"
         rateLabel.textColor = presentation?.ratingColor
+
         bannerImageView.image = nil
         if let url = presentation?.bannerUrl {
             bannerImageView.af_setImage(withURL: url)

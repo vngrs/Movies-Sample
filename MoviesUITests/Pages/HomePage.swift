@@ -16,19 +16,16 @@ class HomePage: BasePage {
     lazy var upcoming = app.buttons["Upcoming"]
     lazy var top = app.buttons["Top"]
 
-    lazy var firstMovieName = app.tables["moviesTableView"].cells.element(boundBy: 0).children(matching: .staticText).element(boundBy: 1)
-    lazy var firstMoviePoint = app.tables["moviesTableView"].cells.element(boundBy: 0).children(matching: .staticText).element(boundBy: 1)
-    lazy var firstMovieDate = app.tables["moviesTableView"].cells.element(boundBy: 0).children(matching: .staticText).element(boundBy: 2)
-
-//    lazy var tableName = app.tables["moviesTableView"]
-//        .textFields["movieListTitleLabel"]
-//        .tables.element(boundBy: 0).cells.element(boundBy: 0).children(matching: .staticText).element(boundBy: 1)
+    lazy var firstMovieName = app.tables["moviesTableView"].cells.element(boundBy: 1).staticTexts["movieListTitleLabel"]
+    lazy var firstMovieDate = app.tables["moviesTableView"].cells.element(boundBy: 1).staticTexts["movieListReleaseDateLabel"]
+    lazy var firstMoviePoint = app.tables["moviesTableView"].cells.element(boundBy: 1).staticTexts["movieListRateLabel"]
 
     func moviesLoaded() -> Bool {
+        
         if !firstMovieName.label.isEmpty &&
             !firstMovieDate.label.isEmpty &&
             !firstMoviePoint.label.isEmpty {
-//            print("tableName", tableName)
+
             print("firstMovieName", firstMovieName)
             return true
         } else {
