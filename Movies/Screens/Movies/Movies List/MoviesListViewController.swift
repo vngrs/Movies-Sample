@@ -9,7 +9,7 @@
 import UIKit
 import CoreVNGRSKit
 
-class MoviesListViewController: BaseViewController, StoryboardBased {
+class MoviesListViewController: BaseViewController, StoryboardBased, Accessible {
 
     static var storyboardName: String = "Movies"
 
@@ -31,6 +31,9 @@ class MoviesListViewController: BaseViewController, StoryboardBased {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+//        tableView.accessibilityIdentifier = "moviesTableView"
+        generateAccessibilityIdentifiers()
         
         configureViews()
         addChangeHandlers()

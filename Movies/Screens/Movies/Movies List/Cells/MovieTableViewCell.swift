@@ -19,7 +19,7 @@ struct MovieCellPresentation: Presentation {
     let ratingColor: UIColor?
 }
 
-class MovieTableViewCell: TableViewCell {
+class MovieTableViewCell: TableViewCell, Accessible {
 
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var bannerImageView: UIImageView!
@@ -36,6 +36,9 @@ class MovieTableViewCell: TableViewCell {
     override func applyStyling() {
 
         super.applyStyling()
+
+        generateAccessibilityIdentifiers()
+
         bannerImageView.roundCorners(cornerRadius: 20.0)
         rateView.roundCorners(cornerRadius: 30.0)
         rateView.cvkApplyShadow()
@@ -43,11 +46,17 @@ class MovieTableViewCell: TableViewCell {
     }
 
     func updateUI() {
-
+        
         titleLabel.text = presentation?.title
+//        titleLabel.accessibilityIdentifier = "movieListTitleLabel"
+
         releaseDate.text = presentation?.releaseDate
+//        releaseDate.accessibilityIdentifier = "movieListReleaseDateLabel"
+
         rateLabel.text = presentation?.rating
+//        rateLabel.accessibilityIdentifier = "movieListRateLabel"
         rateLabel.textColor = presentation?.ratingColor
+
         bannerImageView.image = nil
         if let url = presentation?.bannerUrl {
             bannerImageView.af_setImage(withURL: url)

@@ -10,18 +10,26 @@ import Foundation
 import XCTest
 
 class HomePage: BasePage {
-    lazy var popular = app.buttons["Popular"]
-    lazy var playing = app.buttons["Playing"]
-    lazy var upcoming = app.buttons["Upcoming"]
-    lazy var top = app.buttons["Top"]
-    lazy var firstMovieName = app.tables.element(boundBy: 0).cells.element(boundBy: 0).children(matching: .staticText).element(boundBy: 1)
-    lazy var firstMoviePoint = app.tables.element(boundBy: 0).cells.element(boundBy: 0).children(matching: .staticText).element(boundBy: 1)
-    lazy var firstMovieDate = app.tables.element(boundBy: 0).cells.element(boundBy: 0).children(matching: .staticText).element(boundBy: 2)
+
+    lazy var popular = app.buttons["MoviesListViewController.popularButton"]
+    lazy var playing = app.buttons["MoviesListViewController.playingButton"]
+    lazy var upcoming = app.buttons["MoviesListViewController.nextButton"]
+    lazy var top = app.buttons["MoviesListViewController.topButton"]
+
+    lazy var firstMovieName = app.tables["MoviesListViewController.tableView"].cells.element(boundBy: 1).staticTexts["MovieTableViewCell.titleLabel"]
+    lazy var firstMovieDate = app.tables["MoviesListViewController.tableView"].cells.element(boundBy: 1).staticTexts["MovieTableViewCell.releaseDate"]
+    lazy var firstMoviePoint = app.tables["MoviesListViewController.tableView"].cells.element(boundBy: 1).staticTexts["MovieTableViewCell.rateLabel"]
 
     func moviesLoaded() -> Bool {
-        if !firstMovieName.label.isEmpty &&
-            !firstMovieDate.label.isEmpty &&
-            !firstMoviePoint.label.isEmpty {
+        
+        if !firstMovieName.label.isEmpty {
+//            &&
+//            !firstMovieDate.label.isEmpty &&
+//            !firstMoviePoint.label.isEmpty {
+
+            print("firstMovieName", firstMovieName)
+//            print("firstMovieDate", firstMovieDate)
+//            print("firstMovieRate", firstMoviePoint)
             return true
         } else {
             return false
