@@ -46,8 +46,6 @@ class MovieTableViewCell: TableViewCell, Accessible {
     }
 
     func updateUI() {
-
-
         
         titleLabel.text = presentation?.title
 //        titleLabel.accessibilityIdentifier = "movieListTitleLabel"

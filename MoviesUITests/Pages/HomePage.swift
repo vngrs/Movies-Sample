@@ -17,8 +17,8 @@ class HomePage: BasePage {
     lazy var top = app.buttons["MoviesListViewController.topButton"]
 
     lazy var firstMovieName = app.tables["MoviesListViewController.tableView"].cells.element(boundBy: 1).staticTexts["MovieTableViewCell.titleLabel"]
-//    lazy var firstMovieDate = app.tables["moviesTableView"].cells.element(boundBy: 1).staticTexts["movieListReleaseDateLabel"]
-//    lazy var firstMoviePoint = app.tables["moviesTableView"].cells.element(boundBy: 1).staticTexts["movieListRateLabel"]
+    lazy var firstMovieDate = app.tables["MoviesListViewController.tableView"].cells.element(boundBy: 1).staticTexts["MovieTableViewCell.releaseDate"]
+    lazy var firstMoviePoint = app.tables["MoviesListViewController.tableView"].cells.element(boundBy: 1).staticTexts["MovieTableViewCell.rateLabel"]
 
     func moviesLoaded() -> Bool {
         
