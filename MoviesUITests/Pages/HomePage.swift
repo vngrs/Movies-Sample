@@ -16,20 +16,18 @@ class HomePage: BasePage {
     lazy var upcoming = app.buttons["MoviesListViewController.nextButton"]
     lazy var top = app.buttons["MoviesListViewController.topButton"]
 
-    lazy var firstMovieName = app.tables["MoviesListViewController.tableView"].cells.element(boundBy: 1).staticTexts["MovieTableViewCell.titleLabel"]
-    lazy var firstMovieDate = app.tables["MoviesListViewController.tableView"].cells.element(boundBy: 1).staticTexts["MovieTableViewCell.releaseDate"]
-    lazy var firstMoviePoint = app.tables["MoviesListViewController.tableView"].cells.element(boundBy: 1).staticTexts["MovieTableViewCell.rateLabel"]
+    lazy var firstMovieName = app.staticTexts["MovieTableViewCell.titleLabel"].firstMatch
+    lazy var firstMovieDate = app.staticTexts["MovieTableViewCell.releaseDate"].firstMatch
+    lazy var firstMoviePoint = app.staticTexts["MovieTableViewCell.rateLabel"].firstMatch
 
     func moviesLoaded() -> Bool {
-        
-        if !firstMovieName.label.isEmpty {
-//            &&
-//            !firstMovieDate.label.isEmpty &&
-//            !firstMoviePoint.label.isEmpty {
+        if !firstMovieName.label.isEmpty &&
+            !firstMovieDate.label.isEmpty &&
+            !firstMoviePoint.label.isEmpty {
 
-            print("firstMovieName", firstMovieName)
-//            print("firstMovieDate", firstMovieDate)
-//            print("firstMovieRate", firstMoviePoint)
+            print("firstMovieName", firstMovieName.label)
+            print("firstMovieDate", firstMovieDate.label)
+            print("firstMovieRate", firstMoviePoint.label)
             return true
         } else {
             return false

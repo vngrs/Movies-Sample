@@ -18,7 +18,7 @@
 		E232DE31242BC79C00CCDDC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E232DE30242BC79C00CCDDC3 /* Assets.xcassets */; };
 		E232DE34242BC79C00CCDDC3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E232DE32242BC79C00CCDDC3 /* LaunchScreen.storyboard */; };
 		E232DE3F242BC79D00CCDDC3 /* MoviesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E232DE3E242BC79D00CCDDC3 /* MoviesTests.swift */; };
-		E232DE4A242BC79D00CCDDC3 /* MoviesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E232DE49242BC79D00CCDDC3 /* MoviesUITests.swift */; };
+		E232DE4A242BC79D00CCDDC3 /* MoviesLaunchPerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E232DE49242BC79D00CCDDC3 /* MoviesLaunchPerformanceTests.swift */; };
 		E2496201245B27910058DFDD /* MoviesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2496200245B27910058DFDD /* MoviesListViewModel.swift */; };
 		E2496205245B28810058DFDD /* PopularMoviesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2496204245B28810058DFDD /* PopularMoviesRequest.swift */; };
 		E2496208245B294D0058DFDD /* MoviesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2496207245B294D0058DFDD /* MoviesResponse.swift */; };
@@ -105,7 +105,7 @@
 		E232DE3E242BC79D00CCDDC3 /* MoviesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesTests.swift; sourceTree = "<group>"; };
 		E232DE40242BC79D00CCDDC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E232DE45242BC79D00CCDDC3 /* MoviesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoviesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E232DE49242BC79D00CCDDC3 /* MoviesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesUITests.swift; sourceTree = "<group>"; };
+		E232DE49242BC79D00CCDDC3 /* MoviesLaunchPerformanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesLaunchPerformanceTests.swift; sourceTree = "<group>"; };
 		E232DE4B242BC79D00CCDDC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E2496200245B27910058DFDD /* MoviesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListViewModel.swift; sourceTree = "<group>"; };
 		E2496204245B28810058DFDD /* PopularMoviesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularMoviesRequest.swift; sourceTree = "<group>"; };
@@ -150,6 +150,7 @@
 		FF2B5BAA2493822800D87EF4 /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
 		FF2B5BAC2493825800D87EF4 /* BaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTests.swift; sourceTree = "<group>"; };
 		FF2B5BAE2493828700D87EF4 /* HomePageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageTests.swift; sourceTree = "<group>"; };
+		FF42834924A610F8004AD183 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -257,8 +258,8 @@
 			children = (
 				FF2B5BA72493819B00D87EF4 /* Tests */,
 				FF2B5BA62493819100D87EF4 /* Pages */,
-				E232DE49242BC79D00CCDDC3 /* MoviesUITests.swift */,
 				E232DE4B242BC79D00CCDDC3 /* Info.plist */,
+				FF42834924A610F8004AD183 /* README.md */,
 			);
 			path = MoviesUITests;
 			sourceTree = "<group>";
@@ -497,6 +498,7 @@
 		FF2B5BA72493819B00D87EF4 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				E232DE49242BC79D00CCDDC3 /* MoviesLaunchPerformanceTests.swift */,
 				FF2B5BAC2493825800D87EF4 /* BaseTests.swift */,
 				FF2B5BAE2493828700D87EF4 /* HomePageTests.swift */,
 			);
@@ -822,7 +824,7 @@
 			files = (
 				FF2B5BAF2493828700D87EF4 /* HomePageTests.swift in Sources */,
 				FF2B5BAD2493825800D87EF4 /* BaseTests.swift in Sources */,
-				E232DE4A242BC79D00CCDDC3 /* MoviesUITests.swift in Sources */,
+				E232DE4A242BC79D00CCDDC3 /* MoviesLaunchPerformanceTests.swift in Sources */,
 				FF2B5BAB2493822800D87EF4 /* HomePage.swift in Sources */,
 				FF2B5BA92493820400D87EF4 /* BasePage.swift in Sources */,
 			);
