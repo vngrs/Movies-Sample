@@ -256,7 +256,7 @@ platform :ios do
     version = get_version_number(target: "Movies")
     increment_build_number
     build_number_after_increment = get_build_number
-    commit_version_bump(message:"New build #{build_number_after_increment} - version v#{version}", force: true, xcodeproj: "Movies.xcodeproj")
+    commit_version_bump(message:"New build #{build_number_after_increment} - version v#{version} [skip ci]", force: true, xcodeproj: "Movies.xcodeproj")
     push_to_git_remote
   end
 
