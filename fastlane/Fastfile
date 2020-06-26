@@ -263,7 +263,7 @@ platform :ios do
   lane :increment_version do
 
     # Incrementing version number is taking place after the successful build, to avoid the need to clean up
-    # after a failing build for any reason.
+    # after a failing build for any reason..
 
     increment_build_number
     build_number_after_increment = get_build_number
