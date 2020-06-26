@@ -122,7 +122,6 @@ platform :ios do
     }
 
     ci_build(schemes: schemes, config: build_config, export: "ad-hoc", bitcode: false)
-    # increment_version
   end
 
   #---------------------- DSYMS LANES ------------------------------#
