@@ -293,12 +293,6 @@ platform :ios do
     end
   end
 
-  lane :test do
-    auto_increment_version(
-      tagPrefix: ReleaseTagPrefix::FIREBASE
-    )
-  end
-
   lane :auto_increment_version do |params|
 
       sh("git fetch --tags")
