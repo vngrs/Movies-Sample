@@ -293,14 +293,7 @@ platform :ios do
     end
   end
 
-  lane :test do
-
-      auto_increment_version(
-        tagPrefix: ReleaseTagPrefix::FIREBASE
-      )
-  end
-
-  lane :auto_increment_version do |params|
+  private_lane :auto_increment_version do |params|
 
       sh("git fetch --tags")
       analyze_commits(match: "#{params[:tagPrefix]}*")
@@ -311,14 +304,13 @@ platform :ios do
       increment_version_number(version_number: @VERSION_NUMBER)
 
       changelogForMessage = conventional_changelog(title: "Changelog", format: 'slack',  display_links: false)
-      puts changelogForMessage
       sh("envman add --key CHANGE_LOG --value \"#{changelogForMessage}\"")
   end
   
   lane :push_new_version do # Should run only AFTER a successful build
 
       commit_version_bump(message:"New version: #{@VERSION_NUMBER} #{@BUILD_NUMBER}", force: true, xcodeproj: "Movies.xcodeproj")
-      add_git_tag("#{ReleaseTagPrefix::FIREBASE}#{@VERSION_NUMBER}")
+      add_git_tag(tag: "#{ReleaseTagPrefix::FIREBASE}#{@VERSION_NUMBER}")
       push_to_git_remote(tags: true)
   end
 end
