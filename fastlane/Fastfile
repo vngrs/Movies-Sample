@@ -293,7 +293,7 @@ platform :ios do
     end
   end
 
-  private_lane :auto_increment_version do |params|
+  lane :auto_increment_version do |params|
 
       sh("git fetch --tags")
       analyze_commits(match: "#{params[:tagPrefix]}*")
