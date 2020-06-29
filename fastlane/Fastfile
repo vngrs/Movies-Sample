@@ -295,30 +295,27 @@ platform :ios do
 
   lane :auto_increment_version do |params|
 
-      # sh("git fetch --tags")
-      # analyze_commits(match: "#{params[:tagPrefix]}*")
-      # increment_build_number
-      # @BUILD_NUMBER = get_build_number
-      # @VERSION_NUMBER = lane_context[SharedValues::RELEASE_NEXT_VERSION]
-      # puts "NEW VERSION >>> #{@VERSION_NUMBER} #{@BUILD_NUMBER}"
-      # increment_version_number(version_number: @VERSION_NUMBER)
+      sh("git fetch --tags")
+      analyze_commits(match: "#{params[:tagPrefix]}*")
+      increment_build_number
+      @BUILD_NUMBER = get_build_number
+      @VERSION_NUMBER = lane_context[SharedValues::RELEASE_NEXT_VERSION]
+      puts "NEW VERSION >>> #{@VERSION_NUMBER} #{@BUILD_NUMBER}"
+      increment_version_number(version_number: @VERSION_NUMBER)
 
-      # changelogForMessage = conventional_changelog(title: "Changelog", format: 'slack',  display_links: false)
-      # sh("envman add --key CHANGE_LOG --value \"#{changelogForMessage}\"")
-      # sh("envman add --key VERSION_NUMBER --value \"#{@VERSION_NUMBER}\"")
-      # sh("envman add --key BUILD_NUMBER --value \"#{@BUILD_NUMBER}\"")
-      sh("envman add --key VERSION_NUMBER --value koko")
-      sh("envman add --key BUILD_NUMBER --value wawa")
+      changelogForMessage = conventional_changelog(title: "Changelog", format: 'slack',  display_links: false)
+      sh("envman add --key CHANGE_LOG --value \"#{changelogForMessage}\"")
+      sh("envman add --key VERSION_NUMBER --value \"#{@VERSION_NUMBER}\"")
+      sh("envman add --key BUILD_NUMBER --value \"#{@BUILD_NUMBER}\"")
   end
   
   lane :push_new_version do # Should run only AFTER a successful build
 
       @VERSION_NUMBER = ENV["VERSION_NUMBER"]
       @BUILD_NUMBER = ENV["BUILD_NUMBER"]
-      puts @VERSION_NUMBER
-      puts @BUILD_NUMBER
-      # commit_version_bump(message:"New version: #{@VERSION_NUMBER} #{@BUILD_NUMBER}", force: true, xcodeproj: "Movies.xcodeproj")
-      # add_git_tag(tag: "#{ReleaseTagPrefix::FIREBASE}#{@VERSION_NUMBER}")
-      # push_to_git_remote(tags: true)
+     
+      commit_version_bump(message:"New version: #{@VERSION_NUMBER} #{@BUILD_NUMBER}", force: true, xcodeproj: "Movies.xcodeproj")
+      add_git_tag(tag: "#{ReleaseTagPrefix::FIREBASE}#{@VERSION_NUMBER}")
+      push_to_git_remote(tags: true)
   end
 end
