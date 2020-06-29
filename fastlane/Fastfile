@@ -1,4 +1,3 @@
-
 # This file contains the fastlane.tools configuration
 # You can find the documentation at https://docs.fastlane.tools
 #
@@ -18,6 +17,11 @@
 # export LANG=en_US.UTF-8
 
 PRODUCE_APP_IDENTIFIER = "com.vngrs.Movies.demo"
+
+module ReleaseTagPrefix
+  FIREBASE = "firebase/"
+  APPSTORE = "appstore/"
+end
 
 fastlane_require = "dotenv"
 
@@ -114,17 +118,6 @@ platform :ios do
     increment_version
   end
 
-  desc "Firebase App Distribution"
-  lane :ci_adhoc_build do
-
-    build_config = "AdHoc"
-    schemes = {
-      "Movies" => "com.vngrs.Movies.demo"
-    }
-
-    ci_build(schemes: schemes, config: build_config, export: "ad-hoc", bitcode: false)
-  end
-
   #---------------------- DSYMS LANES ------------------------------#
 
   desc "Upload any dsyms in the current directory to crashlytics"
@@ -142,33 +135,6 @@ platform :ios do
   end
 
   #---------------------- PRIVATE LANES ------------------------------#
-
-  desc "CI build"
-  private_lane :ci_build do |params|
-
-    export_method = params[:export]
-    include_bitcode = params[:bitcode]
-
-    puts export_method
-    puts include_bitcode
-
-    params[:schemes].each do | scheme, app_id |
-
-    version = get_build_number
-    ipa_name = "build"
-    ipa_path = "../build.ipa"
-    build_config = params[:config]
-    gym(
-          clean: true,
-          configuration: build_config,
-          scheme: scheme,
-          workspace: "Movies.xcworkspace",
-          export_method: export_method,
-          output_name: ipa_name,
-          include_bitcode: include_bitcode
-        )
-    end
-  end
 
   desc "build"
   private_lane :build do |params|
@@ -285,5 +251,76 @@ platform :ios do
     #   }
     # )
     certs_all
+  end
+
+  #  ===============================   CI Lanes
+
+  desc "Firebase App Distribution"
+  lane :ci_adhoc_build do
+
+    build_config = "AdHoc"
+    schemes = {
+      "Movies" => "com.vngrs.Movies.demo"
+    }
+    auto_increment_version(tagPrefix: ReleaseTagPrefix::FIREBASE)
+    ci_build(schemes: schemes, config: build_config, export: "ad-hoc", bitcode: false)
+  end
+
+  desc "CI build"
+  private_lane :ci_build do |params|
+
+    export_method = params[:export]
+    include_bitcode = params[:bitcode]
+
+    puts export_method
+    puts include_bitcode
+
+    params[:schemes].each do | scheme, app_id |
+
+    version = get_build_number
+    ipa_name = "build"
+    ipa_path = "../build.ipa"
+    build_config = params[:config]
+    gym(
+          clean: true,
+          configuration: build_config,
+          scheme: scheme,
+          workspace: "Movies.xcworkspace",
+          export_method: export_method,
+          output_name: ipa_name,
+          include_bitcode: include_bitcode
+        )
+    end
+  end
+
+  lane :test do
+
+      auto_increment_version(
+        tagPrefix: ReleaseTagPrefix::FIREBASE
+      )
+  end
+
+  lane :auto_increment_version do |params|
+
+      analyze_commits(match: "#{params[:tagPrefix]}*")
+      increment_build_number
+      @BUILD_NUMBER = get_build_number
+      @VERSION_NUMBER = lane_context[SharedValues::RELEASE_NEXT_VERSION]
+      puts "NEW VERSION >>> #{@VERSION_NUMBER} #{@BUILD_NUMBER}"
+      increment_version_number(version_number: @VERSION_NUMBER)
+  end
+
+  lange :set_changelog do
+
+      changelogForMessage = conventional_changelog(title: "Changelog", format: 'slack',  display_links: false)
+      puts changelogForMessage
+      sh("envman add --key CHANGE_LOG --value \"#{changelogForMessage}\"")
+  end
+
+  lane :push_new_version do # Should run only AFTER a successful build
+
+      commit_version_bump(message:"New version: #{@VERSION_NUMBER} #{@BUILD_NUMBER}", force: true, xcodeproj: "Movies.xcodeproj")
+      add_git_tag("#{ReleaseTagPrefix::FIREBASE}#{@VERSION_NUMBER}")
+      push_to_git_remote(tags: true)
   end
 end
