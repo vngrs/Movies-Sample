@@ -309,15 +309,12 @@ platform :ios do
       @VERSION_NUMBER = lane_context[SharedValues::RELEASE_NEXT_VERSION]
       puts "NEW VERSION >>> #{@VERSION_NUMBER} #{@BUILD_NUMBER}"
       increment_version_number(version_number: @VERSION_NUMBER)
-  end
-
-  lane :populate_changelog do
 
       changelogForMessage = conventional_changelog(title: "Changelog", format: 'slack',  display_links: false)
       puts changelogForMessage
       sh("envman add --key CHANGE_LOG --value \"#{changelogForMessage}\"")
   end
-
+  
   lane :push_new_version do # Should run only AFTER a successful build
 
       commit_version_bump(message:"New version: #{@VERSION_NUMBER} #{@BUILD_NUMBER}", force: true, xcodeproj: "Movies.xcodeproj")
