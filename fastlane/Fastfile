@@ -305,12 +305,13 @@ platform :ios do
 
       changelogForMessage = conventional_changelog(title: "Changelog", format: 'slack',  display_links: false)
       sh("envman add --key CHANGE_LOG --value \"#{changelogForMessage}\"")
+
+      commit_version_bump(message:"New version: #{@VERSION_NUMBER} #{@BUILD_NUMBER}", force: true, xcodeproj: "Movies.xcodeproj")
+      add_git_tag(tag: "#{ReleaseTagPrefix::FIREBASE}#{@VERSION_NUMBER}")
   end
   
   lane :push_new_version do # Should run only AFTER a successful build
 
-      commit_version_bump(message:"New version: #{@VERSION_NUMBER} #{@BUILD_NUMBER}", force: true, xcodeproj: "Movies.xcodeproj")
-      add_git_tag(tag: "#{ReleaseTagPrefix::FIREBASE}#{@VERSION_NUMBER}")
       push_to_git_remote(tags: true)
   end
 end
