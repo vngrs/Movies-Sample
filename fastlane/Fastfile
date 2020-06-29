@@ -310,7 +310,7 @@ platform :ios do
       increment_version_number(version_number: @VERSION_NUMBER)
   end
 
-  lange :set_changelog do
+  lane :set_changelog do
 
       changelogForMessage = conventional_changelog(title: "Changelog", format: 'slack',  display_links: false)
       puts changelogForMessage
