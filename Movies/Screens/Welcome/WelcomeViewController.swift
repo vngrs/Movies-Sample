@@ -8,7 +8,7 @@
 
 import Foundation
 
-class WelcomeViewController: BaseViewController, StoryboardBased {
+class WelcomeViewController: ViewController, StoryboardBased {
 
     static var storyboardName: String = "Main"
 

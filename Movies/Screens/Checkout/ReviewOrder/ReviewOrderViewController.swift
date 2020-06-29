@@ -32,7 +32,7 @@ protocol ReviewOrderViewControllerDelegate: class {
     func reviewOrderControllerDidCancel(_ controller: ReviewOrderViewController)
 }
 
-class ReviewOrderViewController: BaseViewController, StoryboardBased {
+class ReviewOrderViewController: ViewController, StoryboardBased {
 
     static var storyboardName: String = "Checkout"
 

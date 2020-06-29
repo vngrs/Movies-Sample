@@ -9,7 +9,7 @@
 import UIKit
 import CoreVNGRSKit
 
-class MoviesListViewController: BaseViewController, StoryboardBased {
+class MoviesListViewController: ViewController, StoryboardBased {
 
     static var storyboardName: String = "Movies"
 

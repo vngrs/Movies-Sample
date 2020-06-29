@@ -9,7 +9,7 @@
 import Foundation
 import CoreVNGRSKit
 
-class MovieDetailsViewController: StaticTableViewController, StoryboardBased {
+class MovieDetailsViewController: StaticTableViewController, StoryboardBased, Accessible {
 
     static var storyboardName: String = "Movies"
 
@@ -20,6 +20,8 @@ class MovieDetailsViewController: StaticTableViewController, StoryboardBased {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        generateAccessibilityIdentifiers()
 
         configureViews()
         addChangeHandlers()
