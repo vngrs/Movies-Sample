@@ -316,6 +316,6 @@ platform :ios do
      
       commit_version_bump(message:"New version: #{@VERSION_NUMBER} #{@BUILD_NUMBER} [skip ci]", force: true, xcodeproj: "Movies.xcodeproj")
       add_git_tag(tag: "#{ReleaseTagPrefix::FIREBASE}#{@VERSION_NUMBER}")
-      push_to_git_remote(tags: true)
+      push_to_git_remote(remote_branch: "feature/ci", tags: true)
   end
 end
