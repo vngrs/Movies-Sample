@@ -32,7 +32,7 @@ protocol PaymentMethodViewControllerDelegate: class {
     func paymentMethodControllerDidCancel(_ controller: PaymentMethodViewController)
 }
 
-class PaymentMethodViewController: BaseViewController, StoryboardBased {
+class PaymentMethodViewController: ViewController, StoryboardBased {
 
     static var storyboardName: String = "Checkout"
 

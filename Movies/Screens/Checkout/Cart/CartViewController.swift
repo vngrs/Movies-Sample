@@ -27,7 +27,7 @@ protocol CartViewControllerDelegate: class {
     func cartControllerDidFinish(_ controller: CartViewController)
 }
 
-class CartViewController: BaseViewController, StoryboardBased {
+class CartViewController: ViewController, StoryboardBased {
 
     static var storyboardName: String = "Checkout"
 

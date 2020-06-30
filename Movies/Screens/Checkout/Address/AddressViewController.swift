@@ -32,7 +32,7 @@ protocol AddressViewControllerDelegate: class {
     func addressControllerDidCancel(_ controller: AddressViewController)
 }
 
-class AddressViewController: BaseViewController, StoryboardBased {
+class AddressViewController: ViewController, StoryboardBased {
 
     static var storyboardName: String = "Checkout"
 
