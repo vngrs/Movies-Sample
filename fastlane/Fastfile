@@ -18,6 +18,11 @@
 
 PRODUCE_APP_IDENTIFIER = "com.vngrs.Movies.demo"
 
+module ReleaseTagPrefix
+  FIREBASE = "firebase/"
+  APPSTORE = "appstore/"
+end
+
 fastlane_require = "dotenv"
 
 before_all do
@@ -56,7 +61,7 @@ platform :ios do
       app_identifier: ENV["PRODUCE_APP_IDENTIFIER"],
       type: "development",
       force_for_new_devices: true,
-      readonly: false
+      readonly: true
     )
   end
 
@@ -85,7 +90,7 @@ platform :ios do
   #---------------------- AppStore LANES ------------------------------#
 
   desc "AppStore Distribution"
-  lane :go_appstore do |params|
+  lane :go_testflight do |params|
 
     build_config = "Release"
     schemes = {
@@ -100,14 +105,17 @@ platform :ios do
   #---------------------- Firebase LANES ------------------------------#
 
   desc "Firebase App Distribution"
-  lane :go_distribute_firebase do
+  lane :go_firebase do
 
     build_config = "AdHoc"
     schemes = {
       "Movies" => "com.vngrs.Movies.demo"
     }
-    go_firebase(config: build_config, schemes: schemes)
-    upload_dsyms
+
+    build(schemes: schemes, config: build_config, export: "ad-hoc", bitcode: false)
+    upload_firebase(schemes: schemes)
+    # post_beta_to_slack(config: build_config)
+    increment_version
   end
 
   #---------------------- DSYMS LANES ------------------------------#
@@ -160,17 +168,6 @@ platform :ios do
         puts "#{ipa_name}.ipa already exists. Skipping GYM"
       end
     end
-  end
-
-  private_lane :go_firebase do |params|
-
-    schemes = params[:schemes]
-    build_config = params[:config]
-
-    build(schemes: schemes, config: build_config, export: "ad-hoc", bitcode: false)
-    upload_firebase(schemes: schemes)
-    # post_beta_to_slack(config: build_config)
-    increment_version
   end
 
   private_lane :upload_firebase do |params|
@@ -226,14 +223,14 @@ platform :ios do
     version = get_version_number(target: "Movies")
     increment_build_number
     build_number_after_increment = get_build_number
-    commit_version_bump(message:"New build #{build_number_after_increment} - version v#{version}", force: true, xcodeproj: "Movies.xcodeproj")
+    commit_version_bump(message:"New build #{build_number_after_increment} - version v#{version} [skip ci]", force: true, xcodeproj: "Movies.xcodeproj")
     push_to_git_remote
   end
 
   lane :increment_version do
 
     # Incrementing version number is taking place after the successful build, to avoid the need to clean up
-    # after a failing build for any reason.
+    # after a failing build for any reason...
 
     increment_build_number
     build_number_after_increment = get_build_number
@@ -254,5 +251,71 @@ platform :ios do
     #   }
     # )
     certs_all
+  end
+
+  #  ===============================   CI Lanes
+
+  desc "Firebase App Distribution"
+  lane :ci_adhoc_build do
+
+    build_config = "AdHoc"
+    schemes = {
+      "Movies" => "com.vngrs.Movies.demo"
+    }
+    auto_increment_version(tagPrefix: ReleaseTagPrefix::FIREBASE)
+    ci_build(schemes: schemes, config: build_config, export: "ad-hoc", bitcode: false)
+  end
+
+  desc "CI build"
+  private_lane :ci_build do |params|
+
+    export_method = params[:export]
+    include_bitcode = params[:bitcode]
+
+    puts export_method
+    puts include_bitcode
+
+    params[:schemes].each do | scheme, app_id |
+
+    version = get_build_number
+    ipa_name = "build"
+    ipa_path = "../build.ipa"
+    build_config = params[:config]
+    gym(
+          clean: true,
+          configuration: build_config,
+          scheme: scheme,
+          workspace: "Movies.xcworkspace",
+          export_method: export_method,
+          output_name: ipa_name,
+          include_bitcode: include_bitcode
+        )
+    end
+  end
+
+  lane :auto_increment_version do |params|
+
+      sh("git fetch --tags")
+      analyze_commits(match: "#{params[:tagPrefix]}*")
+      increment_build_number
+      @BUILD_NUMBER = get_build_number
+      @VERSION_NUMBER = lane_context[SharedValues::RELEASE_NEXT_VERSION]
+      puts "NEW VERSION >>> #{@VERSION_NUMBER} #{@BUILD_NUMBER}"
+      increment_version_number(version_number: @VERSION_NUMBER)
+
+      changelogForMessage = conventional_changelog(title: "Changelog", format: 'slack',  display_links: false)
+      sh("envman add --key CHANGE_LOG --value \"#{changelogForMessage}\"")
+      sh("envman add --key VERSION_NUMBER --value \"#{@VERSION_NUMBER}\"")
+      sh("envman add --key BUILD_NUMBER --value \"#{@BUILD_NUMBER}\"")
+  end
+  
+  lane :push_new_version do # Should run only AFTER a successful build
+
+      @VERSION_NUMBER = ENV["VERSION_NUMBER"]
+      @BUILD_NUMBER = ENV["BUILD_NUMBER"]
+     
+      commit_version_bump(message:"New version: #{@VERSION_NUMBER} #{@BUILD_NUMBER} [skip ci]", force: true, xcodeproj: "Movies.xcodeproj")
+      add_git_tag(tag: "#{ReleaseTagPrefix::FIREBASE}#{@VERSION_NUMBER}")
+      push_to_git_remote(remote_branch: "feature/ci", tags: true)
   end
 end
