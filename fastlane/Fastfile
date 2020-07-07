@@ -320,7 +320,7 @@ platform :ios do
 
       @VERSION_NUMBER = ENV["VERSION_NUMBER"]
       @BUILD_NUMBER = ENV["BUILD_NUMBER"]
-     
+
       commit_version_bump(message:"New version: #{@VERSION_NUMBER} (#{@BUILD_NUMBER}) [skip ci]", force: true, xcodeproj: "Movies.xcodeproj")
       set_git_release(
       	releaseName: "Firebase",
