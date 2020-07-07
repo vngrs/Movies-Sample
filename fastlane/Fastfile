@@ -315,14 +315,12 @@ platform :ios do
       increment_version_number(version_number: @VERSION_NUMBER)
 
       changelogForMessage = conventional_changelog(title: "Changelog", format: 'plain',  display_links: true)
-      # sh("envman add --key CHANGE_LOG --value \"#{changelogForMessage}\"")
+      sh("envman add --key CHANGE_LOG --value \"#{changelogForMessage}\"")
       # sh("envman add --key VERSION_NUMBER --value \"#{@VERSION_NUMBER}\"")
       # sh("envman add --key BUILD_NUMBER --value \"#{@BUILD_NUMBER}\"")
       ENV["CHANGE_LOG"] = changelogForMessage
       ENV["VERSION_NUMBER"] = @VERSION_NUMBER
       ENV["BUILD_NUMBER"] = @BUILD_NUMBER
-
-      push_new_version
   end
   
   lane :push_new_version do # Should run only AFTER a successful build
