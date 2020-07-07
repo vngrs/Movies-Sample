@@ -20,6 +20,34 @@
                ReferencedContainer = "container:Movies.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "E232DE39242BC79C00CCDDC3"
+               BuildableName = "MoviesTests.xctest"
+               BlueprintName = "MoviesTests"
+               ReferencedContainer = "container:Movies.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "E232DE44242BC79D00CCDDC3"
+               BuildableName = "MoviesUITests.xctest"
+               BlueprintName = "MoviesUITests"
+               ReferencedContainer = "container:Movies.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -28,26 +56,6 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E232DE39242BC79C00CCDDC3"
-               BuildableName = "MoviesTests.xctest"
-               BlueprintName = "MoviesTests"
-               ReferencedContainer = "container:Movies.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E232DE44242BC79D00CCDDC3"
-               BuildableName = "MoviesUITests.xctest"
-               BlueprintName = "MoviesUITests"
-               ReferencedContainer = "container:Movies.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
