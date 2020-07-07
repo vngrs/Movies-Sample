@@ -28,7 +28,6 @@ fastlane_require = "dotenv"
 before_all do
   # update_fastlane
   Dotenv.load ".env.secret"
-  ENV["FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD"] = "ertk-stkv-ekvt-mcar"
 end
 
 default_platform(:ios)
@@ -53,6 +52,7 @@ platform :ios do
     certs_dev
     certs_beta
     certs_appstore
+    uitesting_signing
   end
 
   lane :uitesting_signing do
@@ -62,6 +62,7 @@ platform :ios do
       type: "development",
       readonly: true
     )
+    certs_dev
   end
 
   desc "Fetches the provisioning profiles so you can build locally and deploy to your device"
