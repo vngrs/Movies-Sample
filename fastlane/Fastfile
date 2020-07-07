@@ -58,6 +58,15 @@ platform :ios do
     certs_dev
   end
 
+  lane :uitesting_signing do
+
+  	match(
+      app_identifier: "com.vngrs.MoviesUITests",
+      type: "development",
+      readonly: false
+    )
+  end
+
   desc "Fetches the provisioning profiles so you can build locally and deploy to your device"
   lane :certs_dev do
 
