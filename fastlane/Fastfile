@@ -340,7 +340,7 @@ platform :ios do
 		repository_name: ENV['GITHUB_REPOSITORY_NAME'],
 		name: "#{params[:releaseName]}-#{@VERSION_NUMBER}",
 		tag_name: "#{params[:tagPrefix]}#{@VERSION_NUMBER}",
-		api_token: ENV['GITHUB_API_TOKEN'],
+		# api_token: ENV['GITHUB_API_TOKEN'],
 		description: @CHANGE_LOG,
 		is_prerelease: params[:is_prerelease],
 		commitish: "master"
