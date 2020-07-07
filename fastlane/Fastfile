@@ -63,7 +63,7 @@ platform :ios do
   	match(
       app_identifier: "com.vngrs.MoviesUITests",
       type: "development",
-      readonly: false
+      readonly: true
     )
   end
 
