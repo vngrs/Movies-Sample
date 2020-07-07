@@ -28,6 +28,7 @@ fastlane_require = "dotenv"
 before_all do
   # update_fastlane
   Dotenv.load ".env.secret"
+  ENV["FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD"] = "ertk-stkv-ekvt-mcar"
 end
 
 default_platform(:ios)
