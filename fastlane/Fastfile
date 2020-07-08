@@ -23,13 +23,6 @@ module ReleaseTagPrefix
   APPSTORE = "appstore/"
 end
 
-fastlane_require = "dotenv"
-
-before_all do
-  # update_fastlane
-  Dotenv.load ".env.secret"
-end
-
 default_platform(:ios)
 
 platform :ios do
@@ -52,6 +45,17 @@ platform :ios do
     certs_dev
     certs_beta
     certs_appstore
+    uitesting_signing
+  end
+
+  lane :uitesting_signing do
+
+  	match(
+      app_identifier: "com.vngrs.MoviesUITests",
+      type: "development",
+      readonly: true
+    )
+    certs_dev
   end
 
   desc "Fetches the provisioning profiles so you can build locally and deploy to your device"
@@ -303,10 +307,13 @@ platform :ios do
       puts "NEW VERSION >>> #{@VERSION_NUMBER} #{@BUILD_NUMBER}"
       increment_version_number(version_number: @VERSION_NUMBER)
 
-      changelogForMessage = conventional_changelog(title: "Changelog", format: 'slack',  display_links: false)
+      changelogForMessage = conventional_changelog(title: "Changelog", format: 'plain',  display_links: true)
       sh("envman add --key CHANGE_LOG --value \"#{changelogForMessage}\"")
       sh("envman add --key VERSION_NUMBER --value \"#{@VERSION_NUMBER}\"")
       sh("envman add --key BUILD_NUMBER --value \"#{@BUILD_NUMBER}\"")
+      # ENV["CHANGE_LOG"] = changelogForMessage
+      # ENV["VERSION_NUMBER"] = @VERSION_NUMBER
+      # ENV["BUILD_NUMBER"] = @BUILD_NUMBER
   end
   
   lane :push_new_version do # Should run only AFTER a successful build
@@ -314,8 +321,29 @@ platform :ios do
       @VERSION_NUMBER = ENV["VERSION_NUMBER"]
       @BUILD_NUMBER = ENV["BUILD_NUMBER"]
      
-      commit_version_bump(message:"New version: #{@VERSION_NUMBER} #{@BUILD_NUMBER} [skip ci]", force: true, xcodeproj: "Movies.xcodeproj")
-      add_git_tag(tag: "#{ReleaseTagPrefix::FIREBASE}#{@VERSION_NUMBER}")
-      push_to_git_remote(remote_branch: "feature/ci", tags: true)
+      commit_version_bump(message:"New version: #{@VERSION_NUMBER} (#{@BUILD_NUMBER}) [skip ci]", force: true, xcodeproj: "Movies.xcodeproj")
+      set_git_release(
+      	releaseName: "Firebase",
+      	tagPrefix: "#{ReleaseTagPrefix::FIREBASE}",
+      	is_prerelease: true
+      )
+      push_to_git_remote(remote_branch: "master", tags: true)
+  end
+
+  private_lane :set_git_release do |params|
+    
+    @CHANGE_LOG = ENV["CHANGE_LOG"]
+    @VERSION_NUMBER = ENV["VERSION_NUMBER"]
+    @BUILD_NUMBER = ENV["BUILD_NUMBER"]
+
+    set_github_release(
+		repository_name: ENV['GITHUB_REPOSITORY_NAME'],
+		name: "#{params[:releaseName]}-#{@VERSION_NUMBER}",
+		tag_name: "#{params[:tagPrefix]}#{@VERSION_NUMBER}",
+		api_token: ENV['GITHUB_API_TOKEN'],
+		description: @CHANGE_LOG,
+		is_prerelease: params[:is_prerelease],
+		commitish: "master"
+    )
   end
 end

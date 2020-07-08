@@ -21,6 +21,11 @@ or alternatively using `brew cask install fastlane`
 fastlane ios certs_all
 ```
 
+### ios uitesting_signing
+```
+fastlane ios uitesting_signing
+```
+
 ### ios certs_dev
 ```
 fastlane ios certs_dev
@@ -36,14 +41,14 @@ Fetches the provisioning profiles so you can build for beta or appstore distribu
 fastlane ios certs_appstore
 ```
 AppStore signing
-### ios go_appstore
+### ios go_testflight
 ```
-fastlane ios go_appstore
+fastlane ios go_testflight
 ```
 AppStore Distribution
-### ios go_distribute_firebase
+### ios go_firebase
 ```
-fastlane ios go_distribute_firebase
+fastlane ios go_firebase
 ```
 Firebase App Distribution
 ### ios upload_dsyms
@@ -69,6 +74,21 @@ fastlane ios increment_version
 ### ios register_new_devices
 ```
 fastlane ios register_new_devices
+```
+
+### ios ci_adhoc_build
+```
+fastlane ios ci_adhoc_build
+```
+Firebase App Distribution
+### ios auto_increment_version
+```
+fastlane ios auto_increment_version
+```
+
+### ios push_new_version
+```
+fastlane ios push_new_version
 ```
 
 
