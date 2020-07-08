@@ -339,7 +339,7 @@ platform :ios do
     puts "Github Access Token: #{ENV['GITHUB_API_TOKEN']}"
     github_release = set_github_release(
 		repository_name: ENV['GITHUB_REPOSITORY_NAME'],
-		name: "#{params[:releaseName]} #{@VERSION_NUMBER}-#{@BUILD_NUMBER}",
+		name: "#{params[:releaseName]}-#{@VERSION_NUMBER}",
 		tag_name: "#{params[:tagPrefix]}#{@VERSION_NUMBER}",
 		api_token: ENV['GITHUB_API_TOKEN'],
 		description: @CHANGE_LOG,
