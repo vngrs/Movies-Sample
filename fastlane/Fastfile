@@ -327,7 +327,7 @@ platform :ios do
       	tagPrefix: "#{ReleaseTagPrefix::FIREBASE}",
       	is_prerelease: true
       )
-      push_to_git_remote(remote_branch: "feature/ci", tags: true)
+      push_to_git_remote(remote_branch: "master", tags: true)
   end
 
   private_lane :set_git_release do |params|
@@ -336,15 +336,14 @@ platform :ios do
     @VERSION_NUMBER = ENV["VERSION_NUMBER"]
     @BUILD_NUMBER = ENV["BUILD_NUMBER"]
 
-    puts "Github Access Token: #{ENV['GITHUB_API_TOKEN']}"
-    github_release = set_github_release(
+    set_github_release(
 		repository_name: ENV['GITHUB_REPOSITORY_NAME'],
 		name: "#{params[:releaseName]}-#{@VERSION_NUMBER}",
 		tag_name: "#{params[:tagPrefix]}#{@VERSION_NUMBER}",
 		api_token: ENV['GITHUB_API_TOKEN'],
 		description: @CHANGE_LOG,
 		is_prerelease: params[:is_prerelease],
-		commitish: last_git_commit[:commit_hash]
+		commitish: "master"
     )
   end
 end
