@@ -28,9 +28,6 @@ fastlane_require = "dotenv"
 before_all do
   # update_fastlane
   	Dotenv.load ".env.secret"
-  	ENV["FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD"] = "ertk-stkv-ekvt-mcar"
-  	ENV["GITHUB_REPOSITORY_NAME"] = "vngrs/Movies-Sample"
-	ENV["GITHUB_API_TOKEN"] = "068531afdc67678917c04c3905009aafbeba6b38"
 end
 
 default_platform(:ios)
@@ -350,7 +347,7 @@ platform :ios do
 		repository_name: ENV['GITHUB_REPOSITORY_NAME'],
 		name: "#{params[:releaseName]} #{@VERSION_NUMBER}-#{@BUILD_NUMBER}",
 		tag_name: "#{params[:tagPrefix]}#{@VERSION_NUMBER}",
-		# api_token: ENV['GITHUB_API_TOKEN'],
+		api_token: ENV['GITHUB_API_TOKEN'],
 		description: @CHANGE_LOG,
 		is_prerelease: params[:is_prerelease],
 		commitish: last_git_commit[:commit_hash]
