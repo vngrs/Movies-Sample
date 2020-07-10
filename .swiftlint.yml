@@ -1,0 +1,21 @@
+file_length:
+  warning: 800
+  error: 1000
+type_body_length:
+  warning: 400
+  error: 500
+comma:
+  severity: error
+colon:
+  severity: error
+function_body_length:
+  warning: 60
+  error: 250
+function_parameter_count:
+  warning: 10
+  error: 15
+excluded:
+  - Carthage
+  - Pods
+opt_in_rules:
+  - empty_count
