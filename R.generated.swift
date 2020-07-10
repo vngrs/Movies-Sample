@@ -85,6 +85,7 @@ struct R: Rswift.Validatable {
   }
 
   static func validate() throws {
+    try font.validate()
     try intern.validate()
   }
 
@@ -132,15 +133,40 @@ struct R: Rswift.Validatable {
   }
   #endif
 
-  /// This `R.file` struct is generated, and contains static references to 1 files.
+  /// This `R.file` struct is generated, and contains static references to 2 files.
   struct file {
+    /// Resource file `BillionDreams_PERSONAL.ttf`.
+    static let billionDreams_PERSONALTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "BillionDreams_PERSONAL", pathExtension: "ttf")
     /// Resource file `GoogleService-Info.plist`.
     static let googleServiceInfoPlist = Rswift.FileResource(bundle: R.hostingBundle, name: "GoogleService-Info", pathExtension: "plist")
+
+    /// `bundle.url(forResource: "BillionDreams_PERSONAL", withExtension: "ttf")`
+    static func billionDreams_PERSONALTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.billionDreams_PERSONALTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
 
     /// `bundle.url(forResource: "GoogleService-Info", withExtension: "plist")`
     static func googleServiceInfoPlist(_: Void = ()) -> Foundation.URL? {
       let fileResource = R.file.googleServiceInfoPlist
       return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    fileprivate init() {}
+  }
+
+  /// This `R.font` struct is generated, and contains static references to 1 fonts.
+  struct font: Rswift.Validatable {
+    /// Font `BillionDreams`.
+    static let billionDreams = Rswift.FontResource(fontName: "BillionDreams")
+
+    /// `UIFont(name: "BillionDreams", size: ...)`
+    static func billionDreams(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: billionDreams, size: size)
+    }
+
+    static func validate() throws {
+      if R.font.billionDreams(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'BillionDreams' could not be loaded, is 'BillionDreams_PERSONAL.ttf' added to the UIAppFonts array in this targets Info.plist?") }
     }
 
     fileprivate init() {}

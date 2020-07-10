@@ -8,6 +8,7 @@
 
 import Foundation
 import XCTest
+import Rswift
 
 class HomePage: BasePage {
 
@@ -26,8 +27,6 @@ class HomePage: BasePage {
     lazy var firstMovieName = app.staticTexts["\(Constants.movieTableViewCell).titleLabel"].firstMatch
     lazy var firstMovieDate = app.staticTexts["\(Constants.movieTableViewCell).releaseDate"].firstMatch
     lazy var firstMoviePoint = app.staticTexts["\(Constants.movieTableViewCell).rateLabel"].firstMatch
-
-//    lazy var firstMoviePoint = app.staticTexts["\(Constants.movieTableViewCell).rateLabel"].firstMatch
 
     func moviesLoaded() -> Bool {
         if !firstMovieName.label.isEmpty &&

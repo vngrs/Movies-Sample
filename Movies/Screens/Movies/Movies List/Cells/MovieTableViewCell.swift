@@ -48,10 +48,12 @@ class MovieTableViewCell: TableViewCell, Accessible {
     func updateUI() {
         
         titleLabel.text = presentation?.title
+//        titleLabel.font = UIFont(name: "Billion Dreams", size: 30)
+        titleLabel.font = R.font.billionDreams(size: 30)
+
         releaseDate.text = presentation?.releaseDate
         rateLabel.text = presentation?.rating
         rateLabel.textColor = presentation?.ratingColor
-//        titleLabel.text = R.image.
 
         bannerImageView.image = nil
         if let url = presentation?.bannerUrl {

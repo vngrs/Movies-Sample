@@ -12,6 +12,9 @@
 		AF24590E24A40B7E00B65224 /* Accessible.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF24590D24A40B7E00B65224 /* Accessible.swift */; };
 		AF7CD74B24AA23730070F182 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7CD74A24AA23730070F182 /* ViewController.swift */; };
 		AF86E9FC24B488E200A1ACE0 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF86E9FB24B488E200A1ACE0 /* R.generated.swift */; };
+		AF9D050F24B9273C0091A257 /* BillionDreams_PERSONAL.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AF9D050E24B9273C0091A257 /* BillionDreams_PERSONAL.ttf */; };
+		AF9D051024B92A4B0091A257 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF86E9FB24B488E200A1ACE0 /* R.generated.swift */; };
+		AF9D051124B92A4B0091A257 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF86E9FB24B488E200A1ACE0 /* R.generated.swift */; };
 		AFCC00422497D71100650A22 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AFCC00412497D71000650A22 /* GoogleService-Info.plist */; };
 		DBB73DBDCDE96FEFB9EB9974 /* Pods_MoviesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62C80DF37855A04B9E27D262 /* Pods_MoviesTests.framework */; };
 		E232DE28242BC79B00CCDDC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E232DE27242BC79B00CCDDC3 /* AppDelegate.swift */; };
@@ -93,6 +96,7 @@
 		AF24590D24A40B7E00B65224 /* Accessible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accessible.swift; sourceTree = "<group>"; };
 		AF7CD74A24AA23730070F182 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		AF86E9FB24B488E200A1ACE0 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
+		AF9D050E24B9273C0091A257 /* BillionDreams_PERSONAL.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BillionDreams_PERSONAL.ttf; sourceTree = "<group>"; };
 		AFCC00412497D71000650A22 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B188D99037459BD474468922 /* Pods-Movies-MoviesUITests.adhoc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movies-MoviesUITests.adhoc.xcconfig"; path = "Target Support Files/Pods-Movies-MoviesUITests/Pods-Movies-MoviesUITests.adhoc.xcconfig"; sourceTree = "<group>"; };
 		C947A7EF66E201BEC02F814D /* Pods-MoviesTests.adhoc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoviesTests.adhoc.xcconfig"; path = "Target Support Files/Pods-MoviesTests/Pods-MoviesTests.adhoc.xcconfig"; sourceTree = "<group>"; };
@@ -301,6 +305,7 @@
 				E232DE30242BC79C00CCDDC3 /* Assets.xcassets */,
 				E232DE32242BC79C00CCDDC3 /* LaunchScreen.storyboard */,
 				AFCC00412497D71000650A22 /* GoogleService-Info.plist */,
+				AF9D050E24B9273C0091A257 /* BillionDreams_PERSONAL.ttf */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -624,6 +629,7 @@
 			files = (
 				E232DE34242BC79C00CCDDC3 /* LaunchScreen.storyboard in Resources */,
 				E29818F224843B620087187D /* TitleTableCell.xib in Resources */,
+				AF9D050F24B9273C0091A257 /* BillionDreams_PERSONAL.ttf in Resources */,
 				E232DE31242BC79C00CCDDC3 /* Assets.xcassets in Resources */,
 				E26C4FE82498F4A500C3906D /* Main.storyboard in Resources */,
 				E26C4FDD2498EF7600C3906D /* Checkout.storyboard in Resources */,
@@ -844,6 +850,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E232DE3F242BC79D00CCDDC3 /* MoviesTests.swift in Sources */,
+				AF9D051024B92A4B0091A257 /* R.generated.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -856,6 +863,7 @@
 				E232DE4A242BC79D00CCDDC3 /* MoviesLaunchPerformanceTests.swift in Sources */,
 				FF2B5BAB2493822800D87EF4 /* HomePage.swift in Sources */,
 				FF2B5BA92493820400D87EF4 /* BasePage.swift in Sources */,
+				AF9D051124B92A4B0091A257 /* R.generated.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
