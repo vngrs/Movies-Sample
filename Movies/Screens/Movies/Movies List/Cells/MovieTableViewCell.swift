@@ -51,6 +51,7 @@ class MovieTableViewCell: TableViewCell, Accessible {
         releaseDate.text = presentation?.releaseDate
         rateLabel.text = presentation?.rating
         rateLabel.textColor = presentation?.ratingColor
+//        titleLabel.text = R.image.
 
         bannerImageView.image = nil
         if let url = presentation?.bannerUrl {

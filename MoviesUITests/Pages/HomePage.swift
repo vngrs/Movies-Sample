@@ -27,6 +27,8 @@ class HomePage: BasePage {
     lazy var firstMovieDate = app.staticTexts["\(Constants.movieTableViewCell).releaseDate"].firstMatch
     lazy var firstMoviePoint = app.staticTexts["\(Constants.movieTableViewCell).rateLabel"].firstMatch
 
+//    lazy var firstMoviePoint = app.staticTexts["\(Constants.movieTableViewCell).rateLabel"].firstMatch
+
     func moviesLoaded() -> Bool {
         if !firstMovieName.label.isEmpty &&
             !firstMovieDate.label.isEmpty &&
