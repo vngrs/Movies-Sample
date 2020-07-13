@@ -102,7 +102,6 @@ platform :ios do
     }
     build(schemes: schemes, config: build_config, export: "app-store", bitcode: true)
     upload_testflight(schemes: schemes)
-    increment_version
     upload_dsyms
   end
 
@@ -117,9 +116,7 @@ platform :ios do
     }
 
     build(schemes: schemes, config: build_config, export: "ad-hoc", bitcode: false)
-    upload_firebase(schemes: schemes)
-    # post_beta_to_slack(config: build_config)
-    increment_version
+    upload_firebase
   end
 
   #---------------------- DSYMS LANES ------------------------------#
@@ -140,57 +137,18 @@ platform :ios do
 
   #---------------------- PRIVATE LANES ------------------------------#
 
-  desc "build"
-  private_lane :build do |params|
+  private_lane :upload_firebase do
 
-    export_method = params[:export]
-    include_bitcode = params[:bitcode]
+    changeLog = ENV["CHANGE_LOG"]
 
-    puts export_method
-    puts include_bitcode
-
-    params[:schemes].each do | scheme, app_id |
-
-    version = get_build_number
-    ipa_name = "#{scheme}_#{version}"
-    ipa_path = "../#{ipa_name}.ipa"
-    build_config = params[:config]
-
-      if !File.file?(ipa_path)
-
-        # Build only if ipa not found
-        gym(
-          clean: true,
-          configuration: build_config,
-          scheme: scheme,
-          workspace: "Movies.xcworkspace",
-          export_method: export_method,
-          output_name: ipa_name,
-          include_bitcode: include_bitcode
-        )
-      else
-        puts "#{ipa_name}.ipa already exists. Skipping GYM"
-      end
-    end
-  end
-
-  private_lane :upload_firebase do |params|
-
-    params[:schemes].each do | scheme, app_id |
-
-    version = get_build_number
-    path = "#{scheme}_#{version}.ipa"
-
-    puts path
     firebase_app_distribution(
-        app: "1:141663741646:ios:f14686d984c8a3128ad29f",
+        app: ENV['FIREBASE_APP_ID'],
         groups: "Developers, Testers",
-        release_notes: "Lots of amazing new features to test out!",
+        release_notes: changeLog,
         firebase_cli_path: "/usr/local/bin/firebase",
-        ipa_path: path,
+        ipa_path: "build.ipa",
         debug: true
     )
-    end
   end
 
   private_lane :upload_testflight do |params|
@@ -211,52 +169,6 @@ platform :ios do
     end
   end
 
-  # ============================ VERSION CONTROL ============================#
-
-  lane :set_version do |params|
-
-    version = params[:v]
-
-    increment_build_number
-    increment_version_number(version_number: version)
-    commit_version_bump(message:"Prepare version v#{version} for next release", force: true, xcodeproj: "Movies.xcodeproj")
-  end
-
-  lane :increment_build do
-
-    version = get_version_number(target: "Movies")
-    increment_build_number
-    build_number_after_increment = get_build_number
-    commit_version_bump(message:"New build #{build_number_after_increment} - version v#{version} [skip ci]", force: true, xcodeproj: "Movies.xcodeproj")
-    push_to_git_remote
-  end
-
-  lane :increment_version do
-
-    # Incrementing version number is taking place after the successful build, to avoid the need to clean up
-    # after a failing build for any reason...
-
-    increment_build_number
-    build_number_after_increment = get_build_number
-    commit_version_bump(message:"Prepare build for next release build: #{build_number_after_increment}", force: true, xcodeproj: "Movies.xcodeproj")
-    push_to_git_remote
-  end
-
-  # ============================ REGISTER DEVICES ============================#
-
-  lane :register_new_devices do
-
-    register_devices(devices_file: "./devices.txt")
-    # register_devices(
-    #   devices: {
-    #     "Obada's iPhone 6" => "311e160f0e45a353eee276a000a90c72b342c2f1",
-    #     "Test iPhone 7 Plus" => "47967909d0b90df7d3444d2bbb8b44233475eba5",
-    #     "Ahmed Abdurrahman" => "00008020-001A0C381ED8003A",
-    #   }
-    # )
-    certs_all
-  end
-
   #  ===============================   CI Lanes
 
   desc "Firebase App Distribution"
@@ -267,17 +179,15 @@ platform :ios do
       "Movies" => "com.vngrs.Movies.demo"
     }
     auto_increment_version(tagPrefix: ReleaseTagPrefix::FIREBASE)
-    ci_build(schemes: schemes, config: build_config, export: "ad-hoc", bitcode: false)
+    build(schemes: schemes, config: build_config, export: "ad-hoc", bitcode: false)
+    upload_firebase
   end
 
   desc "CI build"
-  private_lane :ci_build do |params|
+  private_lane :build do |params|
 
     export_method = params[:export]
     include_bitcode = params[:bitcode]
-
-    puts export_method
-    puts include_bitcode
 
     params[:schemes].each do | scheme, app_id |
 
