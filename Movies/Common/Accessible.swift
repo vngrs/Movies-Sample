@@ -17,7 +17,7 @@ extension Accessible {
 
     func generateAccessibilityIdentifiers() {
 
-//        #if DEBUG
+        #if DEBUG
         let mirror = Mirror(reflecting: self)
 
         for child in mirror.children {
@@ -29,6 +29,6 @@ extension Accessible {
                 print(view.accessibilityIdentifier ?? "")
             }
         }
-//        #endif
+        #endif
     }
 }
