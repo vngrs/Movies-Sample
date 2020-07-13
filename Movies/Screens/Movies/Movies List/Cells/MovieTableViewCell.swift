@@ -48,7 +48,7 @@ class MovieTableViewCell: TableViewCell, Accessible {
     func updateUI() {
         
         titleLabel.text = presentation?.title
-        
+
 //        titleLabel.font = UIFont(name: "Billion Dreams", size: 30)
         titleLabel.font = R.font.billionDreams(size: 30)
 
@@ -56,6 +56,8 @@ class MovieTableViewCell: TableViewCell, Accessible {
         titleLabel.backgroundColor = R.color.darkGreen()
 
         releaseDate.text = presentation?.releaseDate
+        releaseDate.backgroundColor = R.color.darkGreen()
+
         rateLabel.text = presentation?.rating
         rateLabel.textColor = presentation?.ratingColor
 
