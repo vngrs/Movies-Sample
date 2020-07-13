@@ -133,6 +133,23 @@ struct R: Rswift.Validatable {
   }
   #endif
 
+  /// This `R.color` struct is generated, and contains static references to 1 colors.
+  struct color {
+    /// Color `DarkGreen`.
+    static let darkGreen = Rswift.ColorResource(bundle: R.hostingBundle, name: "DarkGreen")
+
+    #if os(iOS) || os(tvOS)
+    /// `UIColor(named: "DarkGreen", bundle: ..., traitCollection: ...)`
+    @available(tvOS 11.0, *)
+    @available(iOS 11.0, *)
+    static func darkGreen(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.darkGreen, compatibleWith: traitCollection)
+    }
+    #endif
+
+    fileprivate init() {}
+  }
+
   /// This `R.file` struct is generated, and contains static references to 2 files.
   struct file {
     /// Resource file `BillionDreams_PERSONAL.ttf`.
@@ -176,8 +193,8 @@ struct R: Rswift.Validatable {
   struct image {
     /// Image `cart`.
     static let cart = Rswift.ImageResource(bundle: R.hostingBundle, name: "cart")
-    /// Image `movie`.
-    static let movie = Rswift.ImageResource(bundle: R.hostingBundle, name: "movie")
+    /// Image `movies`.
+    static let movies = Rswift.ImageResource(bundle: R.hostingBundle, name: "movies")
 
     #if os(iOS) || os(tvOS)
     /// `UIImage(named: "cart", bundle: ..., traitCollection: ...)`
@@ -187,9 +204,9 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "movie", bundle: ..., traitCollection: ...)`
-    static func movie(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.movie, compatibleWith: traitCollection)
+    /// `UIImage(named: "movies", bundle: ..., traitCollection: ...)`
+    static func movies(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.movies, compatibleWith: traitCollection)
     }
     #endif
 

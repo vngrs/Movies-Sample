@@ -38,7 +38,7 @@ class TabBarController: UITabBarController {
 
         TabInfo(
             title: "Movies",
-            icon: R.image.movie()!,
+            icon: R.image.movies()!,
             viewController: MoviesListViewController.self
         ),
         TabInfo(

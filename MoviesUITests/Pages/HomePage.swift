@@ -18,7 +18,6 @@ class HomePage: BasePage {
         static let movieTableViewCell = "MovieTableViewCell"
     }
 
-
     lazy var popular = app.buttons["\(Constants.moviesListViewController).popularButton"]
     lazy var playing = app.buttons["\(Constants.moviesListViewController).playingButton"]
     lazy var upcoming = app.buttons["\(Constants.moviesListViewController).nextButton"]
