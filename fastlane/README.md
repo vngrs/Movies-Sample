@@ -31,9 +31,9 @@ fastlane ios uitesting_signing
 fastlane ios certs_dev
 ```
 Fetches the provisioning profiles so you can build locally and deploy to your device
-### ios certs_beta
+### ios certs_adhoc
 ```
-fastlane ios certs_beta
+fastlane ios certs_adhoc
 ```
 Fetches the provisioning profiles so you can build for beta or appstore distribution
 ### ios certs_appstore
@@ -56,26 +56,6 @@ Firebase App Distribution
 fastlane ios upload_dsyms
 ```
 Upload any dsyms in the current directory to crashlytics
-### ios set_version
-```
-fastlane ios set_version
-```
-
-### ios increment_build
-```
-fastlane ios increment_build
-```
-
-### ios increment_version
-```
-fastlane ios increment_version
-```
-
-### ios register_new_devices
-```
-fastlane ios register_new_devices
-```
-
 ### ios ci_adhoc_build
 ```
 fastlane ios ci_adhoc_build

@@ -43,7 +43,7 @@ platform :ios do
   lane :certs_all do
 
     certs_dev
-    certs_beta
+    certs_adhoc
     certs_appstore
     uitesting_signing
   end
@@ -70,7 +70,7 @@ platform :ios do
   end
 
   desc "Fetches the provisioning profiles so you can build for beta or appstore distribution"
-  lane :certs_beta do
+  lane :certs_adhoc do
 
     match(
       app_identifier: ENV["PRODUCE_APP_IDENTIFIER"],
