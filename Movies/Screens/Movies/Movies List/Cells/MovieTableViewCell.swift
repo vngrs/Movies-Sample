@@ -50,6 +50,7 @@ class MovieTableViewCell: TableViewCell, Accessible {
         titleLabel.text = presentation?.title
 //        titleLabel.font = UIFont(name: "Billion Dreams", size: 30)
         titleLabel.font = R.font.billionDreams(size: 30)
+//        titleLabel.backgroundColor = UIColor(red: 155/255, green: 155/255, blue: 155/255, alpha: 1)
         titleLabel.backgroundColor = R.color.darkGreen()
 
         releaseDate.text = presentation?.releaseDate
