@@ -111,9 +111,11 @@ platform :ios do
     schemes = {
       "Movies" => "com.vngrs.Movies.demo"
     }
-
+    certs_adhoc
+    auto_increment_version(tagPrefix: ReleaseTagPrefix::FIREBASE)
     build(schemes: schemes, config: build_config, export: "ad-hoc", bitcode: false)
     upload_firebase
+    push_new_version
   end
 
   #---------------------- DSYMS LANES ------------------------------#
@@ -134,51 +136,19 @@ platform :ios do
 
   #---------------------- PRIVATE LANES ------------------------------#
 
-  private_lane :upload_firebase do
+  private_lane :auto_increment_version do |params|
 
-    puts "#{@CHANGE_LOG}"
-
-    # firebase_app_distribution(
-    #     app: ENV['FIREBASE_APP_ID'],
-    #     groups: "Developers, Testers",
-    #     release_notes: @CHANGE_LOG,
-    #     firebase_cli_path: "/usr/local/bin/firebase",
-    #     ipa_path: "build.ipa",
-    #     debug: true
-    # )
+      sh("git fetch --tags")
+      analyze_commits(match: "#{params[:tagPrefix]}*")
+      increment_build_number
+      @BUILD_NUMBER = get_build_number
+      @VERSION_NUMBER = lane_context[SharedValues::RELEASE_NEXT_VERSION]
+      @CHANGE_LOG = conventional_changelog(title: "Changelog", format: 'plain',  display_links: true)
+      
+      puts "NEW VERSION >>> #{@VERSION_NUMBER} #{@BUILD_NUMBER}"
+      increment_version_number(version_number: @VERSION_NUMBER)
   end
-
-  private_lane :upload_testflight do |params|
-
-    version = get_build_number
-    params[:schemes].each do | scheme, app_id |
-
-      path = "#{scheme}_#{version}.ipa"
-
-      upload_to_testflight(
-        beta_app_feedback_email: "obada@vngrs.com",
-        notify_external_testers: true,
-        ipa: path,
-        skip_submission: true,
-        skip_waiting_for_build_processing: true,
-        username: "obada@vngrs.com"
-      )
-    end
-  end
-
-  desc "Firebase App Distribution"
-  lane :adhoc_build do
-
-    build_config = "AdHoc"
-    schemes = {
-      "Movies" => "com.vngrs.Movies.demo"
-    }
-    auto_increment_version(tagPrefix: ReleaseTagPrefix::FIREBASE)
-    # build(schemes: schemes, config: build_config, export: "ad-hoc", bitcode: false)
-    upload_firebase
-    push_new_version
-  end
-
+  
   desc "Build"
   private_lane :build do |params|
 
@@ -203,47 +173,48 @@ platform :ios do
     end
   end
 
-  private_lane :auto_increment_version do |params|
+  private_lane :upload_firebase do
 
-      sh("git fetch --tags")
-      analyze_commits(match: "#{params[:tagPrefix]}*")
-      increment_build_number
-      @BUILD_NUMBER = get_build_number
-      @VERSION_NUMBER = lane_context[SharedValues::RELEASE_NEXT_VERSION]
-      @CHANGE_LOG = conventional_changelog(title: "Changelog", format: 'plain',  display_links: true)
-      
-      puts "NEW VERSION >>> #{@VERSION_NUMBER} #{@BUILD_NUMBER}"
-      increment_version_number(version_number: @VERSION_NUMBER)
+    firebase_app_distribution(
+        app: ENV['FIREBASE_APP_ID'],
+        groups: "Developers, Testers",
+        release_notes: @CHANGE_LOG,
+        firebase_cli_path: "/usr/local/bin/firebase",
+        ipa_path: "build.ipa",
+        debug: true
+    )
+  end
 
-      # begin
-      #   sh("envman add --key CHANGE_LOG --value \"#{@CHANGE_LOG}\"")
-      # rescue => e
-      #   puts "Running locally, no envman available, will continue anyway"
-      # end
+  private_lane :upload_testflight do |params|
+
+    version = get_build_number
+    params[:schemes].each do | scheme, app_id |
+
+      path = "build.ipa"
+
+      upload_to_testflight(
+        beta_app_feedback_email: "developer@vngrs.com",
+        notify_external_testers: true,
+        ipa: path,
+        skip_submission: true,
+        skip_waiting_for_build_processing: true,
+        username: "developer@vngrs.com"
+      )
+    end
   end
   
   private_lane :push_new_version do # Should run only AFTER a successful build
 
-      # @VERSION_NUMBER = ENV["VERSION_NUMBER"]
-      # @BUILD_NUMBER = ENV["BUILD_NUMBER"]
-
-      puts @VERSION_NUMBER
-      puts @BUILD_NUMBER
-
       commit_version_bump(message:"New version: #{@VERSION_NUMBER} (#{@BUILD_NUMBER}) [skip ci]", force: true, xcodeproj: "Movies.xcodeproj")
-      # set_git_release(
-      # 	releaseName: "Firebase",
-      # 	tagPrefix: "#{ReleaseTagPrefix::FIREBASE}",
-      # 	is_prerelease: true
-      # )
-      # push_to_git_remote(remote_branch: "master", tags: true)
+      set_git_release(
+      	releaseName: "Firebase",
+      	tagPrefix: "#{ReleaseTagPrefix::FIREBASE}",
+      	is_prerelease: true
+      )
+      push_to_git_remote(remote_branch: "master", tags: true)
   end
 
   private_lane :set_git_release do |params|
-    
-    @CHANGE_LOG = ENV["CHANGE_LOG"]
-    @VERSION_NUMBER = ENV["VERSION_NUMBER"]
-    @BUILD_NUMBER = ENV["BUILD_NUMBER"]
 
     set_github_release(
   		repository_name: ENV['GITHUB_REPOSITORY_NAME'],
