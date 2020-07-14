@@ -118,6 +118,12 @@ platform :ios do
     push_new_version
   end
 
+  lane :adhoc_build do
+
+    certs_adhoc
+    build(schemes: schemes, config: build_config, export: "ad-hoc", bitcode: false)
+  end
+
   #---------------------- DSYMS LANES ------------------------------#
 
   desc "Upload any dsyms in the current directory to crashlytics"
