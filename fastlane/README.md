@@ -56,21 +56,6 @@ Firebase App Distribution
 fastlane ios upload_dsyms
 ```
 Upload any dsyms in the current directory to crashlytics
-### ios ci_adhoc_build
-```
-fastlane ios ci_adhoc_build
-```
-Firebase App Distribution
-### ios auto_increment_version
-```
-fastlane ios auto_increment_version
-```
-
-### ios push_new_version
-```
-fastlane ios push_new_version
-```
-
 
 ----
 
