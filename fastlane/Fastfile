@@ -121,7 +121,10 @@ platform :ios do
   lane :adhoc_build do
 
     certs_adhoc
-    build(schemes: schemes, config: build_config, export: "ad-hoc", bitcode: false)
+    schemes = {
+      "Movies" => "com.vngrs.Movies.demo"
+    }
+    build(schemes: schemes, config: "AdHoc", export: "ad-hoc", bitcode: false)
   end
 
   #---------------------- DSYMS LANES ------------------------------#
