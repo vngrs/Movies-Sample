@@ -1,4 +1,4 @@
-git_url("https://github.com/vngrs/movies-demo-ios-signing")
+git_url("https://github.com/vngrs/apple-code-signing")
 git_branch("master")
 storage_mode("git")
 
