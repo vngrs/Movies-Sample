@@ -135,15 +135,15 @@ struct R: Rswift.Validatable {
 
   /// This `R.color` struct is generated, and contains static references to 1 colors.
   struct color {
-    /// Color `DarkGreen`.
-    static let darkGreen = Rswift.ColorResource(bundle: R.hostingBundle, name: "DarkGreen")
+    /// Color `LightGreen`.
+    static let lightGreen = Rswift.ColorResource(bundle: R.hostingBundle, name: "LightGreen")
 
     #if os(iOS) || os(tvOS)
-    /// `UIColor(named: "DarkGreen", bundle: ..., traitCollection: ...)`
+    /// `UIColor(named: "LightGreen", bundle: ..., traitCollection: ...)`
     @available(tvOS 11.0, *)
     @available(iOS 11.0, *)
-    static func darkGreen(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
-      return UIKit.UIColor(resource: R.color.darkGreen, compatibleWith: traitCollection)
+    static func lightGreen(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.lightGreen, compatibleWith: traitCollection)
     }
     #endif
 
