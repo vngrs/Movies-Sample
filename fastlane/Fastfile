@@ -136,14 +136,12 @@ platform :ios do
 
   private_lane :upload_firebase do
 
-    changeLog = ENV["CHANGE_LOG"]
-
-    puts "#{changelog}"
+    puts "#{@CHANGE_LOG}"
 
     # firebase_app_distribution(
     #     app: ENV['FIREBASE_APP_ID'],
     #     groups: "Developers, Testers",
-    #     release_notes: changeLog,
+    #     release_notes: @CHANGE_LOG,
     #     firebase_cli_path: "/usr/local/bin/firebase",
     #     ipa_path: "build.ipa",
     #     debug: true
@@ -217,21 +215,20 @@ platform :ios do
       puts "NEW VERSION >>> #{@VERSION_NUMBER} #{@BUILD_NUMBER}"
       increment_version_number(version_number: @VERSION_NUMBER)
 
-      begin
-        sh("envman add --key CHANGE_LOG --value \"#{@CHANGE_LOG}\"")
-      rescue => e
-        puts "Running locally, no envman available, will continue anyway"
-      end
-      
-      ENV["CHANGE_LOG"] = @CHANGE_LOG
-      ENV["VERSION_NUMBER"] = @VERSION_NUMBER
-      ENV["BUILD_NUMBER"] = @BUILD_NUMBER
+      # begin
+      #   sh("envman add --key CHANGE_LOG --value \"#{@CHANGE_LOG}\"")
+      # rescue => e
+      #   puts "Running locally, no envman available, will continue anyway"
+      # end
   end
   
   private_lane :push_new_version do # Should run only AFTER a successful build
 
-      @VERSION_NUMBER = ENV["VERSION_NUMBER"]
-      @BUILD_NUMBER = ENV["BUILD_NUMBER"]
+      # @VERSION_NUMBER = ENV["VERSION_NUMBER"]
+      # @BUILD_NUMBER = ENV["BUILD_NUMBER"]
+
+      puts @VERSION_NUMBER
+      puts @BUILD_NUMBER
 
       commit_version_bump(message:"New version: #{@VERSION_NUMBER} (#{@BUILD_NUMBER}) [skip ci]", force: true, xcodeproj: "Movies.xcodeproj")
       # set_git_release(
