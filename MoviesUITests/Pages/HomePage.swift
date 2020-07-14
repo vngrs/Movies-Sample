@@ -8,6 +8,7 @@
 
 import Foundation
 import XCTest
+import Rswift
 
 class HomePage: BasePage {
 
@@ -16,7 +17,6 @@ class HomePage: BasePage {
         static let moviesListViewController = "MoviesListViewController"
         static let movieTableViewCell = "MovieTableViewCell"
     }
-
 
     lazy var popular = app.buttons["\(Constants.moviesListViewController).popularButton"]
     lazy var playing = app.buttons["\(Constants.moviesListViewController).playingButton"]

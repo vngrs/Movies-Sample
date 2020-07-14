@@ -84,12 +84,16 @@ PODS:
   - nanopb/decode (1.30905.0)
   - nanopb/encode (1.30905.0)
   - PromisesObjC (1.2.9)
+  - R.swift (5.2.2):
+    - R.swift.Library (~> 5.2.0)
+  - R.swift.Library (5.2.0)
 
 DEPENDENCIES:
   - AlamofireImage (~> 3.0)
   - "CoreVNGRSKit (from `ssh://git@github.com/vngrs/ios-core-vngrs-kit.git`, branch `master`)"
   - Firebase/Analytics
   - Firebase/Crashlytics
+  - R.swift
 
 SPEC REPOS:
   trunk:
@@ -109,6 +113,8 @@ SPEC REPOS:
     - GoogleUtilities
     - nanopb
     - PromisesObjC
+    - R.swift
+    - R.swift.Library
 
 EXTERNAL SOURCES:
   CoreVNGRSKit:
@@ -138,7 +144,9 @@ SPEC CHECKSUMS:
   GoogleUtilities: 39530bc0ad980530298e9c4af8549e991fd033b1
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
   PromisesObjC: b48e0338dbbac2207e611750777895f7a5811b75
+  R.swift: 7c52cdc57a66840ffe6cbd8a823d732059d42a32
+  R.swift.Library: 5ba4f1631300caf9a4d890186930da85d540769d
 
-PODFILE CHECKSUM: 6bd7b838c61c6a5ed244531d33de51640a2511f5
+PODFILE CHECKSUM: e9659c45f0e4b32feb887409f4e563bf4cf31422
 
 COCOAPODS: 1.9.3
