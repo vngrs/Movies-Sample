@@ -29,6 +29,7 @@ build/
 target
 *.ipa
 *dsym.zip
+*.log
 
 # Other source repository archive directories (protects when importing)
 .hg
@@ -63,3 +64,6 @@ Fabric.framework
 .idea
 .idea/
 /.ruby-version
+
+#sonarqube
+.scannerwork
