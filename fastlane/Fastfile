@@ -99,9 +99,14 @@ platform :ios do
     schemes = {
       "Movies" => "com.vngrs.Movies.demo"
     }
+    certs_appstore
+    auto_increment_version(tagPrefix: ReleaseTagPrefix::APPSTORE)
     build(schemes: schemes, config: build_config, export: "app-store", bitcode: true)
     upload_testflight(schemes: schemes)
-    upload_dsyms
+    push_new_version(
+      releaseName: "AppStore",
+      tagPrefix: ReleaseTagPrefix::APPSTORE
+    )
   end
 
   desc "Firebase App Distribution"
@@ -115,7 +120,10 @@ platform :ios do
     auto_increment_version(tagPrefix: ReleaseTagPrefix::FIREBASE)
     build(schemes: schemes, config: build_config, export: "ad-hoc", bitcode: false)
     upload_firebase
-    push_new_version
+    push_new_version(
+      releaseName: "Firebase",
+      tagPrefix: ReleaseTagPrefix::FIREBASE
+    )
   end
 
   lane :adhoc_build do
@@ -212,12 +220,12 @@ platform :ios do
     end
   end
   
-  private_lane :push_new_version do # Should run only AFTER a successful build
+  private_lane :push_new_version do |params|
 
       commit_version_bump(message:"New version: #{@VERSION_NUMBER} (#{@BUILD_NUMBER}) [skip ci]", force: true, xcodeproj: "Movies.xcodeproj")
       set_git_release(
-      	releaseName: "Firebase",
-      	tagPrefix: "#{ReleaseTagPrefix::FIREBASE}",
+      	releaseName: params[:releaseName],
+      	tagPrefix: params[:tagPrefix],
       	is_prerelease: true
       )
       push_to_git_remote(remote_branch: "master", tags: true)
