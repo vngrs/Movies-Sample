@@ -109,6 +109,33 @@ platform :ios do
     )
   end
 
+  desc "AppStore Distribution Preparation"
+  lane :prepare_testflight do |params|
+
+    build_config = "Release"
+    schemes = {
+      "Movies" => "com.vngrs.Movies.demo"
+    }
+    certs_appstore
+    auto_increment_version(tagPrefix: ReleaseTagPrefix::APPSTORE)
+    build(schemes: schemes, config: build_config, export: "app-store", bitcode: true)
+    
+    push_new_version(
+      releaseName: "AppStore",
+      tagPrefix: ReleaseTagPrefix::APPSTORE
+    )
+  end
+
+  lane :new_testflight_version do
+
+    auto_increment_version(tagPrefix: ReleaseTagPrefix::APPSTORE)
+    push_new_version(
+      releaseName: "AppStore",
+      tagPrefix: ReleaseTagPrefix::APPSTORE
+    )
+  end
+  
+
   desc "Firebase App Distribution"
   lane :go_firebase do
 
