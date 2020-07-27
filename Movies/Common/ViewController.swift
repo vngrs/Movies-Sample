@@ -9,10 +9,11 @@
 import Foundation
 import CoreVNGRSKit
 
-class ViewController: BaseViewController, Accessible {
+class ViewController: BaseViewController { // , Accessible {
 
     override func viewDidLoad() {
 
-        generateAccessibilityIdentifiers()
+        super.viewDidLoad()
+//        generateAccessibilityIdentifiers()
     }
 }
