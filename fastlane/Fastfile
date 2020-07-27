@@ -119,11 +119,6 @@ platform :ios do
     certs_appstore
     auto_increment_version(tagPrefix: ReleaseTagPrefix::APPSTORE)
     build(schemes: schemes, config: build_config, export: "app-store", bitcode: true)
-    
-    push_new_version(
-      releaseName: "AppStore",
-      tagPrefix: ReleaseTagPrefix::APPSTORE
-    )
   end
 
   lane :new_testflight_version do
