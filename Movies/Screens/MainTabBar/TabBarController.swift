@@ -38,12 +38,12 @@ class TabBarController: UITabBarController {
 
         TabInfo(
             title: "Movies",
-            icon: #imageLiteral(resourceName: "movie.png"),
+            icon: Asset.movie.image,
             viewController: MoviesListViewController.self
         ),
         TabInfo(
             title: "Checkout",
-            icon: #imageLiteral(resourceName: "cart.png"),
+            icon: Asset.cart.image,
             viewController: CartViewController.self
         )
     ]

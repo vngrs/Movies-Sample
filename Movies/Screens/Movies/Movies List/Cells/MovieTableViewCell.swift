@@ -48,7 +48,9 @@ class MovieTableViewCell: TableViewCell, Accessible {
     func updateUI() {
         
         titleLabel.text = presentation?.title
+        titleLabel.textColor = Asset.lightGreen.color
         releaseDate.text = presentation?.releaseDate
+        releaseDate.textColor = ColorName.articleBody.color
         rateLabel.text = presentation?.rating
         rateLabel.textColor = presentation?.ratingColor
 
