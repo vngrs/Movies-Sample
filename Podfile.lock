@@ -84,12 +84,14 @@ PODS:
   - nanopb/decode (1.30905.0)
   - nanopb/encode (1.30905.0)
   - PromisesObjC (1.2.9)
+  - SwiftGen (6.2.1)
 
 DEPENDENCIES:
   - AlamofireImage (~> 3.0)
   - "CoreVNGRSKit (from `ssh://git@github.com/vngrs/ios-core-vngrs-kit.git`, branch `master`)"
   - Firebase/Analytics
   - Firebase/Crashlytics
+  - SwiftGen (~> 6.0)
 
 SPEC REPOS:
   trunk:
@@ -109,6 +111,7 @@ SPEC REPOS:
     - GoogleUtilities
     - nanopb
     - PromisesObjC
+    - SwiftGen
 
 EXTERNAL SOURCES:
   CoreVNGRSKit:
@@ -138,7 +141,8 @@ SPEC CHECKSUMS:
   GoogleUtilities: 39530bc0ad980530298e9c4af8549e991fd033b1
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
   PromisesObjC: b48e0338dbbac2207e611750777895f7a5811b75
+  SwiftGen: 62e69d127507be1538d4263e137b2290cd6ab272
 
-PODFILE CHECKSUM: 6bd7b838c61c6a5ed244531d33de51640a2511f5
+PODFILE CHECKSUM: aa022d886aef2349deac9ad9717199da7309c749
 
 COCOAPODS: 1.9.3

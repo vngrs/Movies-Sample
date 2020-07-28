@@ -1,0 +1,11 @@
+xcassets:
+  inputs: Movies/Resources
+  outputs:
+    templateName: swift5
+    output: Assets.swift
+
+colors:
+  inputs: Movies/Resources/colors.txt
+  outputs:
+    templateName: swift5
+    output: Colors.swift

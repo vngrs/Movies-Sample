@@ -12,6 +12,7 @@ target 'Movies' do
 #  pod 'Firebase'
   pod 'Firebase/Analytics'
   pod 'Firebase/Crashlytics'
+  pod 'SwiftGen', '~> 6.0'
 
   target 'MoviesTests' do
     inherit! :search_paths
