@@ -35,6 +35,7 @@ class MoviesListViewController: ViewController, StoryboardBased {
         configureViews()
         addChangeHandlers()
         viewModel.loadMoreMovies()
+        makeViewTestable()
     }
 
     private func configureViews() {
@@ -134,5 +135,20 @@ extension MoviesListViewController: UITableViewDataSource, UITableViewDelegate {
                 AppRouter.routeToMovieDetail(from: self, movie: movie)
             }
         }
+    }
+}
+
+extension MoviesListViewController: UITestablePage {
+
+    typealias UIElementType = UIElements
+
+    func makeViewTestable() {
+
+        makeViewTestable(self.view, using: .homeRoot)
+        makeViewTestable(playingButton, using: .homePlayButton)
+        makeViewTestable(topButton, using: .homeTopButton)
+        makeViewTestable(nextButton, using: .homeUpcomingButton)
+        makeViewTestable(popularButton, using: .homePopularButton)
+        makeViewTestable(tableView, using: .homeTableView)
     }
 }

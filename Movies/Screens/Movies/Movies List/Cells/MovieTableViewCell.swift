@@ -19,7 +19,7 @@ struct MovieCellPresentation: Presentation {
     let ratingColor: UIColor?
 }
 
-class MovieTableViewCell: TableViewCell, Accessible {
+class MovieTableViewCell: TableViewCell {
 
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var bannerImageView: UIImageView!
@@ -37,7 +37,7 @@ class MovieTableViewCell: TableViewCell, Accessible {
 
         super.applyStyling()
 
-        generateAccessibilityIdentifiers()
+        makeViewTestable()
 
         bannerImageView.roundCorners(cornerRadius: 20.0)
         rateView.roundCorners(cornerRadius: 30.0)
@@ -56,5 +56,18 @@ class MovieTableViewCell: TableViewCell, Accessible {
         if let url = presentation?.bannerUrl {
             bannerImageView.af_setImage(withURL: url)
         }
+    }
+}
+
+extension MovieTableViewCell: UITestablePage {
+
+    typealias UIElementType = UIElements
+
+    func makeViewTestable() {
+
+        makeViewTestable(self, using: .movieCell)
+        makeViewTestable(titleLabel, using: .movieCellTitle)
+        makeViewTestable(releaseDate, using: .movieCellDate)
+        makeViewTestable(rateLabel, using: .movieCellPoints)
     }
 }
