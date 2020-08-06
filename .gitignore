@@ -67,3 +67,6 @@ Fabric.framework
 
 #sonarqube
 .scannerwork
+
+#setup
+/.python-version
