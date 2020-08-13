@@ -62,6 +62,8 @@ class MoviesListViewController: ViewController, StoryboardBased {
             case .loaded:
                 self.activityIndicator.stopAnimating()
                 self.presentation.update(with: self.viewModel.state)
+            case .debug:
+                AppRouter.routeToDebugMode(from: self)
             case .failed(let error):
                 self.activityIndicator.stopAnimating()
                 self.showError(message: error)

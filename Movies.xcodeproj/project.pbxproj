@@ -12,6 +12,10 @@
 		AF24590E24A40B7E00B65224 /* Accessible.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF24590D24A40B7E00B65224 /* Accessible.swift */; };
 		AF7CD74B24AA23730070F182 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7CD74A24AA23730070F182 /* ViewController.swift */; };
 		AFCC00422497D71100650A22 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AFCC00412497D71000650A22 /* GoogleService-Info.plist */; };
+		AFD5F47F24DC2BD0000F9858 /* DebugModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD5F47E24DC2BD0000F9858 /* DebugModeViewController.swift */; };
+		AFD5F48124DC2C1E000F9858 /* DebugModeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD5F48024DC2C1E000F9858 /* DebugModeRouter.swift */; };
+		AFD5F48324DC2C2B000F9858 /* DebugModeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD5F48224DC2C2B000F9858 /* DebugModeViewModel.swift */; };
+		AFD5F48524DC2DF6000F9858 /* DebugMode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFD5F48424DC2DF6000F9858 /* DebugMode.storyboard */; };
 		DBB73DBDCDE96FEFB9EB9974 /* Pods_MoviesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62C80DF37855A04B9E27D262 /* Pods_MoviesTests.framework */; };
 		E232DE28242BC79B00CCDDC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E232DE27242BC79B00CCDDC3 /* AppDelegate.swift */; };
 		E232DE2C242BC79B00CCDDC3 /* MoviesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E232DE2B242BC79B00CCDDC3 /* MoviesListViewController.swift */; };
@@ -92,6 +96,10 @@
 		AF24590D24A40B7E00B65224 /* Accessible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accessible.swift; sourceTree = "<group>"; };
 		AF7CD74A24AA23730070F182 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		AFCC00412497D71000650A22 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		AFD5F47E24DC2BD0000F9858 /* DebugModeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugModeViewController.swift; sourceTree = "<group>"; };
+		AFD5F48024DC2C1E000F9858 /* DebugModeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugModeRouter.swift; sourceTree = "<group>"; };
+		AFD5F48224DC2C2B000F9858 /* DebugModeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugModeViewModel.swift; sourceTree = "<group>"; };
+		AFD5F48424DC2DF6000F9858 /* DebugMode.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DebugMode.storyboard; sourceTree = "<group>"; };
 		B188D99037459BD474468922 /* Pods-Movies-MoviesUITests.adhoc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movies-MoviesUITests.adhoc.xcconfig"; path = "Target Support Files/Pods-Movies-MoviesUITests/Pods-Movies-MoviesUITests.adhoc.xcconfig"; sourceTree = "<group>"; };
 		C947A7EF66E201BEC02F814D /* Pods-MoviesTests.adhoc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoviesTests.adhoc.xcconfig"; path = "Target Support Files/Pods-MoviesTests/Pods-MoviesTests.adhoc.xcconfig"; sourceTree = "<group>"; };
 		D01A276615F114E9078F1C32 /* Pods-Movies-MoviesUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movies-MoviesUITests.release.xcconfig"; path = "Target Support Files/Pods-Movies-MoviesUITests/Pods-Movies-MoviesUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -207,6 +215,17 @@
 				62C80DF37855A04B9E27D262 /* Pods_MoviesTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AFD5F47D24DACFA3000F9858 /* DebugMode */ = {
+			isa = PBXGroup;
+			children = (
+				AFD5F48424DC2DF6000F9858 /* DebugMode.storyboard */,
+				AFD5F47E24DC2BD0000F9858 /* DebugModeViewController.swift */,
+				AFD5F48024DC2C1E000F9858 /* DebugModeRouter.swift */,
+				AFD5F48224DC2C2B000F9858 /* DebugModeViewModel.swift */,
+			);
+			path = DebugMode;
 			sourceTree = "<group>";
 		};
 		E232DE1B242BC79B00CCDDC3 = {
@@ -346,8 +365,8 @@
 			isa = PBXGroup;
 			children = (
 				E232DE2D242BC79B00CCDDC3 /* Movies.storyboard */,
-				E29818E5248430290087187D /* Movie Details */,
 				E28B259A245B0ACB0067C622 /* Movies List */,
+				E29818E5248430290087187D /* Movie Details */,
 			);
 			path = Movies;
 			sourceTree = "<group>";
@@ -413,6 +432,7 @@
 				E26C4FE12498F1BA00C3906D /* MainTabBar */,
 				E26C4FE62498F48200C3906D /* Movies */,
 				E26C4FDB2498EF6300C3906D /* Checkout */,
+				AFD5F47D24DACFA3000F9858 /* DebugMode */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -619,6 +639,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E232DE34242BC79C00CCDDC3 /* LaunchScreen.storyboard in Resources */,
+				AFD5F48524DC2DF6000F9858 /* DebugMode.storyboard in Resources */,
 				E29818F224843B620087187D /* TitleTableCell.xib in Resources */,
 				E232DE31242BC79C00CCDDC3 /* Assets.xcassets in Resources */,
 				E26C4FE82498F4A500C3906D /* Main.storyboard in Resources */,
@@ -780,17 +801,20 @@
 				E2496205245B28810058DFDD /* PopularMoviesRequest.swift in Sources */,
 				E2496208245B294D0058DFDD /* MoviesResponse.swift in Sources */,
 				E29818E4248429EF0087187D /* RESTMovieModel.swift in Sources */,
+				AFD5F48324DC2C2B000F9858 /* DebugModeViewModel.swift in Sources */,
 				E2AD8A842499169900FFE639 /* CheckoutCoordinator.swift in Sources */,
 				E2ECE6C5245FB2C000AF4E3F /* NowPlayingRequest.swift in Sources */,
 				E26C4FF12498FFBB00C3906D /* NavigationController.swift in Sources */,
 				E29818EE2484336C0087187D /* MovieDetailsRouter.swift in Sources */,
 				E28B2598245B0A100067C622 /* BaseRequest.swift in Sources */,
 				E26C4FE02498EFC600C3906D /* CartViewController.swift in Sources */,
+				AFD5F48124DC2C1E000F9858 /* DebugModeRouter.swift in Sources */,
 				E2ECE6C7245FB2E700AF4E3F /* UpcomingRequest.swift in Sources */,
 				E29818F02484397D0087187D /* AppRouter.swift in Sources */,
 				E28B259D245B25890067C622 /* LaunchManager.swift in Sources */,
 				E2AD8A80249915C700FFE639 /* PaymentMethodViewController.swift in Sources */,
 				E26C4FEB2498F4E800C3906D /* WelcomeViewController.swift in Sources */,
+				AFD5F47F24DC2BD0000F9858 /* DebugModeViewController.swift in Sources */,
 				E2ECE6C3245FB29500AF4E3F /* TopRatedRequest.swift in Sources */,
 				E29818F424843BD30087187D /* TitleTableCell.swift in Sources */,
 				AF7CD74B24AA23730070F182 /* ViewController.swift in Sources */,

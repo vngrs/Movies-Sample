@@ -12,20 +12,34 @@ import UIKit
 enum Constants {
 
     // TODO read from configuration
-    static let apiURL = "https://api.themoviedb.org/3"
+    static let liveApiURL = "https://api.themoviedb.org/3"
+    static let debugApiURL = "https://api.themoviedb.org/3"
+
+    static let mode = "mode"
+    static let live = "live"
+    static let debug = "debug"
 }
 
 class LaunchManager {
 
-static let shared = LaunchManager()
+    static let shared = LaunchManager()
+    let defaults = UserDefaults.standard
+    var url: String = ""
 
-private init() {}
+    private init() {}
 
-func launch(
-    _ application: UIApplication,
-    launchOptions: [UIApplication.LaunchOptionsKey: Any]?
-    ) {
+    func launch(_ application: UIApplication, launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
 
-        NetworkingManager.shared.setHost(Constants.apiURL)
+        var mode = defaults.string(forKey: Constants.mode)
+        print("LaunchManager.Mode", mode ?? "")
+        guard mode != nil else { return mode = Constants.live }
+
+        if mode == Constants.live {
+            url = Constants.liveApiURL
+        } else {
+            url = Constants.debugApiURL
+        }
+        
+        NetworkingManager.shared.setHost(url)
     }
 }

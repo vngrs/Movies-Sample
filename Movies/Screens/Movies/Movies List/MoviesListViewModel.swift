@@ -15,6 +15,7 @@ struct MoviesListState {
 
         case loading
         case loaded
+        case debug
         case failed(error: String)
     }
 
@@ -23,6 +24,7 @@ struct MoviesListState {
     var totalPages: Int = 2
     var isLoading = false
     var category: MoviesCategory = .popular
+    var totalClicked = 0
 }
 
 class MoviesListViewModel: StatefulViewModel<MoviesListState.Change> {
@@ -30,15 +32,64 @@ class MoviesListViewModel: StatefulViewModel<MoviesListState.Change> {
     var state = MoviesListState()
     let movieModel: MovieModel
 
+    var seconds = 5 //This variable will hold a starting value of seconds. It could be any amount above 0.
+    var timer: Timer?
+    var isTimerRunning = false //This will be used to make sure only one timer is created at a time.
+
     init(dataSource: MovieModel = RESTMovieModel()) {
 
         self.movieModel = dataSource
     }
 
+    func runTimer() {
+
+        guard timer == nil else { return }
+
+        seconds = 5
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
+        isTimerRunning = true
+    }
+
+    @objc func updateTimer() {
+
+        print("seconds", seconds)
+
+        if seconds < 1 {
+            timer?.invalidate()
+            timer = nil
+            isTimerRunning = false
+            state.totalClicked = 0
+        } else {
+            seconds -= 1     //This will decrement(count down)the seconds.
+        }
+    }
+
     func switchToTab(_ tab: MoviesCategory) {
 
-        guard tab != state.category else { return }
+        guard tab != state.category else {
 
+            if state.category == .popular {
+
+                self.runTimer()
+
+                if isTimerRunning {
+
+                    state.totalClicked += 1
+                    print("totalClicked:", state.totalClicked)
+
+                    if state.totalClicked >= 5 {
+
+                        print("Let's go Debug Mode")
+                        self.emit(change: .debug)
+                        state.totalClicked = 0
+                    }
+                }
+            }
+            return
+        }
+
+        state.totalClicked = 0
+        print("totalClicked:", state.totalClicked)
         state.category = tab
         state.page = 1
         state.isLoading = false

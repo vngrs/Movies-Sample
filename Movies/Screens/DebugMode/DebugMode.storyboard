@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Debug Mode View Controller-->
+        <scene sceneID="a4o-ny-Otx">
+            <objects>
+                <viewController storyboardIdentifier="DebugModeViewController" id="ciw-vv-2qS" customClass="DebugModeViewController" customModule="MoviesDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nP5-to-Nat">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="-25" translatesAutoresizingMaskIntoConstraints="NO" id="Nmg-iQ-0yc">
+                                <rect key="frame" x="71" y="415.5" width="272" height="65"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="6hQ-wI-ot4">
+                                        <rect key="frame" x="0.0" y="0.0" width="272" height="60"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5zX-aq-Nyi">
+                                                <rect key="frame" x="0.0" y="0.0" width="120" height="60"/>
+                                                <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="120" id="CfG-xX-Eg7"/>
+                                                    <constraint firstAttribute="height" constant="60" id="EYd-9Z-867"/>
+                                                </constraints>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" image="livephoto" catalog="system"/>
+                                                <connections>
+                                                    <action selector="didTapLiveMode:" destination="ciw-vv-2qS" eventType="touchUpInside" id="H3o-bD-6pW"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iRr-NI-W0g">
+                                                <rect key="frame" x="152" y="0.0" width="120" height="60"/>
+                                                <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" image="livephoto.slash" catalog="system"/>
+                                                <connections>
+                                                    <action selector="didTapDebugMode:" destination="ciw-vv-2qS" eventType="touchUpInside" id="Yro-ZI-UXn"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="5zX-aq-Nyi" firstAttribute="height" secondItem="iRr-NI-W0g" secondAttribute="height" id="aEh-vi-wfU"/>
+                                            <constraint firstItem="5zX-aq-Nyi" firstAttribute="width" secondItem="iRr-NI-W0g" secondAttribute="width" id="z4P-I0-HhV"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="vxJ-g3-OoG">
+                                        <rect key="frame" x="0.0" y="35" width="272" height="30"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TL2-e0-O8V">
+                                                <rect key="frame" x="0.0" y="0.0" width="120" height="30"/>
+                                                <state key="normal" title="Live">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="didTapLiveMode:" destination="ciw-vv-2qS" eventType="touchUpInside" id="8cq-gO-j0C"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nob-Uv-hjV">
+                                                <rect key="frame" x="152" y="0.0" width="120" height="30"/>
+                                                <state key="normal" title="Debug">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="didTapDebugMode:" destination="ciw-vv-2qS" eventType="touchUpInside" id="myw-OA-q2l"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="TL2-e0-O8V" firstAttribute="width" secondItem="nob-Uv-hjV" secondAttribute="width" id="zuz-cn-jR9"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1pT-Vy-geK">
+                                <rect key="frame" x="20" y="64" width="120" height="40"/>
+                                <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="ALG-9U-bsG"/>
+                                    <constraint firstAttribute="width" constant="120" id="FOn-wF-eez"/>
+                                </constraints>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTapCancel:" destination="ciw-vv-2qS" eventType="touchUpInside" id="ISA-17-asn"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Nmg-iQ-0yc" firstAttribute="centerX" secondItem="nP5-to-Nat" secondAttribute="centerX" id="3IM-vY-48g"/>
+                            <constraint firstItem="1pT-Vy-geK" firstAttribute="leading" secondItem="t7h-jZ-AQK" secondAttribute="leading" constant="20" id="8Xg-Iw-If1"/>
+                            <constraint firstItem="1pT-Vy-geK" firstAttribute="top" secondItem="t7h-jZ-AQK" secondAttribute="top" constant="20" id="Nsb-PC-Yq9"/>
+                            <constraint firstItem="Nmg-iQ-0yc" firstAttribute="centerY" secondItem="nP5-to-Nat" secondAttribute="centerY" id="REx-ZJ-gyT"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="t7h-jZ-AQK"/>
+                    </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="1pT-Vy-geK" id="9CS-yV-lC4"/>
+                        <outlet property="debugModeButton" destination="iRr-NI-W0g" id="Ybs-3b-O63"/>
+                        <outlet property="liveModeButton" destination="5zX-aq-Nyi" id="Le1-dk-LVW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5tq-dh-K9Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1736.2318840579712" y="108.48214285714285"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="livephoto" catalog="system" width="128" height="121"/>
+        <image name="livephoto.slash" catalog="system" width="128" height="121"/>
+    </resources>
+</document>
