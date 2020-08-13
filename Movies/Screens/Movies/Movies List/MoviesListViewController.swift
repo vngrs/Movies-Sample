@@ -12,6 +12,7 @@ import CoreVNGRSKit
 class MoviesListViewController: ViewController, StoryboardBased {
 
     static var storyboardName: String = "Movies"
+    let defaults = UserDefaults.standard
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -31,6 +32,11 @@ class MoviesListViewController: ViewController, StoryboardBased {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        self.children.forEach({ vc in
+            print("Dismiss \(vc.description)")
+            vc.dismiss(animated: false, completion: nil)
+        })
         
         configureViews()
         addChangeHandlers()
@@ -43,6 +49,28 @@ class MoviesListViewController: ViewController, StoryboardBased {
         tableView.cvkRegisterCell(type: MovieTableViewCell.self)
         tableView.dataSource = self
         tableView.delegate = self
+
+        var mode = defaults.string(forKey: Constants.mode)
+        print("LaunchManager.Mode", mode ?? "")
+        guard mode != nil else { return mode = Modes.live }
+
+        if mode == Modes.live {
+            if #available(iOS 13.0, *) {
+                overrideUserInterfaceStyle = .light
+            } else {
+                // Fallback on earlier versions
+            }
+        } else {
+            if #available(iOS 13.0, *) {
+                overrideUserInterfaceStyle = .dark
+                let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
+                navigationController?.navigationBar.titleTextAttributes = textAttributes
+                navigationController?.navigationBar.largeTitleTextAttributes = textAttributes
+
+            } else {
+                // Fallback on earlier versions
+            }
+        }
 
         resetFiltersStyles()
         popularButton.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .bold)

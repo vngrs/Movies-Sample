@@ -16,6 +16,12 @@ enum Constants {
     static let debugApiURL = "https://api.themoviedb.org/3"
 
     static let mode = "mode"
+//    static let live = "live"
+//    static let debug = "debug"
+}
+
+enum Modes {
+
     static let live = "live"
     static let debug = "debug"
 }
@@ -32,9 +38,9 @@ class LaunchManager {
 
         var mode = defaults.string(forKey: Constants.mode)
         print("LaunchManager.Mode", mode ?? "")
-        guard mode != nil else { return mode = Constants.live }
+        guard mode != nil else { return mode = Modes.live }
 
-        if mode == Constants.live {
+        if mode == Modes.live {
             url = Constants.liveApiURL
         } else {
             url = Constants.debugApiURL

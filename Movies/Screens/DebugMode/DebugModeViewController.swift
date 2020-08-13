@@ -41,7 +41,16 @@ class DebugModeViewController: ViewController, StoryboardBased {
             switch change {
                 // TODO
             case .mode:
-                self.dismiss(animated: true)
+                let storyboard = UIStoryboard(name: "Movies", bundle: nil)
+                let vc = storyboard.instantiateViewController(withIdentifier: "MoviesListViewController")
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: true, completion: nil)
+////                self.dismiss(animated: true)
+//                self.dismiss(animated: true) {
+//
+//                }
+////                exit(0)
+
             }
         }
     }
