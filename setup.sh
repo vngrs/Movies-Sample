@@ -1,8 +1,13 @@
 #!/bin/bash
 
+# - - - - - - - - -  V A R I A B L E S - - - - - - - - -
 SECONDS=0
 GSUTIL_INSTALL_DIR=$HOME/gsutil-install-dir
+LOG_FILE=setup-log.txt
+CHECK_XCODE_INSTALLATION=false
 
+
+# - - - - - - - - -  F U N C T I O N S - - - - - - - - -
 RED='\033[1;31m'
 GREEN='\033[1;32m'
 YELLOW='\033[1;33m'
@@ -18,7 +23,35 @@ function info {
 	echo -e "\n${MAGENTA}--> $* ${NC}"
 }
 
+
 # - - - - - - - - -  S E T U P - - - - - - - - -
+
+info "On failure check the log from $LOG_FILE"
+exec > >(tee ${LOG_FILE}) 2>&1
+
+step "SETTING APPLE CREDENTIAL"
+info "Setting the following environment variables: XCODE_INSTALL_USER, XCODE_INSTALL_PASSWORD"
+while IFS= read -r line; do
+	if [[ $line =~ ^.*(email|password)$ ]]; then
+		info "Please replace ${YELLOW}EMAIL / PASSWORD${MAGENTA} in .apple-cred with your Apple Account\n"
+		exit 1
+	fi
+
+	if [[ $line == *=* ]]; then
+		export $line;
+	fi
+done < .apple-cred
+
+
+step "INSTALL HOMEBREW"
+if [[ $(command -v brew) == "" ]]; then
+    info "Installing Homebrew. Need sudo access, enter the password of the user"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+else
+    info "You have Homebrew, so updating it"
+    brew update
+fi
+
 
 step "INSTALL RBENV"
 if brew list | grep -q rbenv; then
@@ -27,6 +60,7 @@ else
 	info "Installing RBENV"
 	brew install rbenv
 fi
+
 
 step "SETUP LASTEST RUBY"
 LASTEST_RUBY=$(rbenv install -l | grep -v - | tail -1)
@@ -40,6 +74,7 @@ else
 	rbenv local $LASTEST_RUBY
 fi
 
+
 step "INSTALL GEMS"
 if gem list | grep -q bundler; then
 	info "You have the BUNDLER, installing GEMS"
@@ -51,15 +86,36 @@ else
 	bundle install
 fi
 
+
+step "INSTALL LASTEST XCODE"
+INSTALLED_XCODE=$(xcversion list | grep -v - | grep -v b | grep installed | awk '{print $1}')
+LASTEST_XCODE=$(xcversion list | grep -v - | grep -v b | tail -1)
+if [[ $INSTALLED_XCODE == $LASTEST_XCODE ]] ; then
+	info "You have the LASTEST XCODE version $LASTEST_XCODE"
+else
+	info "Installing XCODE version $LASTEST_XCODE"
+	xcversion install $LASTEST_XCODE
+
+	EXIT_CODE=$?
+	if [[ $EXIT_CODE -eq 0 ]]; then
+		info "Selecting XCODE with the version $LASTEST_XCODE"
+		xcversion select $LASTEST_XCODE
+	else
+		info "Installation XCODE with the version $LASTEST_XCODE failed"
+		if [[ $CHECK_XCODE_INSTALLATION == true ]]; then
+			exit 1
+		fi
+	fi
+fi
+
+
 step "INSTALL CERTIFICATES"
-info "Updating fastlane"
-bundle update fastlane
 info "Installing all the certificates"
 bundle exec fastlane certs_all
 
 
 step "SETUP NODE"
-info "Installing Node Version Manager (NVM)"
+info "Installing Node Version Manager - NVM"
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 source ~/.bashrc
 info "Installing LTS version of NODE, and using it locally, then installing the latest NPM"
@@ -67,10 +123,8 @@ nvm install --lts --latest-npm
 
 
 step "SETUP COCOAPODS"
-info "Installing cocoapods"
-gem install cocoapods
 info "Installing pods"
-pod install
+bundle exec pod install
 
 
 # Google cloud requires Python
