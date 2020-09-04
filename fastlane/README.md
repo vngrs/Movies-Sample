@@ -12,7 +12,7 @@ Install _fastlane_ using
 ```
 [sudo] gem install fastlane -NV
 ```
-or alternatively using `brew cask install fastlane`
+or alternatively using `brew install fastlane`
 
 # Available Actions
 ## iOS
@@ -46,11 +46,26 @@ AppStore signing
 fastlane ios go_testflight
 ```
 AppStore Distribution
+### ios prepare_testflight
+```
+fastlane ios prepare_testflight
+```
+AppStore Distribution Preparation
+### ios new_testflight_version
+```
+fastlane ios new_testflight_version
+```
+
 ### ios go_firebase
 ```
 fastlane ios go_firebase
 ```
 Firebase App Distribution
+### ios adhoc_build
+```
+fastlane ios adhoc_build
+```
+
 ### ios upload_dsyms
 ```
 fastlane ios upload_dsyms

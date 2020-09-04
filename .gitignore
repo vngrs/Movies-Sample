@@ -67,3 +67,8 @@ Fabric.framework
 
 #sonarqube
 .scannerwork
+
+#setup
+/.python-version
+/.apple-cred
+/setup-log.txt
