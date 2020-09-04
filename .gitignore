@@ -70,5 +70,5 @@ Fabric.framework
 
 #setup
 /.python-version
-/.apple-cred
-/.setup-log.txt
+#/.apple-cred
+/setup-log.txt
