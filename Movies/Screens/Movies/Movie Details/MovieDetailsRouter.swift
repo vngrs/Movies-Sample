@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreVNGRSKit
+import SwinjectStoryboard
 
 protocol MovieDetailsRouter: Router {
 
@@ -23,9 +24,7 @@ extension MovieDetailsRouter {
         from context: BaseViewController,
         movie: Movie
     ) {
-
-        let controller = MovieDetailsViewController.instantiate()
-        controller.viewModel = MovieDetailsViewModel(movie: movie)
+        let controller = ViewControllerAssembly.makeMovieDetailsViewController(with: movie)
         push(controller, from: context, animated: true)
     }
 }
