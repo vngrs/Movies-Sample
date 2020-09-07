@@ -28,10 +28,9 @@ struct MoviesListState {
 class MoviesListViewModel: StatefulViewModel<MoviesListState.Change> {
 
     var state = MoviesListState()
-    let movieModel: MovieModel
-
-    init(dataSource: MovieModel = RESTMovieModel()) {
-
+    private let movieModel: MovieModel
+    
+    init(dataSource: MovieModel) {
         self.movieModel = dataSource
     }
 
@@ -47,7 +46,6 @@ class MoviesListViewModel: StatefulViewModel<MoviesListState.Change> {
     }
 
     func loadMoreMovies() {
-
         guard !state.isLoading,
             state.page < state.totalPages
             else { return }

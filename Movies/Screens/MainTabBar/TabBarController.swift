@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Foundation
+import SwinjectStoryboard
 
 struct TabInfo {
 
@@ -77,33 +77,57 @@ class TabBarController: UITabBarController {
         var tabViewControllers: [BaseViewController] = []
         var insertionIndex = 0
 
-        for tab in tabInfoItems {
+        let moviesListViewController = ViewControllerAssembly.makeMoviesListViewController()
+        moviesListViewController.tabBarItem = UITabBarItem(title: "Movies", image: #imageLiteral(resourceName: "movie.png"), tag: 0)
+        
+        let cartViewController = ViewControllerAssembly.makeCartViewController()
+        cartViewController.tabBarItem = UITabBarItem(title: "Cart", image: #imageLiteral(resourceName: "cart"), tag: 1)
+        
+        tabViewControllers.append(contentsOf: [moviesListViewController, cartViewController])
+        
+//        for tab in tabInfoItems {
+//
+//            if let type = tab.viewController.self as? StoryboardBased.Type {
+//
+//
+//
+//                let viewController = ViewControllerAssembly.make
+//
+//                    let tabBarItem = UITabBarItem(
+//                        title: tab.title,
+//                        image: tab.icon,
+//                        tag: tabInfoItems.firstIndex(of: tab) ?? -1
+//                    )
+//                    tabBarItem.titlePositionAdjustment = Constants.titleOffset
+//                    viewController.tabBarItem = tabBarItem
+//
+//                    tabViewControllers.append(viewController)
+                
 
-            if let type = tab.viewController.self as? StoryboardBased.Type {
-                if let vc = type.instantiate() as? BaseViewController {
-
-                    switch vc {
-
-                    case let moviesController as MoviesListViewController:
-                        print("Adding movies list")
-                    case let cart as CartViewController:
-                        print("Adding cart")
-                    default:
-                        break
-                    }
-
-                    let tabBarItem = UITabBarItem(
-                        title: tab.title,
-                        image: tab.icon,
-                        tag: tabInfoItems.firstIndex(of: tab) ?? -1
-                    )
-                    tabBarItem.titlePositionAdjustment = Constants.titleOffset
-                    vc.tabBarItem = tabBarItem
-
-                    tabViewControllers.append(vc)
-                }
-            }
-        }
+//                if let vc = type.instantiate() as? BaseViewController {
+//
+//                    switch vc {
+//
+//                    case let moviesController as MoviesListViewController:
+//                        print("Adding movies list")
+//                    case let cart as CartViewController:
+//                        print("Adding cart")
+//                    default:
+//                        break
+//                    }
+//
+//                    let tabBarItem = UITabBarItem(
+//                        title: tab.title,
+//                        image: tab.icon,
+//                        tag: tabInfoItems.firstIndex(of: tab) ?? -1
+//                    )
+//                    tabBarItem.titlePositionAdjustment = Constants.titleOffset
+//                    vc.tabBarItem = tabBarItem
+//
+//                    tabViewControllers.append(vc)
+//                }
+//            }
+//        }
 
         viewControllers = tabViewControllers.map { UINavigationController(rootViewController: $0) }
     }

@@ -22,7 +22,7 @@ class MoviesListViewController: ViewController, StoryboardBased {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet var filterButtons: [UIButton]!
 
-    let viewModel = MoviesListViewModel()
+    var viewModel: MoviesListViewModel!
     var presentation = MoviesListPresentation() {
         didSet {
             updateUI()

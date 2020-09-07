@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		53C8CBA6D5B9A8F30FD4CF3B /* Pods_Movies_MoviesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A685D5C61B585FDB666389D /* Pods_Movies_MoviesUITests.framework */; };
 		643535FA2E4C867006207441 /* Pods_Movies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC07E23883DCB0A588BC4084 /* Pods_Movies.framework */; };
+		AF121BDC2506E87A00045F06 /* ViewModelAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF121BDB2506E87A00045F06 /* ViewModelAssembly.swift */; };
+		AF121BDE2506E9B000045F06 /* RESTAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF121BDD2506E9B000045F06 /* RESTAssembly.swift */; };
+		AF121BE02506EA5000045F06 /* Assembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF121BDF2506EA5000045F06 /* Assembler.swift */; };
+		AF121BE22506ECCF00045F06 /* ViewControllerAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF121BE12506ECCF00045F06 /* ViewControllerAssembly.swift */; };
 		AF24590E24A40B7E00B65224 /* Accessible.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF24590D24A40B7E00B65224 /* Accessible.swift */; };
 		AF7CD74B24AA23730070F182 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7CD74A24AA23730070F182 /* ViewController.swift */; };
 		AFCC00422497D71100650A22 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AFCC00412497D71000650A22 /* GoogleService-Info.plist */; };
@@ -89,6 +93,10 @@
 		49927B1D179DC8C45E2D7F73 /* Pods-MoviesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoviesTests.release.xcconfig"; path = "Target Support Files/Pods-MoviesTests/Pods-MoviesTests.release.xcconfig"; sourceTree = "<group>"; };
 		62C80DF37855A04B9E27D262 /* Pods_MoviesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoviesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A685D5C61B585FDB666389D /* Pods_Movies_MoviesUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Movies_MoviesUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF121BDB2506E87A00045F06 /* ViewModelAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelAssembly.swift; sourceTree = "<group>"; };
+		AF121BDD2506E9B000045F06 /* RESTAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RESTAssembly.swift; sourceTree = "<group>"; };
+		AF121BDF2506EA5000045F06 /* Assembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembler.swift; sourceTree = "<group>"; };
+		AF121BE12506ECCF00045F06 /* ViewControllerAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerAssembly.swift; sourceTree = "<group>"; };
 		AF24590D24A40B7E00B65224 /* Accessible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accessible.swift; sourceTree = "<group>"; };
 		AF7CD74A24AA23730070F182 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		AFCC00412497D71000650A22 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -209,6 +217,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		AF121BDA2506E86100045F06 /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				AF121BDB2506E87A00045F06 /* ViewModelAssembly.swift */,
+				AF121BDD2506E9B000045F06 /* RESTAssembly.swift */,
+				AF121BE12506ECCF00045F06 /* ViewControllerAssembly.swift */,
+				AF121BDF2506EA5000045F06 /* Assembler.swift */,
+			);
+			path = DI;
+			sourceTree = "<group>";
+		};
 		E232DE1B242BC79B00CCDDC3 = {
 			isa = PBXGroup;
 			children = (
@@ -237,6 +256,7 @@
 				E232DE27242BC79B00CCDDC3 /* AppDelegate.swift */,
 				E26C4FE72498F4A500C3906D /* Main.storyboard */,
 				E232DE35242BC79C00CCDDC3 /* Info.plist */,
+				AF121BDA2506E86100045F06 /* DI */,
 				E28B259B245B25690067C622 /* Common */,
 				E28B2594245B09C30067C622 /* Networking */,
 				E29818E2248426580087187D /* Model */,
@@ -519,8 +539,8 @@
 				E232DE20242BC79B00CCDDC3 /* Sources */,
 				E232DE21242BC79B00CCDDC3 /* Frameworks */,
 				E232DE22242BC79B00CCDDC3 /* Resources */,
-				E1CA6CFB8AD2EA113E122711 /* [CP] Embed Pods Frameworks */,
 				AF519B392490F0440055814B /* FirebaseCrashlytics */,
+				342C15CA577956B58398023B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -558,7 +578,7 @@
 				E232DE41242BC79D00CCDDC3 /* Sources */,
 				E232DE42242BC79D00CCDDC3 /* Frameworks */,
 				E232DE43242BC79D00CCDDC3 /* Resources */,
-				D7541ECDE73042685BCE3DDE /* [CP] Embed Pods Frameworks */,
+				8DA514E529C28C3DD47B39B1 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -646,6 +666,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		342C15CA577956B58398023B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Movies/Pods-Movies-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Movies/Pods-Movies-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Movies/Pods-Movies-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		37DF6DDD8A6D003ADEBA7485 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -668,6 +705,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		8DA514E529C28C3DD47B39B1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Movies-MoviesUITests/Pods-Movies-MoviesUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Movies-MoviesUITests/Pods-Movies-MoviesUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Movies-MoviesUITests/Pods-Movies-MoviesUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		AF519B392490F0440055814B /* FirebaseCrashlytics */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -687,23 +741,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
-		};
-		D7541ECDE73042685BCE3DDE /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Movies-MoviesUITests/Pods-Movies-MoviesUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Movies-MoviesUITests/Pods-Movies-MoviesUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Movies-MoviesUITests/Pods-Movies-MoviesUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 		DA8EFA865721BCBA4F1BDF89 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -725,23 +762,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E1CA6CFB8AD2EA113E122711 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Movies/Pods-Movies-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Movies/Pods-Movies-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Movies/Pods-Movies-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E9EAA68DCAE4CDE062CC9FBE /* [CP] Check Pods Manifest.lock */ = {
@@ -788,9 +808,12 @@
 				E26C4FE02498EFC600C3906D /* CartViewController.swift in Sources */,
 				E2ECE6C7245FB2E700AF4E3F /* UpcomingRequest.swift in Sources */,
 				E29818F02484397D0087187D /* AppRouter.swift in Sources */,
+				AF121BDC2506E87A00045F06 /* ViewModelAssembly.swift in Sources */,
 				E28B259D245B25890067C622 /* LaunchManager.swift in Sources */,
+				AF121BE02506EA5000045F06 /* Assembler.swift in Sources */,
 				E2AD8A80249915C700FFE639 /* PaymentMethodViewController.swift in Sources */,
 				E26C4FEB2498F4E800C3906D /* WelcomeViewController.swift in Sources */,
+				AF121BE22506ECCF00045F06 /* ViewControllerAssembly.swift in Sources */,
 				E2ECE6C3245FB29500AF4E3F /* TopRatedRequest.swift in Sources */,
 				E29818F424843BD30087187D /* TitleTableCell.swift in Sources */,
 				AF7CD74B24AA23730070F182 /* ViewController.swift in Sources */,
@@ -799,6 +822,7 @@
 				E26C4FEF2498FF7100C3906D /* Coordinator.swift in Sources */,
 				E2ECE6C1245F91C100AF4E3F /* URLBuilder.swift in Sources */,
 				E249620D245B2E090058DFDD /* BaseViewController.swift in Sources */,
+				AF121BDE2506E9B000045F06 /* RESTAssembly.swift in Sources */,
 				E2AD8A9624995C4000FFE639 /* SharedState.swift in Sources */,
 				E2AD8A7F249915C300FFE639 /* ReviewOrderViewController.swift in Sources */,
 				E2AD8A94249923E000FFE639 /* CheckoutCoordinatorRouter.swift in Sources */,
